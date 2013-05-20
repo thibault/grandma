@@ -7,3 +7,4 @@ class Reminder(models.Model):
                              help_text=_('Use international format, e.g +33612345678'))
     message = models.CharField(_('Message'), max_length=150)
     when = models.DateTimeField(_('Date'))
+    sent = models.BooleanField(_('Already sent?'), default=False)

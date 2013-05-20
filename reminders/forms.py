@@ -7,6 +7,8 @@ from reminders.models import Reminder
 mobile_re = re.compile(r'^\+336\d{8}$')
 
 class ReminderForm(forms.ModelForm):
+    exclude = ('sent',)
+
     class Meta:
         model = Reminder
 
