@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{{ _('Dont forget grandma: an sms reminder') }}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+        {% block extrahead %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul class="nav pull-right">
+                        <li><a href="#">{{ _('Log in') }}</a></li>
+                        <li><a href="#">{{ _('Sign in') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message|safe }}
+                </div>
+            {% endfor %}
+            {% endif %}
+
+            {% block content %} {% endblock %}
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right">Contact: contact [at] arrosware.io</p>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/scripts.js"></script>
+        {% block extra-js %} {% endblock %}
+    </body>
+</html>

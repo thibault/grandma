@@ -1,0 +1,20 @@
+{% load widget_tweaks %}
+
+
+<div class="control-group
+    {% if field.field.required %}required{% endif %}
+    {% if field.errors %}error{% endif %}">
+
+    <label for="id_{{ field.name }}" class="control-label">{{ field.label }}</label>
+    <div class="controls">
+        {% if field.errors %}
+            {{ field.errors }}
+        {% endif %}
+
+        {% render_field field class+=inputclass%}
+
+        {% if field.help_text %}
+            <p class="help-block">{{ field.help_text }}</p>
+        {% endif %}
+    </div>
+</div>

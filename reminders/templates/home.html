@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Don't forget grandma</h1>
+
+<div class="well span4 offset4">
+    <form method="post" action="">
+    {% include 'form_snippet.html' with form=form inputclass="span4" %}
+    <hr />
+    <input type="submit" class="btn btn-primary btn-large btn-block" value="{{ _('Configure') }}" />
+
+    </form>
+</div>
+{% endblock %}
