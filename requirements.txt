@@ -1,6 +1,7 @@
 Django==1.5.1
 argparse==1.2.1
 dj-database-url==0.2.1
+django-annoying==0.7.7
 gunicorn==0.17.4
 ipython==0.13.2
 psycopg2==2.5
