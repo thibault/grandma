@@ -110,7 +110,7 @@ ROOT_URLCONF = 'grandma.urls'
 WSGI_APPLICATION = 'grandma.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates'),
+    os.path.join(PROJECT_ROOT, 'grandma', 'templates'),
 )
 
 INSTALLED_APPS = (
