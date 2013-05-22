@@ -11,3 +11,7 @@ def home(request):
     return {
         'form': form
     }
+
+@render_to('reminder_list.html')
+def reminder_list(request):
+    return {}
