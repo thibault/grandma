@@ -108,6 +108,7 @@ TEMPLATE_DIRS = (
 
 PROJECT_APPS = (
     'reminders',
+    'accounts',
 )
 
 INSTALLED_APPS = (
@@ -125,6 +126,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 ) + PROJECT_APPS
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
