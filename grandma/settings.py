@@ -160,3 +160,18 @@ DATABASES['default'] =  dj_database_url.config(default='mysql://grandma:grandma@
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = '/tmp/grandma.mail'
+DEFAULT_FROM_EMAIL = 'django@grandma'
+MAILING_CAMPAIGN_HEADER = 'X-Mailjet-Campaign'
+
+NEXMO_API = 'http://rest.nexmo.com/sms/json'
+NEXMO_USERNAME = 'username'
+NEXMO_PASSWORD = 'password'
+NEXMO_FROM='contactor'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
