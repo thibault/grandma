@@ -164,6 +164,8 @@ DATABASES['default'] =  dj_database_url.config(default='mysql://grandma:grandma@
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+ACCOUNT_ACTIVATION_DAYS = 7
+
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = '/tmp/grandma.mail'
 DEFAULT_FROM_EMAIL = 'django@grandma'
