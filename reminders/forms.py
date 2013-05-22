@@ -7,12 +7,13 @@ from reminders.models import Reminder
 mobile_re = re.compile(r'^\+336\d{8}$')
 
 class ReminderForm(forms.ModelForm):
-    exclude = ('sent',)
 
     class Meta:
         model = Reminder
+        exclude = ('sent',)
 
     def clean_phone(self):
+        """Checks the phone number format."""
         phone = self.cleaned_data.get('phone', None)
         if not phone:
             return u''
