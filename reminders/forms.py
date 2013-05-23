@@ -1,14 +1,12 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from reminders.models import Reminder
-from accounts.models import mobile_re
+from accounts.models import mobile_re, User
 
 
-class ReminderForm(forms.ModelForm):
-
+class BaseReminderForm(forms.ModelForm):
     class Meta:
         model = Reminder
-        exclude = ('sent', 'user')
 
     def clean_phone(self):
         """Checks the phone number format."""
@@ -20,3 +18,27 @@ class ReminderForm(forms.ModelForm):
             raise forms.ValidationError(_('Use the international format (+336xxxxxxxx). Only french phone are allowed for now.'))
 
         return phone
+
+
+class AnonymousReminderForm(BaseReminderForm):
+    error_messages = {
+        'already_exists': _('This phone number is already registered. '
+                            'Please, login first'),
+    }
+    class Meta(BaseReminderForm.Meta):
+        exclude = ('sent', 'user')
+
+    def clean_phone(self):
+        """We must check that the user does not already exists."""
+        phone = super(AnonymousReminderForm, self).clean_phone()
+        self.users_cache = User._default_manager.filter(phone__iexact=phone)
+        if len(self.users_cache):
+            raise forms.ValidationError(self.error_messages['already_exists'])
+
+        return phone
+
+class ReminderForm(BaseReminderForm):
+    class Meta(BaseReminderForm.Meta):
+        exclude = ('sent', 'user', 'phone')
+
+
