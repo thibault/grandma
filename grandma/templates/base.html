@@ -30,7 +30,7 @@
                         <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>
                     </ul>
 
-                    <a class="brand" href="#">
+                    <a class="brand" href="{% url 'reminder_list' %}">
                         {{ user.phone }}
                     </a>
                     {% else %}
