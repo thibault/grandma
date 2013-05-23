@@ -1,8 +1,14 @@
+import re
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
+from messages.models import send_message
+
+
+# Regular expression to validate phone numbers
+mobile_re = re.compile(r'^\+336\d{8}$')
 
 
 class UserManager(BaseUserManager):
@@ -46,3 +52,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.phone
+
+    def reset_and_send_password(self):
+        """Changes the password, and send a new one."""
+        password = User.objects.make_random_password(length=4,
+                allowed_chars='0123456789')
+        self.set_password(password)
+        self.save()
+
+        send_message(self.phone, _('Your new password is %(pwd)s') % {
+                'pwd': password
+        })

@@ -23,11 +23,21 @@
 
     <body>
         <div class="navbar">
-            <div class="navbar-inner">
+            <div class="navbar-inner navbar-static-top">
                 <div class="container">
+                    {% if user.is_authenticated %}
+                    <ul class="nav pull-right">
+                        <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>
+                    </ul>
+
+                    <a class="brand" href="#">
+                        {{ user.phone }}
+                    </a>
+                    {% else %}
                     <ul class="nav pull-right">
                         <li><a href="{% url 'login' %}">{{ _('Log in') }}</a></li>
                     </ul>
+                    {% endif %}
                 </div>
             </div>
         </div>

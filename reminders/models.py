@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from reminders.nexmomessage import NexmoMessage
+from messages.models import NexmoMessage
 from django.conf import settings
 
 

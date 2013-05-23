@@ -1,10 +1,8 @@
-import re
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from reminders.models import Reminder
+from accounts.models import mobile_re
 
-
-mobile_re = re.compile(r'^\+336\d{8}$')
 
 class ReminderForm(forms.ModelForm):
 
