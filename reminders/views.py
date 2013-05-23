@@ -26,7 +26,8 @@ def home(request):
             message = _('Your reminder was saved successfully. Sleep tight.')
             next_url = 'reminder_list'
         else:
-            user = User.objects.create_user(reminder.phone)
+            phone = form.cleaned_data['phone']
+            user = User.objects.create_user(phone)
             user.reset_and_send_password()
             message = _('We must validate that you are the owner of this phone '
                         'number. Please, type in the four digits code you '

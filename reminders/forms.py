@@ -5,6 +5,8 @@ from accounts.models import mobile_re, User
 
 
 class BaseReminderForm(forms.ModelForm):
+    phone = forms.CharField(label=_('Phone:'), max_length=20,
+            help_text=_('Use international format, e.g +33612345678'))
     class Meta:
         model = Reminder
 
