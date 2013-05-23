@@ -8,6 +8,9 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
