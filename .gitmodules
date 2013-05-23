@@ -1,3 +1,6 @@
 [submodule "bootstrap"]
 	path = bootstrap
 	url = git://github.com/twitter/bootstrap.git
+[submodule "datetimepicker"]
+	path = datetimepicker
+	url = git://github.com/smalot/bootstrap-datetimepicker.git
