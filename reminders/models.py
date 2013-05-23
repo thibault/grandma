@@ -1,10 +1,12 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from messages.models import NexmoMessage
+from accounts.models import User
+from messages.models import send_message
 from django.conf import settings
 
 
 class Reminder(models.Model):
+    user = models.ForeignKey(User, related_name='reminders')
     phone = models.CharField(_('Mobile'), max_length=20,
                              help_text=_('Use international format, e.g +33612345678'))
     message = models.CharField(_('Message'), max_length=150)
@@ -13,13 +15,4 @@ class Reminder(models.Model):
 
     def send(self):
         """Use the Nexmo API to send the reminder."""
-        params = {
-            'username': settings.NEXMO_USERNAME,
-            'password': settings.NEXMO_PASSWORD,
-            'type': 'unicode',
-            'from': settings.NEXMO_FROM,
-            'to': self.phone,
-            'text': self.message.encode('utf-8'),
-        }
-        sms = NexmoMessage(params)
-        response = sms.send_request()
+        send_message(self.phone, self.message)

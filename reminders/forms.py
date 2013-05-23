@@ -8,7 +8,7 @@ class ReminderForm(forms.ModelForm):
 
     class Meta:
         model = Reminder
-        exclude = ('sent',)
+        exclude = ('sent', 'user')
 
     def clean_phone(self):
         """Checks the phone number format."""
