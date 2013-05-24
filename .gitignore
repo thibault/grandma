@@ -1,4 +1,5 @@
 *.pyc
 venv
 local_settings.py
-grandma/public/
+grandma/public/media
+grandma/public/static
