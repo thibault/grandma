@@ -103,6 +103,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
+
 ROOT_URLCONF = 'grandma.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -129,6 +133,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'south',
     'debug_toolbar',
+    'django_tables2',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
