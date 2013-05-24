@@ -43,4 +43,9 @@ class ReminderForm(BaseReminderForm):
     class Meta(BaseReminderForm.Meta):
         exclude = ('sent', 'user', 'phone')
 
+    def __init__(self, *args, **kwargs):
+        super(ReminderForm, self).__init__(*args, **kwargs)
+        # The exclude field won't work for phone
+        del self.fields['phone']
+
 
