@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
 from accounts.models import User
 from reminders.models import Reminder
@@ -48,6 +49,7 @@ def home(request):
     }
 
 @render_to('reminder_list.html')
+@login_required
 def reminder_list(request):
     qs = Reminder.objects.filter(user=request.user) \
             .filter(sent=False) \
