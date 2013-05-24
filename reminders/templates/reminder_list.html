@@ -2,5 +2,25 @@
 {% load django_tables2 %}
 
 {% block content %}
-{% render_table table %}
+<form method="post" action="" id="delete-form">
+    {% csrf_token %}
+    {% render_table table %}
+
+    <label for="mySubmit" class="btn btn-danger"><i class="icon-white icon-remove-sign"></i> {{ _('Delete') }}</label>
+    <input id="mySubmit" type="submit" value="{{ _('Delete') }}" class="hidden" />
+
+</form>
+{% endblock %}
+
+{% block extra-js %} {{ block.super }}
+<script type="text/javascript">
+$(document).ready(function() {
+    // Click to select checkboxes
+    var header_cb = $('#delete-form th input[type=checkbox]');
+    var all_cbs = $('#delete-form td input[type=checkbox]');
+    header_cb.click(function() {
+        all_cbs.prop('checked', header_cb.is(':checked'));
+    });
+});
+</script>
 {% endblock %}

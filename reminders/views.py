@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from annoying.decorators import render_to
 from accounts.models import User
+from reminders.models import Reminder
 from reminders.forms import ReminderForm, AnonymousReminderForm
 from reminders.tables import ReminderTable
 
@@ -48,10 +49,11 @@ def home(request):
 
 @render_to('reminder_list.html')
 def reminder_list(request):
-    reminders = request.user.reminders.all()
-    table = ReminderTable(reminders)
+    qs = Reminder.objects.filter(user=request.user) \
+            .filter(sent=False) \
+            .order_by('when')
+    table = ReminderTable(qs)
 
     return {
         'table': table,
-        'reminders': reminders,
     }
