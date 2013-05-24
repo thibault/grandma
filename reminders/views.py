@@ -52,8 +52,16 @@ def reminder_list(request):
     qs = Reminder.objects.filter(user=request.user) \
             .filter(sent=False) \
             .order_by('when')
-    table = ReminderTable(qs)
 
+    # Delete selected reminders
+    if request.method == 'POST':
+        ids = request.POST.getlist('id')
+        qs.filter(id__in=ids).delete()
+        msg = _('Selected reminders were deleted')
+        messages.success(request, msg)
+        return redirect('reminder_list')
+
+    table = ReminderTable(qs)
     return {
         'table': table,
     }
