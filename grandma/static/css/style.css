@@ -1,3 +1,20 @@
+@font-face {
+    font-family: 'BallparkWeiner';
+    src: url('/static/fonts/ballpark_weiner-webfont.eot');
+    src: url('/static/fonts/ballpark_weiner-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/ballpark_weiner-webfont.woff') format('woff'),
+         url('/static/fonts/ballpark_weiner-webfont.ttf') format('truetype'),
+         url('/static/fonts/ballpark_weiner-webfont.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-family: 'BallparkWeiner', serif;
+    font-size: 50px;
+    font-weight: normal;
+    margin-bottom: 1em;
+    text-align: center;
+}
 .center {
     text-align: center;
 }

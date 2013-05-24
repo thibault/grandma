@@ -22,16 +22,19 @@
     </head>
 
     <body>
-        <div class="navbar">
+        <div class="navbar navbar-inverse">
             <div class="navbar-inner navbar-static-top">
                 <div class="container">
                     {% if user.is_authenticated %}
                     <ul class="nav pull-right">
+                        <li><a href="{% url 'reminder_list' %}">
+                            {{ user.phone }}
+                        </a></li>
                         <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>
                     </ul>
 
-                    <a class="brand" href="{% url 'reminder_list' %}">
-                        {{ user.phone }}
+                    <a class="brand" href="{% url 'home' %}">
+                        {{ _('Dont\'t forget grandma!') }}
                     </a>
                     {% else %}
                     <ul class="nav pull-right">
@@ -52,10 +55,12 @@
             {% endfor %}
             {% endif %}
 
+            <div class="row"> <div class="span12">
             {% block content %} {% endblock %}
+            </div> </div>
         </div>
 
-        <footer class="footer">
+        <div class="footer">
             <div class="container">
                 <p class="pull-right">Contact: contact [at] arrosware.io</p>
             </div>

@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Don't forget grandma</h1>
+<h1>Don't forget grandma <sup>beta</sup></h1>
 
+<div class="row">
 <div class="well span4 offset4">
     <form method="post" action="">
     {% include 'form_snippet.html' with form=form inputclass="span4" %}
     <hr />
     <input type="submit" class="btn btn-primary btn-large btn-block"
-           value="{{ _('Save') }}" />
+           value="{{ _('Remind me') }}" />
 
     </form>
+</div>
 </div>
 {% endblock %}
 

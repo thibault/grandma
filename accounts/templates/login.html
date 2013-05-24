@@ -6,16 +6,7 @@
 <div class="row">
 <div class="span4 offset4 well">
 <form method="post" class="form" action="">
-    {% csrf_token %}
-
-    {% if form.non_field_errors %}
-        <p class="alert alert-error">
-        {{ _('Your phone and password didn\'t match. Please try again.') }}
-        </p>
-    {% endif %}
-
-    <input class="span4 input-large" type="text" name="username" placeholder="{{ _('Phone number') }}" />
-    <input class="span4" type="password" name="password" placeholder="{{ _('Password') }}" />
+    {% include 'form_snippet.html' with form=form inputclass="span4" %}
 
     <p class="center">
         <a href="{% url 'password_reset' %}">{{ _('Forgot your password?') }}</a>

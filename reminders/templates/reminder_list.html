@@ -2,6 +2,8 @@
 {% load django_tables2 %}
 
 {% block content %}
+<h1>{{ _('Your reminders') }}</h1>
+
 <form method="post" action="" id="delete-form">
     {% csrf_token %}
     {% render_table table %}
