@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os, sys
 
-venv_file = '/home/grandma/.virtualenvs/grandma/bin/activate_this.py'
+venv_file = '/home/grandma2/.virtualenvs/grandma/bin/activate_this.py'
 if os.path.isfile(venv_file):
     execfile(venv_file, dict(__file__=venv_file))
 
