@@ -14,3 +14,5 @@ class Reminder(models.Model):
     def send(self):
         """Use the Nexmo API to send the reminder."""
         send_message(self.user.phone, self.message)
+        self.sent = True
+        self.save()
