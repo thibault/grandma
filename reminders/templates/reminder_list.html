@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
+{% load django_tables2 %}
 
 {% block content %}
-{{ reminders }}
+{% render_table table %}
 {% endblock %}

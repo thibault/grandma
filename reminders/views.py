@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from annoying.decorators import render_to
 from accounts.models import User
 from reminders.forms import ReminderForm, AnonymousReminderForm
+from reminders.tables import ReminderTable
 
 
 @render_to('home.html')
@@ -48,7 +49,9 @@ def home(request):
 @render_to('reminder_list.html')
 def reminder_list(request):
     reminders = request.user.reminders.all()
+    table = ReminderTable(reminders)
 
     return {
+        'table': table,
         'reminders': reminders,
     }
