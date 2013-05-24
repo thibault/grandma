@@ -9,6 +9,11 @@
     <label for="mySubmit" class="btn btn-danger"><i class="icon-white icon-remove-sign"></i> {{ _('Delete') }}</label>
     <input id="mySubmit" type="submit" value="{{ _('Delete') }}" class="hidden" />
 
+    <a href="{% url 'home' %}" class="btn">
+        <i class="icon-plus-sign"></i>
+        {{ _('Create a new reminder') }}
+    </a>
+
 </form>
 {% endblock %}
 
