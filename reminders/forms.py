@@ -15,7 +15,7 @@ class AnonymousReminderForm(BaseReminderForm):
         'already_exists': _('This phone number is already registered. '
                             'Please, login first'),
     }
-    phone = forms.CharField(label=_('Phone:'), max_length=20,
+    phone = forms.CharField(label=_('Phone'), max_length=20,
             help_text=_('Use international format, e.g +33612345678'))
 
     def clean_phone(self):
