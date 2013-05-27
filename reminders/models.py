@@ -19,17 +19,9 @@ class Reminder(models.Model):
         verbose_name = _('Reminder')
         verbose_name_plural = _('Reminders')
 
-    def get_phone(self):
-        """Get the actual phone to send the reminder."""
-        if self.user is not None:
-            phone = self.user.phone
-        else:
-            phone = self.phone
-        return phone
-
 
     def send(self):
         """Use the Nexmo API to send the reminder."""
-        send_message(self.get_phone(), self.message)
+        send_message(self.phone, self.message)
         self.sent = True
         self.save()
