@@ -9,8 +9,8 @@ from reminders.forms import ReminderForm, AnonymousReminderForm
 from reminders.tables import ReminderTable
 
 
-@render_to('home.html')
-def home(request):
+@render_to('create_reminder.html')
+def create_reminder(request):
 
     # If user is already authenticated, don't even ask phone number
     if request.user.is_authenticated():
