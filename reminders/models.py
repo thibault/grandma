@@ -19,7 +19,6 @@ class Reminder(models.Model):
         verbose_name = _('Reminder')
         verbose_name_plural = _('Reminders')
 
-
     def send(self):
         """Use the Nexmo API to send the reminder."""
         send_message(self.phone, self.message)
