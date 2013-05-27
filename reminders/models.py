@@ -6,6 +6,8 @@ from django.conf import settings
 
 
 class Reminder(models.Model):
+    ANONYMOUS_DAILY_LIMIT = 3
+
     user = models.ForeignKey(User, null=True, blank=True,
                              related_name='reminders')
     phone = models.CharField(_('Mobile'), max_length=20,

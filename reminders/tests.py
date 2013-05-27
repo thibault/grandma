@@ -33,6 +33,10 @@ class CreateReminderTests(TestCase):
 
         self.reminder_data.update({'message': 'test3'})
         res = self.create_reminder(self.reminder_data)
+        self.assertContains(res, 'Sleep tight')
+
+        self.reminder_data.update({'message': 'test4'})
+        res = self.create_reminder(self.reminder_data)
         self.assertNotContains(res, 'Sleep tight')
 
 

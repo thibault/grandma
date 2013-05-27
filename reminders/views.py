@@ -11,21 +11,22 @@ from reminders.tables import ReminderTable
 
 @render_to('create_reminder.html')
 def create_reminder(request):
-    form = ReminderForm(request.POST or None)
+    ip_address = request.META['REMOTE_ADDR']
+    form = ReminderForm(request.POST or None, ip_address=ip_address)
 
     if form.is_valid():
         reminder = form.save(commit=False)
-
-        if request.user.is_authenticated():
-            reminder.user = request.user
-            next_url = 'reminder_list'
-        else:
-            next_url = 'create_reminder'
-        reminder.created_by_ip = request.META['REMOTE_ADDR']
+        reminder.user = request.user if request.user.is_authenticated() else None
+        reminder.created_by_ip = ip_address
         reminder.save()
 
         message = _('Your reminder was saved successfully. Sleep tight.')
         messages.success(request, message)
+
+        if request.user.is_authenticated():
+            next_url = 'reminder_list'
+        else:
+            next_url = 'create_reminder'
         return redirect(next_url)
 
     return {
