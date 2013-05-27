@@ -21,8 +21,8 @@ def create_reminder(request):
             next_url = 'reminder_list'
         else:
             next_url = 'create_reminder'
+        reminder.created_by_ip = request.META['REMOTE_ADDR']
         reminder.save()
-
 
         message = _('Your reminder was saved successfully. Sleep tight.')
         messages.success(request, message)
