@@ -4,6 +4,10 @@ from django.contrib.auth.hashers import UNUSABLE_PASSWORD
 from accounts.models import User, mobile_re
 
 
+class RegistrationForm(forms.Form):
+    phone = forms.CharField(label=_('Your mobile phone'), max_length=20)
+    email = forms.EmailField(label=_("Email"), max_length=254)
+
 class PasswordResetForm(forms.Form):
     error_messages = {
         'unknown': _('This phone number is unknown. '
@@ -34,8 +38,8 @@ class PasswordResetForm(forms.Form):
 
     def get_user(self):
         """Get the user corresponding to submitted form.
-        
+
         The form MUST be valid before calling this.
-        
+
         """
         return self.users_cache[0]

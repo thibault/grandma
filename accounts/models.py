@@ -38,6 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
     phone = models.CharField(_('Mobile'), max_length=20, unique=True,
                              help_text=_('Use international format, e.g +33612345678'))
+    email = models.EmailField(_('email address'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_active = models.BooleanField(_('active'), default=True,
             help_text=_('Designates whether this user should be treated as '
