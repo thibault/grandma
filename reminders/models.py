@@ -14,6 +14,8 @@ class Reminder(models.Model):
     message = models.CharField(_('Message'), max_length=150)
     when = models.DateTimeField(_('Date'))
     sent = models.BooleanField(_('Already sent?'), default=False)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=True)
+    created_by_ip = models.IPAddressField(_('IP address'))
 
     class Meta:
         verbose_name = _('Reminder')
