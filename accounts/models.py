@@ -12,20 +12,20 @@ mobile_re = re.compile(r'^\+336\d{8}$')
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, phone, password=None, **extra_fields):
+    def create_user(self, phone, email, password=None, **extra_fields):
         now = timezone.now()
 
         if not password:
             password = self.make_random_password(length=4,
                                                  allowed_chars='0123456789')
-        user = self.model(phone=phone, last_login=now,
+        user = self.model(phone=phone, email=email, last_login=now,
                           date_joined=now, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, phone, password, **extra_fields):
-        u = self.create_user(phone, password, **extra_fields)
+    def create_superuser(self, phone, email, password, **extra_fields):
+        u = self.create_user(phone, email, password, **extra_fields)
         u.is_staff = True
         u.is_active = True
         u.is_superuser = True
@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
     phone = models.CharField(_('Mobile'), max_length=20, unique=True,
                              help_text=_('Use international format, e.g +33612345678'))
-    email = models.EmailField(_('email address'))
+    email = models.EmailField(_('email address'), unique=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_active = models.BooleanField(_('active'), default=True,
             help_text=_('Designates whether this user should be treated as '
@@ -47,8 +47,13 @@ class User(AbstractBaseUser, PermissionsMixin):
             help_text=_('Designates whether this user has confirmed his '
                         'phone number.'))
 
+    # Paymill subscription data
+    paymill_client_id = models.CharField(max_length=100, null=True, blank=True)
+    paymill_card_id = models.CharField(max_length=100, null=True, blank=True)
+    paymill_subscription_id = models.CharField(max_length=100, null=True, blank=True)
+
     USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['email']
 
     class Meta:
         verbose_name = _('User')
