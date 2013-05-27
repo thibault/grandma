@@ -13,15 +13,6 @@ class CreateReminderTests(TestCase):
     def create_reminder(self, data):
         return self.client.post(self.create_url, data, follow=True)
 
-    def test_reminder_duplicate(self):
-        """User cannot create two identical reminders."""
-        res = self.create_reminder(self.reminder_data)
-        self.assertContains(res, 'Sleep tight')
-
-        res = self.create_reminder(self.reminder_data)
-        self.assertNotContains(res, 'Sleep tight')
-        self.assertContains(res, 'already exists')
-
     def test_rate_limit(self):
         """Anonymous user cannot create more than 3 reminders at once."""
         res = self.create_reminder(self.reminder_data)
