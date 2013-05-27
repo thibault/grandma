@@ -1,4 +1,4 @@
-import os
+import os, sys
 
 
 PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
@@ -197,6 +197,16 @@ NEXMO_API = 'http://rest.nexmo.com/sms/json'
 NEXMO_USERNAME = 'username'
 NEXMO_PASSWORD = 'password'
 NEXMO_FROM='contactor'
+
+if 'test' in sys.argv:
+    os.environ['PROJECT_ENV'] = 'testing'
+
+project_env = os.environ.get('PROJECT_ENV', 'dev')
+try:
+    if project_env == 'testing':
+        from testing_settings import *
+except ImportError:
+    pass
 
 try:
     from local_settings import *
