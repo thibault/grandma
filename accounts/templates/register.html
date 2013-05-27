@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="center">{{ _('Create your account') }}</h1>
+
+<div class="row">
+<div class="span4 offset4 well">
+<form method="post" class="form" action="" id="payment-form">
+    <fieldset>
+        <legend>{{ _('Your account') }}</legend>
+        {% include 'form_snippet.html' with form=form inputclass="span4" %}
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ _('Billing information') }}</legend>
+
+        <div id="payment-errors"></div>
+
+        <div class="controls">
+            <label>Numéro de CB :</label>
+            <input class="card-number span4" type="text" />
+        </div>
+
+        <div class="controls">
+            <label>Nom du porteur :</label>
+            <input class="card-holdername span4" type="text" />
+        </div>
+
+        <div class="controls">
+            <label>Code de validation :</label>
+            <input class="card-cvc span4" type="text" size="4" />
+        </div>
+
+        <div class="controls">
+            <label>Date d'expiration (MM/YYYY)</label>
+            <input class="card-expiry-month span2" type="text" size="2" />
+            <input class="card-expiry-year span2" type="text" size="4" />
+        </div>
+    </fieldset>
+
+    <div class="form-actions">
+        <input id="submit-btn" type="submit" value="{{ _('Register') }}" class="btn btn-primary btn-large btn-block" />
+    </div>
+
+</form>
+
+</div>
+</div>
+{% endblock %}
+
+{% block extra-js %}
+<script type="text/javascript">
+    var PAYMILL_PUBLIC_KEY = '{{ PAYMILL_PUBLIC_KEY }}';
+</script>
+<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    var payment_form = $('#payment-form');
+    var submit_button = $('#submit-btn');
+    var payment_errors = $('#payment-errors');
+
+    payment_form.submit(function(e) {
+        e.preventDefault();
+        hideError();
+
+        if (false == paymill.validateCardNumber($('.card-number').val())) {
+            showError("Numéro de carte invalide");
+            return false;
+        }
+
+        if (false == paymill.validateExpiry($('.card-expiry-month').val(), $('.card-expiry-year').val())) {
+            showError("Date d'expiration invalide");
+            return false;
+        }
+
+        if (false == paymill.validateCvc($('.card-cvc').val())) {
+            showError("Code de validation invalide");
+            return false;
+        }
+
+        paymill.createToken({
+            number: $('.card-number').val(),
+            exp_month: $('.card-expiry-month').val(),
+            exp_year: $('.card-expiry-year').val(),
+            cvc: $('.card-cvc').val(),
+            cardholder: $('.card-holdername').val(),
+            currency: 'EUR',
+            amount_int: '1',
+            }, PaymillResponseHandler);
+    });
+
+    function showError(error) {
+        payment_errors.text(error);
+        payment_errors.addClass('alert alert-error');
+        submit_button.removeAttr("disabled");
+    }
+
+    function hideError() {
+        payment_errors.text("");
+        payment_errors.removeClass('alert alert-error');
+        submit_button.attr('disabled', 'disabled');
+    }
+
+    function PaymillResponseHandler(error, result) {
+        if (error) {
+            showError('{{ _('Oups! An error occured.') }}');
+        } else {
+            hideError();
+            var token = result.token;
+            payment_form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
+            payment_form.get(0).submit();
+        }
+    }
+});
+</script>
+{% endblock %}

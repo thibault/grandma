@@ -9,6 +9,7 @@
     {% include 'form_snippet.html' with form=form inputclass="span4" %}
 
     <p class="center">
+        <a href="{% url 'register' %}">{{ _('Create an account') }}</a> —
         <a href="{% url 'password_reset' %}">{{ _('Forgot your password?') }}</a>
     </p>
 

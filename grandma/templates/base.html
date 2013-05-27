@@ -39,6 +39,7 @@
 
                     {% else %}
                     <ul class="nav pull-right">
+                        <li><a href="{% url 'register' %}">{{ _('Sign in') }}</a></li>
                         <li><a href="{% url 'login' %}">{{ _('Log in') }}</a></li>
                     </ul>
                     {% endif %}
