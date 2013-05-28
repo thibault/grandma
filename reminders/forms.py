@@ -12,6 +12,7 @@ class ReminderForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.ip_address = kwargs.pop('ip_address')
+        self.user = kwargs.pop('user')
         super(ReminderForm, self).__init__(*args, **kwargs)
 
     def clean_phone(self):
@@ -29,16 +30,18 @@ class ReminderForm(forms.ModelForm):
         if self.errors:
             return data
 
-        today = datetime.date.today()
-        reminders = Reminder.objects.filter(created_by_ip=self.ip_address) \
-                .filter(created_at__year=today.year) \
-                .filter(created_at__month=today.month) \
-                .filter(created_at__day=today.day)
+        # Only anonymous users have a rate limit
+        if not self.user.is_authenticated():
+            today = datetime.date.today()
+            reminders = Reminder.objects.filter(created_by_ip=self.ip_address) \
+                    .filter(created_at__year=today.year) \
+                    .filter(created_at__month=today.month) \
+                    .filter(created_at__day=today.day)
 
-        if reminders.count() >= Reminder.ANONYMOUS_DAILY_LIMIT:
-            raise forms.ValidationError(_('You have exceded the numbers of free '
-                                          'reminders a day. Subscribe to an '
-                                          'account to create more.'))
+            if reminders.count() >= Reminder.ANONYMOUS_DAILY_LIMIT:
+                raise forms.ValidationError(_('You have exceded the numbers of free '
+                                              'reminders a day. Subscribe to an '
+                                              'account to create more.'))
 
 
         return data

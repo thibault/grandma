@@ -12,7 +12,8 @@ from reminders.tables import ReminderTable
 @render_to('create_reminder.html')
 def create_reminder(request):
     ip_address = request.META['REMOTE_ADDR']
-    form = ReminderForm(request.POST or None, ip_address=ip_address)
+    form = ReminderForm(request.POST or None, user=request.user,
+                        ip_address=ip_address)
 
     if form.is_valid():
         reminder = form.save(commit=False)
