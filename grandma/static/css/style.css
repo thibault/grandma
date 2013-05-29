@@ -19,6 +19,14 @@ body > footer a {
 body > footer a:hover {
     color: #ccc;
 }
+.biglist {
+    font-size: 2em;
+    font-weight: bold;
+}
+p.help-block {
+    font-style: italic;
+    margin-bottom: 12px;
+}
 /*!
  * Datetimepicker for Bootstrap
  *

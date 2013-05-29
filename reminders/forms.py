@@ -6,9 +6,17 @@ from accounts.models import mobile_re, User
 
 
 class ReminderForm(forms.ModelForm):
+    phone = forms.CharField(max_length=20, required=True,
+                            label=_('Recipient mobile:'),
+                            help_text=_('Use international format, e.g +33612345678'))
+    when = forms.CharField(max_length=50, required=True,
+                           label=_('Date and time:'),
+                           help_text=_('When will your text message will be sent'))
+    message = forms.CharField(label=_('Your message:'),
+                              widget=forms.Textarea(attrs={'rows': 2}))
     class Meta:
         model = Reminder
-        fields = ('message', 'when', 'phone')
+        fields = ('phone', 'when', 'message')
 
     def __init__(self, *args, **kwargs):
         self.ip_address = kwargs.pop('ip_address')
