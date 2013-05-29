@@ -7,4 +7,5 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     url(r'^reminders/', include('reminders.urls')),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^pages/', include('pages.urls')),
 )

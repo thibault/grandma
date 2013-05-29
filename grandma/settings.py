@@ -128,6 +128,7 @@ PROJECT_APPS = (
     'messages',
     'reminders',
     'accounts',
+    'pages',
 )
 
 INSTALLED_APPS = (
