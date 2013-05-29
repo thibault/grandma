@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', 'reminders.views.create_reminder', name='home'),
     url(r'^reminders/', include('reminders.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^pages/', include('pages.urls')),
