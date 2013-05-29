@@ -7,7 +7,7 @@
 <div class="span4 offset4 well">
 <form method="post" class="form" action="" id="payment-form">
     <fieldset>
-        <legend>{{ _('Your account') }}</legend>
+        <legend>{{ _('Your account data') }}</legend>
         {% include 'form_snippet.html' with form=form inputclass="span4" %}
     </fieldset>
 
@@ -17,22 +17,22 @@
         <div id="payment-errors"></div>
 
         <div class="controls">
-            <label>Numéro de CB :</label>
+            <label>{{ _('Credit card number:') }}</label>
             <input class="card-number span4" type="text" />
         </div>
 
         <div class="controls">
-            <label>Nom du porteur :</label>
+            <label>{{ _('Holder name:') }}</label>
             <input class="card-holdername span4" type="text" />
         </div>
 
         <div class="controls">
-            <label>Code de validation :</label>
+            <label>{{ _('Validation code:') }}</label>
             <input class="card-cvc span4" type="text" size="4" />
         </div>
 
         <div class="controls">
-            <label>Date d'expiration (MM/YYYY)</label>
+            <label>{{ _('Expiration date (MM/YYYY):') }}</label>
             <input class="card-expiry-month span2" type="text" size="2" />
             <input class="card-expiry-year span2" type="text" size="4" />
         </div>
