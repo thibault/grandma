@@ -9,4 +9,7 @@ urlpatterns = patterns('',
     url(r'^cgv/$',
         TemplateView.as_view(template_name='conditions_generales.html'),
         name='conditions_generales'),
+    url(r'^pricing/$',
+        TemplateView.as_view(template_name='pricing.html'),
+        name='pricing'),
 )

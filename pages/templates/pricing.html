@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ _('Pricing') }}</h1>
+
+<table class="table table-striped pricing">
+    <thead>
+        <tr>
+            <th></th>
+            <th>{{ _('Free') }}</th>
+            <th>{{ _('Paying') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>{{ _('Reminders per day') }}</th>
+            <td>3</td>
+            <td>{{ _('Unlimited') }}</td>
+        </tr>
+        <tr>
+            <th>{{ _('Account management') }}</th>
+            <td>{{ _('No') }}</td>
+            <td>{{ _('Yes') }}</td>
+        </tr>
+        <tr>
+            <th>{{ _('Address book') }}</th>
+            <td>{{ _('No') }}</td>
+            <td>{{ _('Yes') }}</td>
+        </tr>
+        <tr>
+            <th>{{ _('Free trial') }}</th>
+            <td></td>
+            <td>{{ _('30 days') }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>{{ _('Monthly subscription') }}</th>
+            <th>0€</th>
+            <th>4,95€</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><a class="btn btn-large btn-success" href="{% url 'home' %}">{{ _('Use') }}</a></th>
+            <th><a class="btn btn-large btn-success" href="{% url 'register' %}">{{ _('Sign up') }}</a></th>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}
