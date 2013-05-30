@@ -49,6 +49,10 @@
 
         <div class="container">
 
+            {% if user.is_authenticated %}
+                {% include 'account_navbar.html' %}
+            {% endif %}
+
             {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}">
