@@ -1,12 +1,39 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h1>{{ _('Plan your text messages') }}</h1>
+<h1 class="home">{{ _('Plan your text messages') }}</h1>
 
 <div class="row">
-<div class="well offset4 span4">
+<div class="span6">
+{% blocktrans %}
+<p class="lead">
+XXX vous permet de planifier des sms pour les envoyer à vous-même ou vos amis
+à la date et l'heure souhaitée.
+</p>
+
+<p class="lead">
+Faites-vous penser à acheter le pain en rentrant du boulot ; rappelez un événement
+à vos amis au moment voulu ; programmez vos vœux pour l'anniversaire de
+votre grand-mère ; et bien d'autres possibilités.
+</p>
+
+<p class="lead">
+Programmez, oubliez. On s'occupe du reste.
+</p>
+{% endblocktrans %}
+
+<p class="lead center">
+    <a href="{% url 'register' %}" class="btn btn-large btn-warning">{{ _('Sign up') }}</a>
+    {{ _('or') }}
+    <a href="#pricing" class="btn btn-large btn-success">{{ _('View our pricing') }}</a>
+</p>
+
+</div>
+<div class="span6">
+<div class="well">
     <form method="post" action="">
-    {% include 'form_snippet.html' with form=form inputclass="span4" %}
+    {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
     <hr />
     <input type="submit" class="btn btn-primary btn-large btn-block"
            value="{{ _('Plan a text message') }}" />
@@ -14,8 +41,13 @@
     </form>
 </div>
 </div>
+</div>
 
-<hr />
+<hr id="pricing" />
+
+<div class="row">
+</div>
+
 {% endblock %}
 
 {% block extra-js %} {{ block.super }}

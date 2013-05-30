@@ -10,8 +10,7 @@ class ReminderForm(forms.ModelForm):
                             label=_('Recipient mobile:'),
                             help_text=_('Use international format, e.g +33612345678'))
     when = forms.CharField(max_length=50, required=True,
-                           label=_('Date and time:'),
-                           help_text=_('When will your text message be sent'))
+                           label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
                               widget=forms.Textarea(attrs={'rows': 2}))
     class Meta:
