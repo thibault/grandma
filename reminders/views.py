@@ -14,6 +14,7 @@ from reminders.tables import ReminderTable
 def create_reminder(request):
     return reminder_form_view(request, next_url='pending_reminders')
 
+
 def reminder_form_view(request, next_url):
     """Reminder form processing view."""
     ip_address = request.META['REMOTE_ADDR']
@@ -35,6 +36,7 @@ def reminder_form_view(request, next_url):
         'form': form
     }
 
+
 @render_to('reminder_list.html')
 @login_required
 def pending_reminders(request):
@@ -42,6 +44,21 @@ def pending_reminders(request):
             .filter(sent=False) \
             .order_by('when')
 
+    return reminder_list_view(request, qs)
+
+
+@render_to('reminder_list.html')
+@login_required
+def sent_reminders(request):
+    qs = Reminder.objects.filter(user=request.user) \
+            .filter(sent=True) \
+            .order_by('when')
+
+    return reminder_list_view(request, qs)
+
+
+def reminder_list_view(request, qs):
+    """Generic reminder list view."""
     # Delete selected reminders
     if request.method == 'POST':
         ids = request.POST.getlist('id')
@@ -54,7 +71,3 @@ def pending_reminders(request):
     return {
         'table': table,
     }
-
-@render_to('reminder_list.html')
-def sent_reminders(request):
-    return {}
