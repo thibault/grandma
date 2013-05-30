@@ -8,7 +8,9 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="#">{{ _('Reminders') }}</a></li>
+                    <li><a href="{% url 'create_reminder' %}">{{ _('New reminder') }}</a></li>
+                    <li><a href="{% url 'pending_reminders' %}">{{ _('Pending reminders') }}</a></li>
+                    <li><a href="{% url 'sent_reminders' %}">{{_('Sent reminders') }}</a></li>
                     <li><a href="#">{{ _('Contacts') }}</a></li>
                     <li><a href="#">{{ _('Account') }}</a></li>
                 </ul>

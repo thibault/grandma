@@ -25,13 +25,13 @@
         <div class="navbar navbar-inverse">
             <div class="navbar-inner navbar-static-top">
                 <div class="container">
-                    <a class="brand" href="{% url 'create_reminder' %}">
+                    <a class="brand" href="{% url 'home' %}">
                         {{ _('Don\'t forget grandma!') }}
                     </a>
 
                     {% if user.is_authenticated %}
                     <ul class="nav pull-right">
-                        <li><a href="{% url 'reminder_list' %}">
+                        <li><a href="#">
                             {{ user.phone }}
                         </a></li>
                         <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>

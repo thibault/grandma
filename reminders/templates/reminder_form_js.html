@@ -1,0 +1,10 @@
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#id_when').datetimepicker({
+        startDate: new Date(),
+        language: 'fr',
+    });
+});
+</script>

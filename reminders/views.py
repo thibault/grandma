@@ -10,7 +10,12 @@ from reminders.tables import ReminderTable
 
 
 @render_to('create_reminder.html')
+@login_required
 def create_reminder(request):
+    return reminder_form_view(request, next_url='pending_reminders')
+
+def reminder_form_view(request, next_url):
+    """Reminder form processing view."""
     ip_address = request.META['REMOTE_ADDR']
     form = ReminderForm(request.POST or None, user=request.user,
                         ip_address=ip_address)
@@ -24,10 +29,6 @@ def create_reminder(request):
         message = _('Your reminder was saved successfully. Sleep tight.')
         messages.success(request, message)
 
-        if request.user.is_authenticated():
-            next_url = 'reminder_list'
-        else:
-            next_url = 'create_reminder'
         return redirect(next_url)
 
     return {
@@ -36,7 +37,7 @@ def create_reminder(request):
 
 @render_to('reminder_list.html')
 @login_required
-def reminder_list(request):
+def pending_reminders(request):
     qs = Reminder.objects.filter(user=request.user) \
             .filter(sent=False) \
             .order_by('when')
@@ -47,9 +48,13 @@ def reminder_list(request):
         qs.filter(id__in=ids).delete()
         msg = _('Selected reminders were deleted')
         messages.success(request, msg)
-        return redirect('reminder_list')
+        return redirect('pending_reminders')
 
     table = ReminderTable(qs)
     return {
         'table': table,
     }
+
+@render_to('reminder_list.html')
+def sent_reminders(request):
+    return {}
