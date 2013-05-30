@@ -7,9 +7,10 @@ import django_tables2 as tables
 
 class ReminderTable(tables.Table):
     id = tables.CheckBoxColumn()
+    phone = tables.Column(verbose_name=_('To'))
+    message = tables.Column(verbose_name=_('message'))
     when = tables.TemplateColumn(verbose_name=_('When'),
                                  template_name='tables/delta_date.html')
-    message = tables.Column(verbose_name=_('message'))
 
     class Meta:
         attrs = {
