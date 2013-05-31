@@ -6,5 +6,22 @@ $(document).ready(function() {
         startDate: new Date(),
         language: 'fr',
     });
+
+    $('#id_phone').typeahead({
+        source: function(query, process) {
+            $.getJSON('{% url 'contact_list_json' %}?query=' + query, function(data) {
+                var contacts = $.map(data, function(contact) {
+                    return contact[0] + ' ' + contact[1] + ' <' + contact[2] + '>';
+                });
+                process(contacts);
+            });
+        },
+        updater: function(item) {
+            var regex = new RegExp('\\+[0-9]+');
+            var extract = regex.exec(item);
+            return extract[0];
+        },
+        minLength: 3,
+    });
 });
 </script>

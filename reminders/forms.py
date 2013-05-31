@@ -8,7 +8,8 @@ from accounts.models import mobile_re, User
 class ReminderForm(forms.ModelForm):
     phone = forms.CharField(max_length=20, required=True,
                             label=_('Recipient mobile:'),
-                            help_text=_('Use international format, e.g +33612345678'))
+                            help_text=_('Use international format, e.g +33612345678'),
+                            widget= forms.TextInput(attrs={'autocomplete': 'off'}))
     when = forms.CharField(max_length=50, required=True,
                            label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
@@ -16,6 +17,8 @@ class ReminderForm(forms.ModelForm):
     class Meta:
         model = Reminder
         fields = ('phone', 'when', 'message')
+        widgets = {
+        }
 
     def __init__(self, *args, **kwargs):
         self.ip_address = kwargs.pop('ip_address')

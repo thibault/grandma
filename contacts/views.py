@@ -1,6 +1,11 @@
+import json
+from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.core import serializers
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
 from contacts.models import Contact
 from contacts.tables import ContactTable
@@ -8,6 +13,7 @@ from contacts.forms import ContactForm
 
 
 @render_to('contact_list.html')
+@login_required
 def contact_list(request):
 
     # Contact creation
@@ -34,3 +40,16 @@ def contact_list(request):
         'table': table,
         'form': form,
     }
+
+@login_required
+def contact_list_json(request):
+    query = request.GET.get('query', '')
+    first_name_filter = Q(first_name__icontains=query)
+    last_name_filter = Q(last_name__icontains=query)
+    phone_filter = Q(mobile__icontains=query)
+    qs = Contact.objects.filter(user=request.user) \
+                        .filter(first_name_filter | last_name_filter | phone_filter)
+
+    data = qs.values_list('first_name', 'last_name', 'mobile')
+    return HttpResponse(json.dumps(list(data)), content_type="application/json")
+
