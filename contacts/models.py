@@ -7,7 +7,7 @@ class Contact(models.Model):
     user = models.ForeignKey(User, related_name='contacts')
     first_name = models.CharField(_('First name'), max_length=128)
     last_name = models.CharField(_('Last name'), max_length=128)
-    mobile = models.CharField(_('Mobile'), max_length=20, null=True, blank=True,
+    mobile = models.CharField(_('Mobile'), max_length=20,
                               help_text=_('Use international format, e.g +33612345678'))
 
     class Meta:
