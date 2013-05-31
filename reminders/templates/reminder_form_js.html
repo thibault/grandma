@@ -7,6 +7,7 @@ $(document).ready(function() {
         language: 'fr',
     });
 
+    {% if user.is_authenticated %}
     $('#id_phone').typeahead({
         source: function(query, process) {
             $.getJSON('{% url 'contact_list_json' %}?query=' + query, function(data) {
@@ -23,5 +24,6 @@ $(document).ready(function() {
         },
         minLength: 3,
     });
+    {% endif %}
 });
 </script>
