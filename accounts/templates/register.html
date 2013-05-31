@@ -4,18 +4,19 @@
 <h1 class="center">{{ _('Create your account') }}</h1>
 
 <div class="row">
-<div class="span4 offset4 well">
+<div class="span6 offset3 well">
 <form method="post" class="form" action="" id="payment-form">
     <fieldset>
         <legend>{{ _('Your account data') }}</legend>
-        {% include 'form_snippet.html' with form=form inputclass="span4" %}
+        {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
     </fieldset>
 
     <fieldset>
         <legend>{{ _('Billing information') }}</legend>
 
         <p class="help-block">
-            {{ _('Your payment is secured by our payment partner, Paymill.') }}
+            {{ _('Our pricing is 4,95€ / month. 30 days trial for free.') }}
+            {{ _('Your payment will be secured by Paymill, our payment partner.') }}
             <a href="#help-modal" data-toggle="modal">{{ _('Do you want to know more?') }}</a>
         </p>
 
@@ -23,23 +24,23 @@
 
         <div class="controls">
             <label>{{ _('Credit card number:') }}</label>
-            <input class="card-number span4" type="text" />
+            <input class="card-number input-block-level" type="text" />
         </div>
 
         <div class="controls">
             <label>{{ _('Holder name:') }}</label>
-            <input class="card-holdername span4" type="text" />
+            <input class="card-holdername input-block-level" type="text" />
         </div>
 
         <div class="controls">
             <label>{{ _('Validation code:') }}</label>
-            <input class="card-cvc span4" type="text" size="4" />
+            <input class="card-cvc input-block-level" type="text" size="4" />
         </div>
 
         <div class="controls">
             <label>{{ _('Expiration date (MM/YYYY):') }}</label>
-            <input class="card-expiry-month span2" type="text" size="2" />
-            <input class="card-expiry-year span2" type="text" size="4" />
+            <input class="card-expiry-month span3" type="text" size="2" />
+            <input class="card-expiry-year span3" type="text" size="4" />
         </div>
     </fieldset>
 
