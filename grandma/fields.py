@@ -14,6 +14,7 @@ class PhoneField(forms.CharField):
                      'Only french numbers are allowed (for now).'),
     }
     help_text = _('Use international format, e.g +336xxxxxxxx')
+    placeholder = '+336'
 
     def __init__(self, max_length=20, *args, **kwargs):
         super(PhoneField, self).__init__(
@@ -26,3 +27,8 @@ class PhoneField(forms.CharField):
             raise forms.ValidationError(self.error_messages['invalid'])
 
         return phone
+
+    def widget_attrs(self, widget):
+        attrs = super(PhoneField, self).widget_attrs(widget)
+        attrs.update({'placeholder': self.placeholder})
+        return attrs
