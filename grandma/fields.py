@@ -26,7 +26,7 @@ class PhoneField(forms.CharField):
         if not mobile_re.match(value):
             raise forms.ValidationError(self.error_messages['invalid'])
 
-        return phone
+        return value
 
     def widget_attrs(self, widget):
         attrs = super(PhoneField, self).widget_attrs(widget)
