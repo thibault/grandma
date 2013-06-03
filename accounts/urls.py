@@ -7,6 +7,6 @@ urlpatterns = patterns('accounts.views',
     url(r'^register/$', 'register', name='register'),
     url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', logout_then_login, name='logout'),
-    url(r'^request_password/$', 'request_password', name='request_password'),
-    url(r'^reset/(?P<activation_key>\w+)$', 'password_reset', name='password_reset'),
+    url(r'^password/reset/$', 'password_reset', name='password_reset'),
+    url(r'^password/reset/confirm/(?P<activation_key>\w+)$', 'password_reset_confirm', name='password_reset_confirm'),
 )

@@ -77,3 +77,8 @@ def password_reset(request):
     return {
         'form': form,
     }
+
+
+@render_to('password_reset_confirm.html')
+def password_reset_confirm(request, activation_key):
+    return {}
