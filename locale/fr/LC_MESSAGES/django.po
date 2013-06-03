@@ -1,0 +1,513 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-03 15:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/forms.py:8 accounts/forms.py:35
+msgid "Your email"
+msgstr "Votre email"
+
+#: accounts/forms.py:9
+msgid "Your mobile phone"
+msgstr "Votre numéro de mobile"
+
+#: accounts/forms.py:15 reminders/forms.py:33
+msgid ""
+"Use the international format (+336xxxxxxxx). Only french phone are allowed "
+"for now."
+msgstr ""
+"Utilisez le format international (+336xxxxxxxx). Numéros français seulement "
+"(pour le moment)."
+
+#: accounts/forms.py:25
+msgid "This email is already registered"
+msgstr "Cette @dresse est déjà enregistrée"
+
+#: accounts/forms.py:30
+msgid "This email is unknown. Are you sure you've registered?"
+msgstr "Cette @dresse est inconnue. Êtes-vous certain d'être inscrit ?"
+
+#: accounts/forms.py:32
+msgid "The user account associated with this email cannot reset the password."
+msgstr "Le compte associé à cette @dresse est désactivé."
+
+#: accounts/forms.py:64
+msgid "Password"
+msgstr "Mot de passe"
+
+#: accounts/forms.py:66
+msgid "Password (again)"
+msgstr "Mot de passe (one more time)"
+
+#: accounts/forms.py:79
+msgid "The two password fields didn't match."
+msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
+
+#: accounts/models.py:46 contacts/models.py:10 reminders/models.py:13
+msgid "Mobile"
+msgstr "Mobile"
+
+#: accounts/models.py:47 contacts/models.py:11 reminders/forms.py:11
+#: reminders/models.py:15
+msgid "Use international format, e.g +33612345678"
+msgstr "Utilisez le format international, e.g +33612345678"
+
+#: accounts/models.py:48
+msgid "email address"
+msgstr "adresse email"
+
+#: accounts/models.py:49
+msgid "date joined"
+msgstr "inscrit le"
+
+#: accounts/models.py:50
+msgid "activation key"
+msgstr "clé d'activation"
+
+#: accounts/models.py:52
+msgid "active"
+msgstr "actif"
+
+#: accounts/models.py:53
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: accounts/models.py:55
+msgid "valid"
+msgstr "valid"
+
+#: accounts/models.py:56
+msgid "Designates whether this user has confirmed his phone number."
+msgstr ""
+
+#: accounts/models.py:68
+msgid "User"
+msgstr "Utilisateur"
+
+#: accounts/models.py:69
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: accounts/models.py:101
+#, python-format
+msgid "Your new password is %(pwd)s"
+msgstr "Votre nouveau mot de passe est %(pwd)s"
+
+#: accounts/views.py:41
+msgid ""
+"There was a problem processing your credit card. Your account was not "
+"created. Please, try again in a few minutes or with different payment "
+"informations."
+msgstr ""
+
+#: accounts/views.py:57
+msgid ""
+"Congratulations! Your account was created. You will receive your activation "
+"email in  a few seconds."
+msgstr ""
+"Bravo ! votre compte vient d'être créé. Vous allez recevoir votre clé "
+"d'activation dans quelques secondes."
+
+#: accounts/views.py:76
+msgid ""
+"A new password was sent. It should be there in less than a minute. Enjoy "
+"those few seconds of calm and relaxation."
+msgstr ""
+"Un nouveau mot de passe vient de vous être envoyé par mail. Il devrait être "
+"là sous peu. Profitez-en pour méditer quelques secondes."
+
+#: accounts/views.py:96
+msgid ""
+"Your new password was saved successfully. You can now login on your account."
+msgstr ""
+"Votre nouveau mot de passe a bien été enregistré. Vous pouvez vous connecter "
+"de la façon habituelle."
+
+#: accounts/templates/account_navbar.html:11
+msgid "New reminder"
+msgstr "Nouveau sms"
+
+#: accounts/templates/account_navbar.html:12
+msgid "Pending reminders"
+msgstr "En attente"
+
+#: accounts/templates/account_navbar.html:13
+msgid "Sent reminders"
+msgstr "Anciens sms"
+
+#: accounts/templates/account_navbar.html:14 contacts/models.py:15
+msgid "Contacts"
+msgstr "Contacts"
+
+#: accounts/templates/account_navbar.html:15
+msgid "Account"
+msgstr "Compte"
+
+#: accounts/templates/login.html:4
+msgid "Sign in"
+msgstr "Connexion"
+
+#: accounts/templates/login.html:12
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: accounts/templates/login.html:13
+msgid "Forgot your password?"
+msgstr "Un p'tit trou de mémoire ?"
+
+#: accounts/templates/login.html:17
+msgid "Login"
+msgstr "Login"
+
+#: accounts/templates/my_account.html:4
+msgid "My account"
+msgstr "Mon compte"
+
+#: accounts/templates/my_account.html:6
+msgid "Coming soon"
+msgstr "Bientôt"
+
+#: accounts/templates/password_reset.html:4
+msgid "So, you lost your password?"
+msgstr "Alors, on a perdu son mot de passe ?"
+
+#: accounts/templates/password_reset.html:11
+msgid ""
+"It's ok. It happens. We will send you a new one. We have plenty of them "
+"anyway."
+msgstr ""
+"C'est ok. Ça arrive même aux meilleurs. Nous allons vous en envoyer un "
+"autre, il nous en reste plein de toutes façons."
+
+#: accounts/templates/password_reset.html:20
+msgid "Get a new password"
+msgstr "Récupérer le mot de passe"
+
+#: accounts/templates/password_reset_confirm.html:4
+msgid "Reset your password"
+msgstr "Mise à jour du mot de passe"
+
+#: accounts/templates/password_reset_confirm.html:14
+msgid "Save new password"
+msgstr "Enregistrer le nouveau mot de passe"
+
+#: accounts/templates/register.html:6
+msgid "Create your account"
+msgstr "Créer un compte"
+
+#: accounts/templates/register.html:12
+msgid "Your account data"
+msgstr "Votre compte"
+
+#: accounts/templates/register.html:17
+msgid "Billing information"
+msgstr "Informations de facturation"
+
+#: accounts/templates/register.html:20
+msgid "Our pricing is 4,95€ / month. 30 days trial for free."
+msgstr "4,95€ par mois. Période d'essai gratuite de 30 jours."
+
+#: accounts/templates/register.html:21
+msgid "Your payment will be secured by Paymill, our payment partner."
+msgstr "Votre paiement est sécurisé par Paymill&trade;."
+
+#: accounts/templates/register.html:22
+msgid "Do you want to know more?"
+msgstr "Voulez-vous en savoir plus ?"
+
+#: accounts/templates/register.html:28
+msgid "Credit card number:"
+msgstr "Numéro de carte bleue :"
+
+#: accounts/templates/register.html:33
+msgid "Holder name:"
+msgstr "Nom du porteur :"
+
+#: accounts/templates/register.html:39
+msgid "Validation code:"
+msgstr "Code de validation :"
+
+#: accounts/templates/register.html:44
+msgid "Expiration date (MM/YYYY):"
+msgstr "Dated d'expiration (MM / AAAA) :"
+
+#: accounts/templates/register.html:51
+msgid ""
+"\n"
+"        By clicking the button below, you state that you have read and\n"
+"        agreed to the <a target=\"_blank\" href=\"/pages/cgv/\">Service "
+"Agreement</a>\n"
+"        (It will open in a new window).\n"
+"        "
+msgstr ""
+"\n"
+"En cliquant sur le bouton suivant, vous reconnaissez avoir lu et accepté "
+"nos \n"
+"<a target=\"_blank\" href=\"/pages/cgv/\">conditions d'utilisation</a>\n"
+" (ouvrira dans une nouvelle fenêtre)."
+
+#: accounts/templates/register.html:56
+msgid "Register"
+msgstr "S'enregistrer"
+
+#: accounts/templates/register.html:67
+msgid "Secured payment"
+msgstr "Paiement sécurisé"
+
+#: accounts/templates/register.html:70
+msgid "Your payment data is secured by our partner, Paymill."
+msgstr "Votre paiement est sécurisé par notre partenaire Paymill"
+
+#: accounts/templates/register.html:71
+msgid "It will never be sent to our own server."
+msgstr "Vos données ne sont ni envoyées ni stockées sur notre propre serveur."
+
+#: accounts/templates/register.html:132
+msgid "Oups! An error occured."
+msgstr "Oups ! Quelque chose cloche !"
+
+#: contacts/models.py:8
+msgid "First name"
+msgstr "Prénom"
+
+#: contacts/models.py:9
+msgid "Last name"
+msgstr "Nom"
+
+#: contacts/models.py:14
+msgid "Contact"
+msgstr "Contact"
+
+#: contacts/tables.py:9
+msgid "Full name"
+msgstr "Nom complet"
+
+#: contacts/tables.py:10
+msgid "Phone"
+msgstr "Téléphone"
+
+#: contacts/tables.py:16
+msgid "There are no contacts here (yet)."
+msgstr "Il n'y a rien ici (pour le moment)."
+
+#: contacts/views.py:25
+msgid "Your new contact was created"
+msgstr "Votre nouveau contact vient d'être créé. Poil au nez."
+
+#: contacts/views.py:34 reminders/views.py:66
+msgid "Selected reminders were deleted"
+msgstr "Les sms sélectionnés ont été supprimés."
+
+#: contacts/templates/contact_list.html:5
+msgid "Your address book"
+msgstr "Votre carnet d'adresse"
+
+#: contacts/templates/contact_list.html:13
+#: contacts/templates/contact_list.html:14
+#: reminders/templates/reminder_list.html:11
+#: reminders/templates/reminder_list.html:12
+msgid "Delete"
+msgstr "Supprimer"
+
+#: contacts/templates/contact_list.html:22
+msgid "Create"
+msgstr "Créer"
+
+#: grandma/templates/base.html:5 grandma/templates/base.html.py:29
+msgid "Don't forget grandma!"
+msgstr "N'oublie pas mamie !"
+
+#: grandma/templates/base.html:37
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: grandma/templates/base.html:42 grandma/templates/home.html:27
+#: pages/templates/pricing.html:45
+msgid "Sign up"
+msgstr "Créer un compte"
+
+#: grandma/templates/base.html:43
+msgid "Log in"
+msgstr "Se connecter"
+
+#: grandma/templates/home.html:5
+msgid "Plan your text messages"
+msgstr "Planifiez vos sms"
+
+#: grandma/templates/home.html:9
+msgid ""
+"\n"
+"<p class=\"lead\">\n"
+"Ce site vous vous permet de planifier des sms pour les envoyer à vous-même "
+"ou vos amis\n"
+"à la date et l'heure souhaitée.\n"
+"</p>\n"
+"\n"
+"<p class=\"lead\">\n"
+"Faites-vous penser à acheter le pain en rentrant du boulot ; rappelez un "
+"événement\n"
+"à vos amis au moment voulu ; programmez vos vœux pour l'anniversaire de\n"
+"votre grand-mère ; et bien d'autres possibilités.\n"
+"</p>\n"
+"\n"
+"<p class=\"lead\">\n"
+"Programmez, oubliez. On s'occupe du reste.\n"
+"</p>\n"
+msgstr ""
+
+#: grandma/templates/home.html:28
+msgid "or"
+msgstr "ou"
+
+#: grandma/templates/home.html:29
+msgid "View our pricing"
+msgstr "Voir nos prix"
+
+#: grandma/templates/home.html:38 reminders/templates/create_reminder.html:11
+msgid "Plan a text message"
+msgstr "Planifiez un sms"
+
+#: pages/templates/pricing.html:4
+msgid "Pricing"
+msgstr "Prix"
+
+#: pages/templates/pricing.html:10
+msgid "Free"
+msgstr "Gratos"
+
+#: pages/templates/pricing.html:11
+msgid "Paying"
+msgstr "Payant"
+
+#: pages/templates/pricing.html:16
+msgid "Reminders per day"
+msgstr "Sms par jours"
+
+#: pages/templates/pricing.html:18
+msgid "Unlimited"
+msgstr "Illimité"
+
+#: pages/templates/pricing.html:21
+msgid "Account management"
+msgstr "Gestion du compte"
+
+#: pages/templates/pricing.html:22 pages/templates/pricing.html.py:27
+msgid "No"
+msgstr "Non"
+
+#: pages/templates/pricing.html:23 pages/templates/pricing.html.py:28
+msgid "Yes"
+msgstr "Oui"
+
+#: pages/templates/pricing.html:26
+msgid "Address book"
+msgstr "Carnet d'adresse"
+
+#: pages/templates/pricing.html:31
+msgid "Free trial"
+msgstr "Essai gratuit"
+
+#: pages/templates/pricing.html:33
+msgid "30 days"
+msgstr "30 jours"
+
+#: pages/templates/pricing.html:38
+msgid "Monthly subscription"
+msgstr "Abonnement mensuel"
+
+#: pages/templates/pricing.html:44
+msgid "Use"
+msgstr "Utiliser"
+
+#: reminders/forms.py:10
+msgid "Recipient mobile:"
+msgstr "Téléphone :"
+
+#: reminders/forms.py:14
+msgid "Date and time:"
+msgstr "Date et heure :"
+
+#: reminders/forms.py:15
+msgid "Your message:"
+msgstr "Votre message :"
+
+#: reminders/forms.py:52
+msgid ""
+"You have exceded the numbers of free reminders a day. Subscribe to an "
+"account to create more."
+msgstr ""
+"Vous avez dépassé le nombre de sms gratuits pour aujourd'hui. Vous pouvez "
+"créer un compte pour en créer plus."
+
+#: reminders/models.py:16
+msgid "Message"
+msgstr "Message"
+
+#: reminders/models.py:17
+msgid "Date"
+msgstr "Date"
+
+#: reminders/models.py:18
+msgid "Already sent?"
+msgstr "Déjà envoyé ?"
+
+#: reminders/models.py:20
+msgid "IP address"
+msgstr "Adresse IP"
+
+#: reminders/models.py:23
+msgid "Reminder"
+msgstr "Rappel"
+
+#: reminders/models.py:24
+msgid "Reminders"
+msgstr "Rappels"
+
+#: reminders/tables.py:10
+msgid "To"
+msgstr "À"
+
+#: reminders/tables.py:11
+msgid "message"
+msgstr "message"
+
+#: reminders/tables.py:12
+msgid "When"
+msgstr "quand"
+
+#: reminders/tables.py:19
+msgid "There are no reminders here (yet)."
+msgstr "Il n'y a rien ici (pour le moment)."
+
+#: reminders/views.py:30
+msgid "Your reminder was saved successfully. Sleep tight."
+msgstr "Votre sms vient d'être programmé."
+
+#: reminders/templates/create_reminder.html:4
+msgid "Plan a new text message"
+msgstr "Nouveau sms"
+
+#: reminders/templates/reminder_list.html:5
+msgid "Your reminders"
+msgstr "Vos sms"
+
+#: reminders/templates/reminder_list.html:16
+msgid "Create a new reminder"
+msgstr "Créez un nouveau sms"

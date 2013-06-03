@@ -5,7 +5,6 @@ PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 INTERNAL_IPS = ('127.0.0.1',)
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 DEBUG_TOOLBAR_CONFIG = {
@@ -68,6 +67,10 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'grandma', 'public', 'static')
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_ROOT, 'locale'),
+)
 
 # Additional locations of static files
 STATICFILES_DIRS = (
