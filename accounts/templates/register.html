@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
 
 <h1 class="center">{{ _('Create your account') }}</h1>
@@ -29,7 +31,8 @@
 
         <div class="controls">
             <label>{{ _('Holder name:') }}</label>
-            <input class="card-holdername input-block-level" type="text" />
+            <input class="card-holdername input-block-level" type="text"
+                    pattern="\w+ \w+.*" />
         </div>
 
         <div class="controls">
@@ -45,6 +48,11 @@
     </fieldset>
 
     <div class="form-actions">
+        <p>{% blocktrans %}
+        By clicking the button below, you state that you have read and
+        agreed to the <a target="_blank" href="/pages/cgv/">Service Agreement</a>
+        (It will open in a new window).
+        {% endblocktrans %}</p>
         <input id="submit-btn" type="submit" value="{{ _('Register') }}" class="btn btn-primary btn-large btn-block" />
     </div>
 
