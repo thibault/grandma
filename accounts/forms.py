@@ -1,20 +1,14 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.hashers import UNUSABLE_PASSWORD
-from accounts.models import User, mobile_re
+
+from grandma.fields import PhoneField
+from accounts.models import User
 
 
 class RegistrationForm(forms.Form):
     email = forms.EmailField(label=_('Your email'), max_length=254)
-    phone = forms.CharField(label=_('Your mobile phone'), max_length=20)
-
-    def clean_phone(self):
-        phone = self.cleaned_data["phone"]
-
-        if not mobile_re.match(phone):
-            raise forms.ValidationError(_('Use the international format (+336xxxxxxxx). Only french phone are allowed for now.'))
-
-        return phone
+    phone = PhoneField(label=_('Your mobile phone'))
 
     def clean_email(self):
         email = self.cleaned_data["email"]
