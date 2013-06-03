@@ -1,0 +1,14 @@
+Bonjour,
+
+Vous venez de créer votre compte sur {{ site.name }}.
+
+Avant de pouvoir l'utiliser, il faut simplement nous confirmer que cette
+adresse email est valide.
+
+Pour ce faire, il vous suffit de cliquer sur le lien suivant, et de choisir
+votre mot de passe.
+
+http://{{ site.domain }}{% url 'password_reset' activation_key %}
+
+À trés bientôt.
+L'équipe de {{ site.name }}.

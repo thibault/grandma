@@ -45,13 +45,15 @@ def register(request):
         # So payment was created, and form data is valid
         # Let's create this user account
         data = form.cleaned_data
-        user = User.objects.create_user(data['phone'], data['email'],
+        user = User.objects.create_user(data['email'], data['phone'],
+                                        is_active=False,
                                         paymill_client_id=client.id,
                                         paymill_card_id=card.id,
                                         paymill_subscription_id=subscription.id)
-        user.reset_and_send_password()
-        message = _('Congratulations! Your account was created. We will send '
-                    'your password by sms.')
+        user.reset_activation_key()
+        user.send_activation_key()
+        message = _('Congratulations! Your account was created. You will receive '
+                    'your activation email in  a few seconds.')
         messages.success(request, message)
         return redirect('login')
 

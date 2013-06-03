@@ -1,9 +1,16 @@
 import re
+import hashlib
+import random
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.contrib.sites.models import Site
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
+from django.conf import settings
 from messages.models import send_message
 
 
@@ -12,20 +19,20 @@ mobile_re = re.compile(r'^\+336\d{8}$')
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, phone, email, password=None, **extra_fields):
+    def create_user(self, email, phone, password=None, **extra_fields):
         now = timezone.now()
 
         if not password:
-            password = self.make_random_password(length=4,
-                                                 allowed_chars='0123456789')
+            password = self.make_random_password(length=20)
+
         user = self.model(phone=phone, email=email, last_login=now,
                           date_joined=now, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, phone, email, password, **extra_fields):
-        u = self.create_user(phone, email, password, **extra_fields)
+    def create_superuser(self, email, phone, password, **extra_fields):
+        u = self.create_user(email, phone, password, **extra_fields)
         u.is_staff = True
         u.is_active = True
         u.is_superuser = True
@@ -40,6 +47,8 @@ class User(AbstractBaseUser, PermissionsMixin):
                              help_text=_('Use international format, e.g +33612345678'))
     email = models.EmailField(_('email address'), unique=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+    activation_key = models.CharField(_('activation key'), max_length=40,
+                                      null=True, blank=True)
     is_active = models.BooleanField(_('active'), default=True,
             help_text=_('Designates whether this user should be treated as '
                         'active. Unselect this instead of deleting accounts.'))
@@ -64,6 +73,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.phone
+
+    def reset_activation_key(self):
+        """Generates a new activation key."""
+        salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+        self.activation_key = hashlib.sha1(salt + self.email).hexdigest()
+        self.save()
+
+    def send_activation_key(self):
+        """Sends a 'forgotten password' link to user."""
+        context = { 'activation_key': self.activation_key,
+                    'site': Site.objects.get_current()}
+        subject = render_to_string('registration/activation_email_subject.txt',
+                                   context)
+        subject = ''.join(subject.splitlines())
+        message = render_to_string('registration/activation_email.txt',
+                                   context)
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email])
 
     def reset_and_send_password(self):
         """Changes the password, and send a new one."""
