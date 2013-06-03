@@ -246,7 +246,7 @@ msgstr "Code de validation :"
 
 #: accounts/templates/register.html:44
 msgid "Expiration date (MM/YYYY):"
-msgstr "Dated d'expiration (MM / AAAA) :"
+msgstr "Date d'expiration (MM / AAAA) :"
 
 #: accounts/templates/register.html:51
 msgid ""
@@ -265,7 +265,7 @@ msgstr ""
 
 #: accounts/templates/register.html:56
 msgid "Register"
-msgstr "S'enregistrer"
+msgstr "Créer un compte"
 
 #: accounts/templates/register.html:67
 msgid "Secured payment"
