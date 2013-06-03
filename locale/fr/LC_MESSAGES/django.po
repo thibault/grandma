@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-03 15:22+0200\n"
+"POT-Creation-Date: 2013-06-03 16:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,43 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: accounts/forms.py:8 accounts/forms.py:35
+#: accounts/forms.py:10 accounts/forms.py:29
 msgid "Your email"
 msgstr "Votre email"
 
-#: accounts/forms.py:9
+#: accounts/forms.py:11
 msgid "Your mobile phone"
 msgstr "Votre numéro de mobile"
 
-#: accounts/forms.py:15 reminders/forms.py:33
-msgid ""
-"Use the international format (+336xxxxxxxx). Only french phone are allowed "
-"for now."
-msgstr ""
-"Utilisez le format international (+336xxxxxxxx). Numéros français seulement "
-"(pour le moment)."
-
-#: accounts/forms.py:25
+#: accounts/forms.py:19
 msgid "This email is already registered"
 msgstr "Cette @dresse est déjà enregistrée"
 
-#: accounts/forms.py:30
+#: accounts/forms.py:24
 msgid "This email is unknown. Are you sure you've registered?"
 msgstr "Cette @dresse est inconnue. Êtes-vous certain d'être inscrit ?"
 
-#: accounts/forms.py:32
+#: accounts/forms.py:26
 msgid "The user account associated with this email cannot reset the password."
 msgstr "Le compte associé à cette @dresse est désactivé."
 
-#: accounts/forms.py:64
+#: accounts/forms.py:58
 msgid "Password"
 msgstr "Mot de passe"
 
-#: accounts/forms.py:66
+#: accounts/forms.py:60
 msgid "Password (again)"
 msgstr "Mot de passe (one more time)"
 
-#: accounts/forms.py:79
+#: accounts/forms.py:73
 msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 
@@ -62,8 +54,7 @@ msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 msgid "Mobile"
 msgstr "Mobile"
 
-#: accounts/models.py:47 contacts/models.py:11 reminders/forms.py:11
-#: reminders/models.py:15
+#: accounts/models.py:47 contacts/models.py:11 reminders/models.py:15
 msgid "Use international format, e.g +33612345678"
 msgstr "Utilisez le format international, e.g +33612345678"
 
@@ -140,25 +131,34 @@ msgstr ""
 "Votre nouveau mot de passe a bien été enregistré. Vous pouvez vous connecter "
 "de la façon habituelle."
 
-#: accounts/templates/account_navbar.html:11
-msgid "New reminder"
-msgstr "Nouveau sms"
+#: accounts/templates/account_navbar.html:8
+#: accounts/templates/my_account.html:4
+msgid "My account"
+msgstr "Mon compte"
 
-#: accounts/templates/account_navbar.html:12
+#: accounts/templates/account_navbar.html:9
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: accounts/templates/account_navbar.html:18
+msgid "Sms"
+msgstr ""
+
+#: accounts/templates/account_navbar.html:22
+msgid "Archives"
+msgstr ""
+
+#: accounts/templates/account_navbar.html:26
 msgid "Pending reminders"
 msgstr "Sms en attentes"
 
-#: accounts/templates/account_navbar.html:13
+#: accounts/templates/account_navbar.html:27
 msgid "Sent reminders"
 msgstr "Sms envoyés"
 
-#: accounts/templates/account_navbar.html:14 contacts/models.py:15
+#: accounts/templates/account_navbar.html:31 contacts/models.py:15
 msgid "Contacts"
 msgstr "Contacts"
-
-#: accounts/templates/account_navbar.html:15
-msgid "Account"
-msgstr "Compte"
 
 #: accounts/templates/login.html:4
 msgid "Sign in"
@@ -175,10 +175,6 @@ msgstr "Un p'tit trou de mémoire ?"
 #: accounts/templates/login.html:17
 msgid "Login"
 msgstr "Login"
-
-#: accounts/templates/my_account.html:4
-msgid "My account"
-msgstr "Mon compte"
 
 #: accounts/templates/my_account.html:6
 msgid "Coming soon"
@@ -206,7 +202,7 @@ msgstr "Mise à jour du mot de passe"
 
 #: accounts/templates/password_reset_confirm.html:14
 msgid "Save new password"
-msgstr "Enregistrer le nouveau mot de passe"
+msgstr "Enregistrer"
 
 #: accounts/templates/register.html:6
 msgid "Create your account"
@@ -283,6 +279,10 @@ msgstr "Vos données ne sont ni envoyées ni stockées sur notre propre serveur.
 msgid "Oups! An error occured."
 msgstr "Oups ! Quelque chose cloche !"
 
+#: contacts/forms.py:9 contacts/tables.py:10
+msgid "Phone"
+msgstr "Téléphone"
+
 #: contacts/models.py:8
 msgid "First name"
 msgstr "Prénom"
@@ -298,10 +298,6 @@ msgstr "Contact"
 #: contacts/tables.py:9
 msgid "Full name"
 msgstr "Nom complet"
-
-#: contacts/tables.py:10
-msgid "Phone"
-msgstr "Téléphone"
 
 #: contacts/tables.py:16
 msgid "There are no contacts here (yet)."
@@ -330,20 +326,28 @@ msgstr "Supprimer"
 msgid "Create"
 msgstr "Créer"
 
-#: grandma/templates/base.html:5 grandma/templates/base.html.py:29
+#: grandma/fields.py:13
+msgid ""
+"Use international format e.g +336xxxxxxxx. Only french numbers are allowed "
+"(for now)."
+msgstr ""
+"Utilisez le format international (+336xxxxxxxx). Numéros français seulement "
+"(pour le moment)."
+
+#: grandma/fields.py:16
+msgid "Use international format, e.g +336xxxxxxxx"
+msgstr "Utilisez le format international, e.g +336xxxxxx"
+
+#: grandma/templates/base.html:5 grandma/templates/base.html.py:36
 msgid "Don't forget grandma!"
 msgstr "N'oublie pas mamie !"
 
-#: grandma/templates/base.html:37
-msgid "Log out"
-msgstr "Déconnexion"
-
-#: grandma/templates/base.html:42 grandma/templates/home.html:27
+#: grandma/templates/base.html:43 grandma/templates/home.html:27
 #: pages/templates/pricing.html:45
 msgid "Sign up"
 msgstr "Créer un compte"
 
-#: grandma/templates/base.html:43
+#: grandma/templates/base.html:44
 msgid "Log in"
 msgstr "Se connecter"
 
@@ -436,19 +440,19 @@ msgstr "Abonnement mensuel"
 msgid "Use"
 msgstr "Utiliser"
 
-#: reminders/forms.py:10
+#: reminders/forms.py:13
 msgid "Recipient mobile:"
 msgstr "Téléphone :"
 
-#: reminders/forms.py:14
+#: reminders/forms.py:16
 msgid "Date and time:"
 msgstr "Date et heure :"
 
-#: reminders/forms.py:15
+#: reminders/forms.py:17
 msgid "Your message:"
 msgstr "Votre message :"
 
-#: reminders/forms.py:52
+#: reminders/forms.py:43
 msgid ""
 "You have exceded the numbers of free reminders a day. Subscribe to an "
 "account to create more."
@@ -511,3 +515,9 @@ msgstr "Vos sms"
 #: reminders/templates/reminder_list.html:16
 msgid "Create a new reminder"
 msgstr "Créez un nouveau sms"
+
+#~ msgid "New reminder"
+#~ msgstr "Nouveau sms"
+
+#~ msgid "Account"
+#~ msgstr "Compte"
