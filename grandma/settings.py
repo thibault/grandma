@@ -202,7 +202,7 @@ MAILING_CAMPAIGN_HEADER = 'X-Mailjet-Campaign'
 NEXMO_API = 'http://rest.nexmo.com/sms/json'
 NEXMO_USERNAME = 'username'
 NEXMO_PASSWORD = 'password'
-NEXMO_FROM='contactor'
+NEXMO_FROM='Grandma'
 
 if 'test' in sys.argv:
     os.environ['PROJECT_ENV'] = 'testing'
