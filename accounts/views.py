@@ -11,6 +11,10 @@ from accounts.models import User
 
 logger = logging.getLogger(__name__)
 
+@render_to('my_account.html')
+def my_account(request):
+    return {}
+
 @render_to('register.html')
 def register(request):
     form = RegistrationForm(request.POST or None)
