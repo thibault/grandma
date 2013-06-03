@@ -1,15 +1,17 @@
 import datetime
+
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+
+from grandma.fields import PhoneField
+from accounts.models import User
 from reminders.models import Reminder
-from accounts.models import mobile_re, User
 
 
 class ReminderForm(forms.ModelForm):
-    phone = forms.CharField(max_length=20, required=True,
-                            label=_('Recipient mobile:'),
-                            help_text=_('Use international format, e.g +33612345678'),
-                            widget= forms.TextInput(attrs={'autocomplete': 'off'}))
+    phone = PhoneField(required=True,
+                       label=_('Recipient mobile:'),
+                       widget= forms.TextInput(attrs={'autocomplete': 'off'}))
     when = forms.CharField(max_length=50, required=True,
                            label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
@@ -17,22 +19,11 @@ class ReminderForm(forms.ModelForm):
     class Meta:
         model = Reminder
         fields = ('phone', 'when', 'message')
-        widgets = {
-        }
 
     def __init__(self, *args, **kwargs):
         self.ip_address = kwargs.pop('ip_address')
         self.user = kwargs.pop('user')
         super(ReminderForm, self).__init__(*args, **kwargs)
-
-    def clean_phone(self):
-        """We must check that the user does not already exists."""
-        phone = self.cleaned_data.get('phone', None)
-
-        if not mobile_re.match(phone):
-            raise forms.ValidationError(_('Use the international format (+336xxxxxxxx). Only french phone are allowed for now.'))
-
-        return phone
 
     def clean(self):
         """Makes sure we did not overcome the rate limit."""
