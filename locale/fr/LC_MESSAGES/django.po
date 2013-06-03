@@ -146,11 +146,11 @@ msgstr "Nouveau sms"
 
 #: accounts/templates/account_navbar.html:12
 msgid "Pending reminders"
-msgstr "En attente"
+msgstr "Sms en attentes"
 
 #: accounts/templates/account_navbar.html:13
 msgid "Sent reminders"
-msgstr "Anciens sms"
+msgstr "Sms envoyés"
 
 #: accounts/templates/account_navbar.html:14 contacts/models.py:15
 msgid "Contacts"

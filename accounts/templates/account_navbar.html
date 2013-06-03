@@ -1,19 +1,33 @@
-<div class="navbar">
-    <div class="navbar-inner">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
+<ul class="nav pull-right">
+    <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {{ user.email }}
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="{% url 'my_account' %}">{{ _('My account') }}</a></li>
+        <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>
+    </ul>
+    </li>
+</ul>
 
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li><a href="{% url 'create_reminder' %}">{{ _('New reminder') }}</a></li>
-                    <li><a href="{% url 'pending_reminders' %}">{{ _('Pending reminders') }}</a></li>
-                    <li><a href="{% url 'sent_reminders' %}">{{_('Sent reminders') }}</a></li>
-                    <li><a href="{% url 'contact_list' %}">{{ _('Contacts') }}</a></li>
-                    <li><a href="{% url 'my_account' %}">{{ _('Account') }}</a></li>
-                </ul>
-            </div>
-    </div>
+<div class="nav-collapse collapse">
+
+    <ul class="nav">
+        <li><a href="{% url 'create_reminder' %}">
+            <i class="icon-plus-sign icon-white"></i> {{ _('Sms') }}</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-list icon-white"></i>
+                {{ _('Archives') }}
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'pending_reminders' %}">{{ _('Pending reminders') }}</a></li>
+                <li><a href="{% url 'sent_reminders' %}">{{_('Sent reminders') }}</a></li>
+            </ul>
+        </li>
+        <li><a href="{% url 'contact_list' %}">
+            <i class="icon-user icon-white"></i> {{ _('Contacts') }}</a></li>
+    </ul>
 </div>
