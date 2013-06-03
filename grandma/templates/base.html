@@ -31,8 +31,8 @@
 
                     {% if user.is_authenticated %}
                     <ul class="nav pull-right">
-                        <li><a href="#">
-                            {{ user.phone }}
+                        <li><a href="{% url 'create_reminder' %}">
+                            {{ user.email }}
                         </a></li>
                         <li><a href="{% url 'logout' %}">{{ _('Log out') }}</a></li>
                     </ul>
