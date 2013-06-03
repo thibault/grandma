@@ -36,7 +36,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """Actual class for user accounts."""
     objects = UserManager()
-    phone = models.CharField(_('Mobile'), max_length=20, unique=True,
+    phone = models.CharField(_('Mobile'), max_length=20,
                              help_text=_('Use international format, e.g +33612345678'))
     email = models.EmailField(_('email address'), unique=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
@@ -52,8 +52,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     paymill_card_id = models.CharField(max_length=100, null=True, blank=True)
     paymill_subscription_id = models.CharField(max_length=100, null=True, blank=True)
 
-    USERNAME_FIELD = 'phone'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['phone']
 
     class Meta:
         verbose_name = _('User')
