@@ -1,11 +1,13 @@
 import logging
+import pymill
+
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from annoying.decorators import render_to
-import pymill
-from accounts.forms import PasswordResetForm, RegistrationForm
 from django.conf import settings
+
+from accounts.forms import PasswordRequestForm, PasswordResetForm, RegistrationForm
 from accounts.models import User
 
 
@@ -62,13 +64,15 @@ def register(request):
         'PAYMILL_PUBLIC_KEY': settings.PAYMILL_PUBLIC_KEY,
     }
 
+
 @render_to('password_reset.html')
 def password_reset(request):
     """Login view using sms code."""
-    form = PasswordResetForm(request.POST or None)
+    form = PasswordRequestForm(request.POST or None)
     if form.is_valid():
         user = form.get_user()
-        user.reset_and_send_password()
+        user.reset_activation_key()
+        user.send_activation_key()
         messages.success(request, _('A new password was sent. It should be there'
                                     ' in less than a minute. Enjoy those few '
                                     'seconds of calm and relaxation.'))
@@ -81,4 +85,19 @@ def password_reset(request):
 
 @render_to('password_reset_confirm.html')
 def password_reset_confirm(request, activation_key):
-    return {}
+    user = get_object_or_404(User, activation_key=activation_key)
+    form = PasswordResetForm(request.POST or None)
+    if form.is_valid():
+        password = form.cleaned_data['password1']
+        user.set_password(password)
+        user.activation_key = None
+        user.is_active = True
+        user.save()
+        msg = _('Your new password was saved successfully. You can now login '
+                'on your account.')
+        messages.success(request, msg)
+        return redirect('login')
+
+    return {
+        'form': form,
+    }
