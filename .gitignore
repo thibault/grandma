@@ -1,5 +1,5 @@
 *.pyc
 venv
-grandma/settings/prod_private.py
-grandma/public/media
-grandma/public/static
+grandma/grandma/settings/prod_private.py
+public/media
+public/static
