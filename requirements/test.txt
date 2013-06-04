@@ -1,3 +1,5 @@
 -r base.txt
 
 django-casper==0.0.2
+coverage==3.6
+django-discover-runner==0.4

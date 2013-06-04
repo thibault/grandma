@@ -1,6 +1,10 @@
-import os, sys
+from os.path import dirname, abspath, join
+from sys import path
 
-PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+
+PROJECT_ROOT = dirname(dirname(abspath(__file__)))
+
+path.append(PROJECT_ROOT)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -45,7 +49,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'grandma', 'public', 'media')
+MEDIA_ROOT = join(PROJECT_ROOT, 'grandma', 'public', 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -56,19 +60,19 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'grandma', 'public', 'static')
+STATIC_ROOT = join(PROJECT_ROOT, 'grandma', 'public', 'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 LOCALE_PATHS = (
-    os.path.join(PROJECT_ROOT, 'locale'),
+    join(PROJECT_ROOT, 'locale'),
 )
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'grandma', 'static'),
+    join(PROJECT_ROOT, 'grandma', 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -117,7 +121,7 @@ ROOT_URLCONF = 'grandma.urls'
 WSGI_APPLICATION = 'grandma.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'grandma', 'templates'),
+    join(PROJECT_ROOT, 'grandma', 'templates'),
 )
 
 PROJECT_APPS = (
