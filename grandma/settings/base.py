@@ -1,15 +1,9 @@
 import os, sys
 
-
 PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
-INTERNAL_IPS = ('127.0.0.1',)
-
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-}
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -101,7 +95,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -145,10 +138,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'annoying',
-    'widget_tweaks',
     'south',
-    'debug_toolbar',
     'django_tables2',
+    'widget_tweaks',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -186,35 +178,5 @@ LOGGING = {
     }
 }
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config(default='mysql://grandma:grandma@localhost/grandma')
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ACCOUNT_ACTIVATION_DAYS = 7
-
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/grandma.mail'
-DEFAULT_FROM_EMAIL = 'django@grandma'
-MAILING_CAMPAIGN_HEADER = 'X-Mailjet-Campaign'
-
-NEXMO_API = 'http://rest.nexmo.com/sms/json'
-NEXMO_USERNAME = 'username'
-NEXMO_PASSWORD = 'password'
-NEXMO_FROM='Grandma'
-
-if 'test' in sys.argv:
-    os.environ['PROJECT_ENV'] = 'testing'
-
-project_env = os.environ.get('PROJECT_ENV', 'dev')
-try:
-    if project_env == 'testing':
-        from testing_settings import *
-except ImportError:
-    pass
-
-try:
-    from local_settings import *
-except ImportError:
-    pass

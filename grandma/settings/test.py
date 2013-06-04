@@ -5,3 +5,9 @@ DATABASES = {
         'NAME': 'memory://grandma', # Or path to database file if using sqlite3.
     }
 }
+
+APPS = (
+    'casper',
+)
+
+INSTALLED_APPS += APPS
