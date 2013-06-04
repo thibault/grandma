@@ -4,3 +4,4 @@ grandma/grandma/settings/prod_private.py
 public/media
 public/static
 ghostdriver.log
+.coverage

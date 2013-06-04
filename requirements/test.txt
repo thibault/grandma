@@ -4,3 +4,4 @@ selenium==2.33.0
 coverage==3.6
 django-discover-runner==0.4
 flake8==2.0
+coveralls==0.2

@@ -6,7 +6,9 @@ install:
   - "pip install -r requirements/test.txt --use-mirrors"
 script:
   - export DJANGO_SETTINGS_MODULE=grandma.settings.test
-  - python grandma/manage.py test
+  - coverage run --source='.' python grandma/manage.py test
+after_success:
+  - coveralls
 notifications:
   - recipients:
     - thibault@miximum.fr
