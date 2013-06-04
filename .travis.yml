@@ -8,5 +8,7 @@ script:
   - export DJANGO_SETTINGS_MODULE=grandma.settings.test
   - python grandma/manage.py test
 notifications:
+  - recipients:
+    - thibault@miximum.fr
   - on_success: change
   - on_failure: change
