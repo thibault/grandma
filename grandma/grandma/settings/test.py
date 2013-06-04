@@ -10,7 +10,6 @@ DATABASES = {
 }
 
 INSTALLED_APPS += (
-    'casper',
     'discover_runner',
 )
 
