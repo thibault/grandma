@@ -90,17 +90,17 @@ $(document).ready(function() {
         hideError();
 
         if (false == paymill.validateCardNumber($('.card-number').val())) {
-            showError("Numéro de carte invalide");
-            return false;
-        }
-
-        if (false == paymill.validateExpiry($('.card-expiry-month').val(), $('.card-expiry-year').val())) {
-            showError("Date d'expiration invalide");
+            showError("{{ _('Invalid card number') }}");
             return false;
         }
 
         if (false == paymill.validateCvc($('.card-cvc').val())) {
-            showError("Code de validation invalide");
+            showError("{{ _('Invalid validation code') }}");
+            return false;
+        }
+
+        if (false == paymill.validateExpiry($('.card-expiry-month').val(), $('.card-expiry-year').val())) {
+            showError("{{ _('Invalid expiration date') }}");
             return false;
         }
 
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
     function PaymillResponseHandler(error, result) {
         if (error) {
-            showError('{{ _('Oups! An error occured.') }}');
+            showError('{{ _('Oops! An error occured.') }}');
         } else {
             hideError();
             var token = result.token;
