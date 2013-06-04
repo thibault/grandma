@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-04 10:25+0200\n"
+"POT-Creation-Date: 2013-06-04 11:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -338,56 +338,6 @@ msgstr ""
 msgid "Use international format, e.g +336xxxxxxxx"
 msgstr "Utilisez le format international, e.g +336xxxxxx"
 
-#: grandma/templates/base.html:5 grandma/templates/base.html.py:36
-msgid "Don't forget grandma!"
-msgstr "N'oublie pas mamie !"
-
-#: grandma/templates/base.html:43 grandma/templates/home.html:27
-#: pages/templates/pricing.html:45
-msgid "Sign up"
-msgstr "Créer un compte"
-
-#: grandma/templates/base.html:44
-msgid "Log in"
-msgstr "Se connecter"
-
-#: grandma/templates/home.html:5
-msgid "Plan your text messages"
-msgstr "Planifiez vos sms"
-
-#: grandma/templates/home.html:9
-msgid ""
-"\n"
-"<p class=\"lead\">\n"
-"Ce site vous vous permet de planifier des sms pour les envoyer à vous-même "
-"ou vos amis\n"
-"à la date et l'heure souhaitée.\n"
-"</p>\n"
-"\n"
-"<p class=\"lead\">\n"
-"Faites-vous penser à acheter le pain en rentrant du boulot ; rappelez un "
-"événement\n"
-"à vos amis au moment voulu ; programmez vos vœux pour l'anniversaire de\n"
-"votre grand-mère ; et bien d'autres possibilités.\n"
-"</p>\n"
-"\n"
-"<p class=\"lead\">\n"
-"Programmez, oubliez. On s'occupe du reste.\n"
-"</p>\n"
-msgstr ""
-
-#: grandma/templates/home.html:28
-msgid "or"
-msgstr "ou"
-
-#: grandma/templates/home.html:29
-msgid "View our pricing"
-msgstr "Voir nos prix"
-
-#: grandma/templates/home.html:38 reminders/templates/create_reminder.html:11
-msgid "Plan a text message"
-msgstr "Planifiez un sms"
-
 #: pages/templates/pricing.html:4
 msgid "Pricing"
 msgstr "Prix"
@@ -439,6 +389,11 @@ msgstr "Abonnement mensuel"
 #: pages/templates/pricing.html:44
 msgid "Use"
 msgstr "Utiliser"
+
+#: pages/templates/pricing.html:45 templates/base.html:43
+#: templates/home.html:27
+msgid "Sign up"
+msgstr "Créer un compte"
 
 #: reminders/forms.py:13
 msgid "Recipient mobile:"
@@ -508,6 +463,10 @@ msgstr "Votre sms vient d'être programmé."
 msgid "Plan a new text message"
 msgstr "Nouveau sms"
 
+#: reminders/templates/create_reminder.html:11 templates/home.html:38
+msgid "Plan a text message"
+msgstr "Planifiez un sms"
+
 #: reminders/templates/reminder_list.html:5
 msgid "Your reminders"
 msgstr "Vos sms"
@@ -515,3 +474,44 @@ msgstr "Vos sms"
 #: reminders/templates/reminder_list.html:16
 msgid "Create a new reminder"
 msgstr "Créez un nouveau sms"
+
+#: templates/base.html:5 templates/base.html.py:36
+msgid "Don't forget grandma!"
+msgstr "N'oublie pas mamie !"
+
+#: templates/base.html:44
+msgid "Log in"
+msgstr "Se connecter"
+
+#: templates/home.html:5
+msgid "Plan your text messages"
+msgstr "Planifiez vos sms"
+
+#: templates/home.html:9
+msgid ""
+"\n"
+"<p class=\"lead\">\n"
+"Ce site vous vous permet de planifier des sms pour les envoyer à vous-même "
+"ou vos amis\n"
+"à la date et l'heure souhaitée.\n"
+"</p>\n"
+"\n"
+"<p class=\"lead\">\n"
+"Faites-vous penser à acheter le pain en rentrant du boulot ; rappelez un "
+"événement\n"
+"à vos amis au moment voulu ; programmez vos vœux pour l'anniversaire de\n"
+"votre grand-mère ; et bien d'autres possibilités.\n"
+"</p>\n"
+"\n"
+"<p class=\"lead\">\n"
+"Programmez, oubliez. On s'occupe du reste.\n"
+"</p>\n"
+msgstr ""
+
+#: templates/home.html:28
+msgid "or"
+msgstr "ou"
+
+#: templates/home.html:29
+msgid "View our pricing"
+msgstr "Voir nos prix"
