@@ -1,6 +1,9 @@
-[submodule "bootstrap"]
-	path = bootstrap
-	url = git://github.com/twitter/bootstrap.git
-[submodule "datetimepicker"]
-	path = datetimepicker
+[submodule "submodule/datetimepicker"]
+	path = submodule/datetimepicker
 	url = git://github.com/smalot/bootstrap-datetimepicker.git
+[submodule "submodule/bootstrap"]
+	path = submodule/bootstrap
+	url = git://github.com/twitter/bootstrap.git
+[submodule "submodule/bootswatch"]
+	path = submodule/bootswatch
+	url = git://github.com/thomaspark/bootswatch.git
