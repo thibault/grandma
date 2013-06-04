@@ -4,8 +4,6 @@ python:
   - "2.7"
 install:
   - "pip install -r requirements/test.txt --use-mirrors"
-before_script:
-  - flake8 --exclude=migrations --ignore=E501,E225 grandma
 script:
   - export DJANGO_SETTINGS_MODULE=grandma.settings.test
   - python grandma/manage.py test
