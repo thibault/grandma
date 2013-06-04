@@ -13,6 +13,10 @@ DATABASES = {
     },
 }
 
+INSTALLED_APPS += (
+    'south',
+)
+
 ALLOWED_HOSTS = []
 
 try:

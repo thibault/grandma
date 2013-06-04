@@ -1,8 +1,8 @@
-from os.path import dirname, abspath, join
+from os.path import dirname, abspath, join, normpath
 from sys import path
 
 
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
+DJANGO_ROOT = dirname(dirname(dirname(abspath(__file__))))
 
 PROJECT_ROOT = dirname(DJANGO_ROOT)
 
@@ -123,11 +123,10 @@ ROOT_URLCONF = 'grandma.urls'
 WSGI_APPLICATION = 'grandma.wsgi.application'
 
 TEMPLATE_DIRS = (
-    join(DJANGO_ROOT, 'templates'),
+    normpath(join(DJANGO_ROOT, 'templates')),
 )
 
 PROJECT_APPS = (
-    'grandma',
     'messages',
     'reminders',
     'accounts',
@@ -144,7 +143,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'annoying',
-    'south',
     'django_tables2',
     'widget_tweaks',
     # Uncomment the next line to enable the admin:
