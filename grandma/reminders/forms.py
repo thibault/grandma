@@ -12,8 +12,8 @@ class ReminderForm(forms.ModelForm):
     phone = PhoneField(required=True,
                        label=_('Recipient mobile:'),
                        widget= forms.TextInput(attrs={'autocomplete': 'off'}))
-    when = forms.CharField(max_length=50, required=True,
-                           label=_('Date and time:'))
+    when = forms.DateTimeField(required=True,
+                               label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
                               widget=forms.Textarea(attrs={'rows': 2}))
     class Meta:
