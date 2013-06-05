@@ -13,9 +13,11 @@ from accounts.models import User
 
 logger = logging.getLogger(__name__)
 
+
 @render_to('my_account.html')
 def my_account(request):
     return {}
+
 
 @render_to('register.html')
 def register(request):
@@ -32,7 +34,7 @@ def register(request):
             card = py.new_card(token, client.id)
             offer_id = settings.PAYMILL_OFFER_ID
             subscription = py.new_subscription(client.id, offer_id, card.id)
-        except Exception as e:
+        except Exception:
             logger.error('Payment error token:%(token)s client:%(client)s '
                          'card:%(card)s' % {
                              'token': token,
@@ -42,7 +44,7 @@ def register(request):
                         'Your account was not created. Please, try again in '
                         'a few minutes or with different payment informations.')
             messages.error(request, message)
-            return { 'form': form }
+            return {'form': form}
 
         # So payment was created, and form data is valid
         # Let's create this user account

@@ -1,6 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-from django.utils.dateformat import format
-from django.utils.formats import get_format
 import django_tables2 as tables
 
 

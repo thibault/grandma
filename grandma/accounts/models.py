@@ -49,12 +49,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     activation_key = models.CharField(_('activation key'), max_length=40,
                                       null=True, blank=True)
-    is_active = models.BooleanField(_('active'), default=True,
-            help_text=_('Designates whether this user should be treated as '
-                        'active. Unselect this instead of deleting accounts.'))
-    is_valid = models.BooleanField(_('valid'), default=False,
-            help_text=_('Designates whether this user has confirmed his '
-                        'phone number.'))
+    is_active = models.BooleanField(
+        _('active'), default=True,
+        help_text=_('Designates whether this user should be treated as '
+                    'active. Unselect this instead of deleting accounts.'))
+    is_valid = models.BooleanField(
+        _('valid'), default=False,
+        help_text=_('Designates whether this user has confirmed his '
+                    'phone number.'))
 
     # Paymill subscription data
     paymill_client_id = models.CharField(max_length=100, null=True, blank=True)
@@ -82,8 +84,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def send_activation_key(self):
         """Sends a 'forgotten password' link to user."""
-        context = { 'activation_key': self.activation_key,
-                    'site': Site.objects.get_current()}
+        context = {'activation_key': self.activation_key,
+                   'site': Site.objects.get_current()}
         subject = render_to_string('registration/activation_email_subject.txt',
                                    context)
         subject = ''.join(subject.splitlines())
@@ -93,11 +95,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def reset_and_send_password(self):
         """Changes the password, and send a new one."""
-        password = User.objects.make_random_password(length=4,
-                allowed_chars='0123456789')
+        password = User.objects.make_random_password(
+            length=4, allowed_chars='0123456789')
         self.set_password(password)
         self.save()
 
         send_message(self.phone, _('Your new password is %(pwd)s') % {
-                'pwd': password
+            'pwd': password
         })

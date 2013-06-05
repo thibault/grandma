@@ -3,7 +3,6 @@ from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
-from accounts.models import User
 from reminders.models import Reminder
 from reminders.forms import ReminderForm
 from reminders.tables import ReminderTable
@@ -41,8 +40,8 @@ def reminder_form_view(request, next_url):
 @login_required
 def pending_reminders(request):
     qs = Reminder.objects.filter(user=request.user) \
-            .filter(sent=False) \
-            .order_by('when')
+        .filter(sent=False) \
+        .order_by('when')
 
     return reminder_list_view(request, qs)
 
@@ -51,8 +50,8 @@ def pending_reminders(request):
 @login_required
 def sent_reminders(request):
     qs = Reminder.objects.filter(user=request.user) \
-            .filter(sent=True) \
-            .order_by('when')
+        .filter(sent=True) \
+        .order_by('when')
 
     return reminder_list_view(request, qs)
 

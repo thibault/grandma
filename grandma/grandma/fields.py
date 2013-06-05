@@ -6,6 +6,7 @@ from django.utils.translation import ugettext as _
 
 mobile_re = re.compile(r'^\+336\d{8}$')
 
+
 class PhoneField(forms.CharField):
     """Validate international phone fields."""
 

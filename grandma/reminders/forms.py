@@ -4,18 +4,18 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from grandma.fields import PhoneField
-from accounts.models import User
 from reminders.models import Reminder
 
 
 class ReminderForm(forms.ModelForm):
     phone = PhoneField(required=True,
                        label=_('Recipient mobile:'),
-                       widget= forms.TextInput(attrs={'autocomplete': 'off'}))
+                       widget=forms.TextInput(attrs={'autocomplete': 'off'}))
     when = forms.DateTimeField(required=True,
                                label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
                               widget=forms.Textarea(attrs={'rows': 2}))
+
     class Meta:
         model = Reminder
         fields = ('phone', 'when', 'message')
@@ -35,15 +35,13 @@ class ReminderForm(forms.ModelForm):
         if not self.user.is_authenticated():
             today = datetime.date.today()
             reminders = Reminder.objects.filter(created_by_ip=self.ip_address) \
-                    .filter(created_at__year=today.year) \
-                    .filter(created_at__month=today.month) \
-                    .filter(created_at__day=today.day)
+                .filter(created_at__year=today.year) \
+                .filter(created_at__month=today.month) \
+                .filter(created_at__day=today.day)
 
             if reminders.count() >= Reminder.ANONYMOUS_DAILY_LIMIT:
                 raise forms.ValidationError(_('You have exceded the numbers of free '
                                               'reminders a day. Subscribe to an '
                                               'account to create more.'))
 
-
         return data
-

@@ -12,9 +12,9 @@ class CreateReminderTests(TestCase):
     def test_rate_limit(self):
         """Anonymous user cannot create more than 3 reminders at once."""
         reminder_data = {
-                'message': 'test',
-                'phone': '+33612345678',
-                'when': '2020-10-10 19:20',
+            'message': 'test',
+            'phone': '+33612345678',
+            'when': '2020-10-10 19:20',
         }
 
         # First reminder, everything's ok

@@ -53,12 +53,12 @@ class PasswordRequestForm(forms.Form):
         """
         return self.users_cache[0]
 
+
 class PasswordResetForm(forms.Form):
     password1 = forms.CharField(widget=forms.PasswordInput(render_value=False),
                                 label=_("Password"))
     password2 = forms.CharField(widget=forms.PasswordInput(render_value=False),
                                 label=_("Password (again)"))
-
 
     def clean(self):
         """

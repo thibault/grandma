@@ -4,8 +4,8 @@ from base import *
 DEBUG = True
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'memory://grandma', # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'memory://grandma',
     }
 }
 
@@ -26,7 +26,7 @@ MAILING_CAMPAIGN_HEADER = 'X-Mailjet-Campaign'
 NEXMO_API = 'http://rest.nexmo.com/sms/json'
 NEXMO_USERNAME = 'username'
 NEXMO_PASSWORD = 'password'
-NEXMO_FROM='Grandma'
+NEXMO_FROM = 'Grandma'
 
 PAYMILL_PUBLIC_KEY = '17525186687258c77db2ac5ba2a940d6'
 PAYMILL_PRIVATE_KEY = 'cd3ddf7e028d1a8790b6605022153074'

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from os.path import join, dirname
-
 from django.test import LiveServerTestCase
 from django.utils.translation import activate
 
@@ -34,9 +32,9 @@ class RegisterTests(LiveServerTestCase):
         Laaaaaa laaaaa la la la la laaaa…
 
         """
-        card_input = self.selenium.find_element_by_class_name('card-number')
+        self.selenium.find_element_by_class_name('card-number')
         try:
-            card_input = self.selenium.find_element_by_name('card-number')
+            self.selenium.find_element_by_name('card-number')
             self.fail('The element should have no name')
         except NoSuchElementException:
             pass
@@ -54,7 +52,7 @@ class RegisterTests(LiveServerTestCase):
 
     def test_missing_cvc_raises_error(self):
         self.selenium.find_element_by_class_name('card-number') \
-                .send_keys('4111111111111111')
+            .send_keys('4111111111111111')
         self.selenium.find_element_by_id('submit-btn').click()
 
         error = self.selenium.find_element_by_id('payment-errors')
@@ -63,9 +61,9 @@ class RegisterTests(LiveServerTestCase):
 
     def test_missing_expiration_date_raises_error(self):
         self.selenium.find_element_by_class_name('card-number') \
-                .send_keys('4111111111111111')
+            .send_keys('4111111111111111')
         self.selenium.find_element_by_class_name('card-cvc') \
-                .send_keys('123')
+            .send_keys('123')
         self.selenium.find_element_by_id('submit-btn').click()
 
         error = self.selenium.find_element_by_id('payment-errors')
