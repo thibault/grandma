@@ -7,6 +7,7 @@ install:
 script:
   - export DJANGO_SETTINGS_MODULE=grandma.settings.test
   - coverage run --source='.' grandma/manage.py test
+  - flake8 --exclude=migrations,urls.py --ignore=E501 grandma
 after_success:
   - coveralls
 notifications:
