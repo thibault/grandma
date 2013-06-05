@@ -43,7 +43,7 @@ def pending_reminders(request):
         .filter(sent=False) \
         .order_by('when')
 
-    return reminder_list_view(request, qs)
+    return reminder_list_view(request, qs, 'pending_reminders')
 
 
 @render_to('reminder_list.html')
@@ -53,10 +53,10 @@ def sent_reminders(request):
         .filter(sent=True) \
         .order_by('when')
 
-    return reminder_list_view(request, qs)
+    return reminder_list_view(request, qs, 'sent_reminders')
 
 
-def reminder_list_view(request, qs):
+def reminder_list_view(request, qs, current_view):
     """Generic reminder list view."""
     # Delete selected reminders
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def reminder_list_view(request, qs):
         qs.filter(id__in=ids).delete()
         msg = _('Selected reminders were deleted')
         messages.success(request, msg)
-        return redirect('pending_reminders')
+        return redirect(current_view)
 
     table = ReminderTable(qs)
     return {
