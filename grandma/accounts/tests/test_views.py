@@ -1,71 +1,83 @@
-# -*- coding: utf-8 -*-
-
-from django.test import LiveServerTestCase
+from django.test import TestCase
+from django.core.urlresolvers import reverse
 from django.utils.translation import activate
+from django.contrib.auth import authenticate
 
-from selenium.webdriver.phantomjs.webdriver import WebDriver
-from selenium.common.exceptions import NoSuchElementException
+from mock import patch, Mock
+
+from accounts.models import User
+from accounts.tests.factories import UserFactory
 
 
-class RegisterTests(LiveServerTestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.selenium = WebDriver()
-        super(RegisterTests, cls).setUpClass()
+class Empty:
+    """Empty object to use as return data in the Paymill mock."""
+    id = 'value'
+mock_data = Empty()
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.selenium.quit()
-        super(RegisterTests, cls).tearDownClass()
+paymill_mock = Mock()
+instance = paymill_mock.return_value
+instance.new_client.return_value = mock_data
+instance.new_card.return_value = mock_data
+instance.new_subscription.return_value = mock_data
+
+
+class RegisterTests(TestCase):
 
     def setUp(self):
-        self.selenium.get('%s%s' % (self.live_server_url, '/account/register/'))
+        self.url = reverse('register')
+        self.data = {
+            'email': 'toto@tata.com',
+            'phone': '+33612345678',
+            'paymillToken': 'random_token',
+        }
+
+    @patch('pymill.Pymill', paymill_mock)
+    def test_signing_up_creates_new_account(self):
+        self.assertEqual(User.objects.all().count(), 0)
+        res = self.client.post(self.url, self.data)
+        self.assertEqual(User.objects.all().count(), 1)
+        self.assertEqual(User.objects.all()[0].email, self.data['email'])
+        self.assertRedirects(res, reverse('login'))
+
+
+class PasswordsTests(TestCase):
+    def setUp(self):
+        self.reset_url = reverse('password_reset')
+        self.confirm_url = reverse('password_reset_confirm', args=['random_key'])
         activate('en')
 
-    def test_payment_fields_have_no_names(self):
-        """Payment fields exists, but have no names.
+    def test_password_reset(self):
+        UserFactory.create(email='toto@tata.com')
+        res = self.client.post(self.reset_url, {'email': 'toto@tata.com'},
+                               follow=True)
+        self.assertContains(res, 'A new password was sent')
 
-        This is required by the Paymill api, so payment data does not
-        crosses our server.
+    def test_password_reset_wrong_address(self):
+        res = self.client.post(self.reset_url, {'email': 'titi@tutu.com'},
+                               follow=True)
+        self.assertNotContains(res, 'A new password was sent')
+        self.assertContains(res, 'This email is unknown')
 
-        A field with no name…
-        Laaaaaa laaaaa la la la la laaaa…
+    def test_reset_confirm_wrong_key(self):
+        res = self.client.get(self.confirm_url)
+        self.assertEqual(res.status_code, 404)
 
-        """
-        self.selenium.find_element_by_class_name('card-number')
-        try:
-            self.selenium.find_element_by_name('card-number')
-            self.fail('The element should have no name')
-        except NoSuchElementException:
-            pass
+    def test_reset_confirm_show_form(self):
+        UserFactory.create(activation_key='random_key')
+        res = self.client.get(self.confirm_url)
+        self.assertEqual(res.status_code, 200)
 
-    def test_error_message_is_hidden(self):
-        error = self.selenium.find_element_by_id('payment-errors')
-        self.assertFalse(error.is_displayed())
+    def test_reset_different_passwords(self):
+        UserFactory.create(activation_key='random_key')
+        res = self.client.post(self.confirm_url, {'password1': 'toto',
+                                                  'password2': 'tata'})
+        self.assertContains(res, 'The two password fields didn&#39;t match')
 
-    def test_missing_card_number_raises_error(self):
-        self.selenium.find_element_by_id('submit-btn').click()
-
-        error = self.selenium.find_element_by_id('payment-errors')
-        self.assertTrue(error.is_displayed())
-        self.assertEqual(error.text, 'Invalid card number')
-
-    def test_missing_cvc_raises_error(self):
-        self.selenium.find_element_by_class_name('card-number') \
-            .send_keys('4111111111111111')
-        self.selenium.find_element_by_id('submit-btn').click()
-
-        error = self.selenium.find_element_by_id('payment-errors')
-        self.assertTrue(error.is_displayed())
-        self.assertEqual(error.text, 'Invalid validation code')
-
-    def test_missing_expiration_date_raises_error(self):
-        self.selenium.find_element_by_class_name('card-number') \
-            .send_keys('4111111111111111')
-        self.selenium.find_element_by_class_name('card-cvc') \
-            .send_keys('123')
-        self.selenium.find_element_by_id('submit-btn').click()
-
-        error = self.selenium.find_element_by_id('payment-errors')
-        self.assertTrue(error.is_displayed())
-        self.assertEqual(error.text, 'Invalid expiration date')
+    def test_reset_password(self):
+        UserFactory.create(email='toto@tata.com', activation_key='random_key')
+        res = self.client.post(self.confirm_url, {'password1': 'toto',
+                                                  'password2': 'toto'},
+                               follow=True)
+        self.assertContains(res, 'Your new password was saved successfully')
+        user = authenticate(username='toto@tata.com', password='toto')
+        self.assertIsNotNone(user)

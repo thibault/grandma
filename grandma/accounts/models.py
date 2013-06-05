@@ -11,7 +11,6 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.conf import settings
-from messages.models import send_message
 
 
 # Regular expression to validate phone numbers
@@ -92,14 +91,3 @@ class User(AbstractBaseUser, PermissionsMixin):
         message = render_to_string('registration/activation_email.txt',
                                    context)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email])
-
-    def reset_and_send_password(self):
-        """Changes the password, and send a new one."""
-        password = User.objects.make_random_password(
-            length=4, allowed_chars='0123456789')
-        self.set_password(password)
-        self.save()
-
-        send_message(self.phone, _('Your new password is %(pwd)s') % {
-            'pwd': password
-        })
