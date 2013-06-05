@@ -6,7 +6,7 @@ install:
   - "pip install -r requirements/test.txt --use-mirrors"
 script:
   - export DJANGO_SETTINGS_MODULE=grandma.settings.test
-  - coverage run --source='.' grandma/manage.py test
+  - coverage run --source='.' --omit='grandma/messages/*' grandma/manage.py test
   - flake8 --exclude=migrations,urls.py --ignore=E501 grandma
 after_success:
   - coveralls
