@@ -1,11 +1,14 @@
 import json
+
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+
 from annoying.decorators import render_to
+
 from contacts.models import Contact
 from contacts.tables import ContactTable
 from contacts.forms import ContactForm
