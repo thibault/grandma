@@ -1,4 +1,3 @@
-import re
 import hashlib
 import random
 
@@ -11,10 +10,6 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.conf import settings
-
-
-# Regular expression to validate phone numbers
-mobile_re = re.compile(r'^\+336\d{8}$')
 
 
 class UserManager(BaseUserManager):
