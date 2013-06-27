@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-04 11:47+0200\n"
+"POT-Creation-Date: 2013-06-27 16:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,11 +38,11 @@ msgstr "Cette @dresse est inconnue. Êtes-vous certain d'être inscrit ?"
 msgid "The user account associated with this email cannot reset the password."
 msgstr "Le compte associé à cette @dresse est désactivé."
 
-#: accounts/forms.py:58
+#: accounts/forms.py:59
 msgid "Password"
 msgstr "Mot de passe"
 
-#: accounts/forms.py:60
+#: accounts/forms.py:61
 msgid "Password (again)"
 msgstr "Mot de passe (one more time)"
 
@@ -50,65 +50,60 @@ msgstr "Mot de passe (one more time)"
 msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 
-#: accounts/models.py:46 contacts/models.py:10 reminders/models.py:13
+#: accounts/models.py:40 contacts/models.py:10 reminders/models.py:13
 msgid "Mobile"
 msgstr "Mobile"
 
-#: accounts/models.py:47 contacts/models.py:11 reminders/models.py:15
+#: accounts/models.py:41 contacts/models.py:11 reminders/models.py:15
 msgid "Use international format, e.g +33612345678"
 msgstr "Utilisez le format international, e.g +33612345678"
 
-#: accounts/models.py:48
+#: accounts/models.py:42
 msgid "email address"
 msgstr "adresse email"
 
-#: accounts/models.py:49
+#: accounts/models.py:43
 msgid "date joined"
 msgstr "inscrit le"
 
-#: accounts/models.py:50
+#: accounts/models.py:44
 msgid "activation key"
 msgstr "clé d'activation"
 
-#: accounts/models.py:52
+#: accounts/models.py:47
 msgid "active"
 msgstr "actif"
 
-#: accounts/models.py:53
+#: accounts/models.py:48
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: accounts/models.py:55
+#: accounts/models.py:51
 msgid "valid"
 msgstr "valid"
 
-#: accounts/models.py:56
+#: accounts/models.py:52
 msgid "Designates whether this user has confirmed his phone number."
 msgstr ""
 
-#: accounts/models.py:68
+#: accounts/models.py:64
 msgid "User"
 msgstr "Utilisateur"
 
-#: accounts/models.py:69
+#: accounts/models.py:65
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: accounts/models.py:101
-#, python-format
-msgid "Your new password is %(pwd)s"
-msgstr "Votre nouveau mot de passe est %(pwd)s"
-
-#: accounts/views.py:41
+#: accounts/views.py:43
 msgid ""
 "There was a problem processing your credit card. Your account was not "
 "created. Please, try again in a few minutes or with different payment "
 "informations."
 msgstr ""
 
-#: accounts/views.py:57
+#: accounts/views.py:59
 msgid ""
 "Congratulations! Your account was created. You will receive your activation "
 "email in  a few seconds."
@@ -116,7 +111,7 @@ msgstr ""
 "Bravo ! votre compte vient d'être créé. Vous allez recevoir votre clé "
 "d'activation dans quelques secondes."
 
-#: accounts/views.py:76
+#: accounts/views.py:78
 msgid ""
 "A new password was sent. It should be there in less than a minute. Enjoy "
 "those few seconds of calm and relaxation."
@@ -124,7 +119,7 @@ msgstr ""
 "Un nouveau mot de passe vient de vous être envoyé par mail. Il devrait être "
 "là sous peu. Profitez-en pour méditer quelques secondes."
 
-#: accounts/views.py:96
+#: accounts/views.py:98
 msgid ""
 "Your new password was saved successfully. You can now login on your account."
 msgstr ""
@@ -275,11 +270,23 @@ msgstr "Votre paiement est sécurisé par notre partenaire Paymill"
 msgid "It will never be sent to our own server."
 msgstr "Vos données ne sont ni envoyées ni stockées sur notre propre serveur."
 
+#: accounts/templates/register.html:93
+msgid "Invalid card number"
+msgstr "Numéro de carte invalide"
+
+#: accounts/templates/register.html:98
+msgid "Invalid validation code"
+msgstr "Code de validation invalide"
+
+#: accounts/templates/register.html:103
+msgid "Invalid expiration date"
+msgstr "Date d'expiration invalide"
+
 #: accounts/templates/register.html:132
-msgid "Oups! An error occured."
+msgid "Oops! An error occured."
 msgstr "Oups ! Quelque chose cloche !"
 
-#: contacts/forms.py:9 contacts/tables.py:10
+#: contacts/forms.py:9 contacts/tables.py:8
 msgid "Phone"
 msgstr "Téléphone"
 
@@ -295,19 +302,19 @@ msgstr "Nom"
 msgid "Contact"
 msgstr "Contact"
 
-#: contacts/tables.py:9
+#: contacts/tables.py:7
 msgid "Full name"
 msgstr "Nom complet"
 
-#: contacts/tables.py:16
+#: contacts/tables.py:14
 msgid "There are no contacts here (yet)."
 msgstr "Il n'y a rien ici (pour le moment)."
 
-#: contacts/views.py:25
+#: contacts/views.py:27
 msgid "Your new contact was created"
 msgstr "Votre nouveau contact vient d'être créé. Poil au nez."
 
-#: contacts/views.py:34 reminders/views.py:66
+#: contacts/views.py:36 reminders/views.py:65
 msgid "Selected reminders were deleted"
 msgstr "Les sms sélectionnés ont été supprimés."
 
@@ -326,7 +333,7 @@ msgstr "Supprimer"
 msgid "Create"
 msgstr "Créer"
 
-#: grandma/fields.py:13
+#: grandma/fields.py:14
 msgid ""
 "Use international format e.g +336xxxxxxxx. Only french numbers are allowed "
 "(for now)."
@@ -334,7 +341,7 @@ msgstr ""
 "Utilisez le format international (+336xxxxxxxx). Numéros français seulement "
 "(pour le moment)."
 
-#: grandma/fields.py:16
+#: grandma/fields.py:17
 msgid "Use international format, e.g +336xxxxxxxx"
 msgstr "Utilisez le format international, e.g +336xxxxxx"
 
@@ -395,15 +402,15 @@ msgstr "Utiliser"
 msgid "Sign up"
 msgstr "Créer un compte"
 
-#: reminders/forms.py:13
+#: reminders/forms.py:12
 msgid "Recipient mobile:"
 msgstr "Téléphone :"
 
-#: reminders/forms.py:16
+#: reminders/forms.py:15
 msgid "Date and time:"
 msgstr "Date et heure :"
 
-#: reminders/forms.py:17
+#: reminders/forms.py:16
 msgid "Your message:"
 msgstr "Votre message :"
 
@@ -439,23 +446,23 @@ msgstr "Rappel"
 msgid "Reminders"
 msgstr "Rappels"
 
-#: reminders/tables.py:10
+#: reminders/tables.py:7
 msgid "To"
 msgstr "À"
 
-#: reminders/tables.py:11
+#: reminders/tables.py:8
 msgid "message"
 msgstr "message"
 
-#: reminders/tables.py:12
+#: reminders/tables.py:9
 msgid "When"
 msgstr "quand"
 
-#: reminders/tables.py:19
+#: reminders/tables.py:16
 msgid "There are no reminders here (yet)."
 msgstr "Il n'y a rien ici (pour le moment)."
 
-#: reminders/views.py:30
+#: reminders/views.py:29
 msgid "Your reminder was saved successfully. Sleep tight."
 msgstr "Votre sms vient d'être programmé."
 
