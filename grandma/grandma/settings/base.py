@@ -68,9 +68,9 @@ STATIC_ROOT = join(PROJECT_ROOT, 'public', 'static')
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-#LOCALE_PATHS = (
-#    join(PROJECT_ROOT, 'locale'),
-#)
+LOCALE_PATHS = (
+    join(DJANGO_ROOT, 'locale'),
+)
 
 # Additional locations of static files
 STATICFILES_DIRS = (
