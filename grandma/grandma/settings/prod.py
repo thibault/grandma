@@ -17,7 +17,7 @@ INSTALLED_APPS += (
     'south',
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.dontforgetgrandma.com']
 
 try:
     from prod_private import *  # noqa
