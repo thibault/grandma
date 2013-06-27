@@ -130,6 +130,7 @@ PROJECT_APPS = (
     'accounts',
     'contacts',
     'pages',
+    'analytics',
 )
 
 INSTALLED_APPS = (

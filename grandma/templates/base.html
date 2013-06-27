@@ -1,3 +1,4 @@
+{% load analytics %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -84,5 +85,7 @@
         <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.js"></script>
         {% block extra-js %} {% endblock %}
+
+        {% analytics_tag %}
     </body>
 </html>
