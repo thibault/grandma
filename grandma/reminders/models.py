@@ -2,7 +2,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
 from accounts.models import User
-from messages.models import send_message
+from nexmo import send_message
 
 
 class Reminder(models.Model):

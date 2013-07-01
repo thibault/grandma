@@ -9,3 +9,4 @@ ipython==0.13.2
 -e git+https://github.com/figo-connect/pymill.git#egg=pymill
 requests==1.2.3
 wsgiref==0.1.2
+django-nexmo==1.0.0

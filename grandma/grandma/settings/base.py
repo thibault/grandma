@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'annoying',
     'django_tables2',
     'widget_tweaks',
+    'nexmo',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
