@@ -1,3 +1,4 @@
+from logging.handlers import SysLogHandler
 from os.path import dirname, abspath, join, normpath
 from sys import path
 
@@ -153,11 +154,7 @@ INSTALLED_APPS = (
 
 AUTH_USER_MODEL = 'accounts.User'
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# See http://www.miximum.fr/bien-developper/876-an-effective-logging-strategy-with-django
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -166,18 +163,34 @@ LOGGING = {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
+    'formatters': {
+        'verbose': {
+            'format': '[grandma] %(levelname)s %(asctime)s %(message)s'
+        },
+    },
     'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+        'syslog': {
+            'level': 'INFO',
+            'class': 'logging.handlers.SysLogHandler',
+            'facility': SysLogHandler.LOG_LOCAL2,
+            'address': '/dev/log',
+            'formatter': 'verbose',
+        },
         'mail_admins': {
-            'level': 'ERROR',
+            'level': 'WARNING',
             'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
+        '': {
+            'handlers': ['console', 'syslog', 'mail_admins'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
     }
 }

@@ -1,3 +1,4 @@
 -r base.txt
 
 flup==1.0.3.dev-20110405
+raven==3.3.12
