@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-27 16:43+0200\n"
+"POT-Creation-Date: 2013-07-03 10:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,7 +173,13 @@ msgstr "Login"
 
 #: accounts/templates/my_account.html:6
 msgid "Coming soon"
-msgstr "Bientôt"
+msgstr "Cette fonctionnalité est en cours de développement."
+
+#: accounts/templates/my_account.html:7
+msgid "Any question or request? Mail me at thibault@miximum.fr"
+msgstr ""
+"Pour toute question, demande ou réclamation, ne soyez pas timide et "
+"contactez moi à thibault@miximum.fr"
 
 #: accounts/templates/password_reset.html:4
 msgid "So, you lost your password?"
@@ -397,7 +403,7 @@ msgstr "Abonnement mensuel"
 msgid "Use"
 msgstr "Utiliser"
 
-#: pages/templates/pricing.html:45 templates/base.html:43
+#: pages/templates/pricing.html:45 templates/base.html:44
 #: templates/home.html:27
 msgid "Sign up"
 msgstr "Créer un compte"
@@ -482,11 +488,11 @@ msgstr "Vos sms"
 msgid "Create a new reminder"
 msgstr "Créez un nouveau sms"
 
-#: templates/base.html:5 templates/base.html.py:36
+#: templates/base.html:6 templates/base.html.py:37
 msgid "Don't forget grandma!"
 msgstr "N'oublie pas mamie !"
 
-#: templates/base.html:44
+#: templates/base.html:45
 msgid "Log in"
 msgstr "Se connecter"
 
