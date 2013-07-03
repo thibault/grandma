@@ -1,11 +1,17 @@
+import logging
+
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 from annoying.decorators import render_to
+
 from reminders.models import Reminder
 from reminders.forms import ReminderForm
 from reminders.tables import ReminderTable
+
+
+logger = logging.getLogger(__name__)
 
 
 @render_to('create_reminder.html')
@@ -26,6 +32,7 @@ def reminder_form_view(request, next_url):
         reminder.created_by_ip = ip_address
         reminder.save()
 
+        logger.info('Created new reminder %d' % reminder.id)
         message = _('Your reminder was saved successfully. Sleep tight.')
         messages.success(request, message)
 
