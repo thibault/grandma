@@ -126,7 +126,6 @@ TEMPLATE_DIRS = (
 )
 
 PROJECT_APPS = (
-    'messages',
     'reminders',
     'accounts',
     'contacts',
