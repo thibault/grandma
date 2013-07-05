@@ -86,3 +86,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         message = render_to_string('registration/activation_email.txt',
                                    context)
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [self.email])
+
+    # Those methods are required for admin access
+    @property
+    def is_staff(self):
+        return self.is_superuser
+
+    def has_perm(self, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
