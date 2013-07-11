@@ -40,7 +40,7 @@
                 {{ _('Text messages limit') }}<br />
                 <small>{{ _('How many text messages can you send a month.') }}</small>
             </th>
-            <td>Illimited (with a fair use policy)</td>
+            <td>{{ _('Illimited (with a fair use policy*)') }}</td>
             <td>15</td>
         </tr>
         <tr>
@@ -70,4 +70,11 @@
     </tbody>
 
 </table>
+<p>
+{% blocktrans %}
+*Fair use policy: we won't limit the number of monthly outgoing text messages
+unless the usage does not exceeds a reasonable use. We pay for text messages,
+you know? Hint: we consider 75 ~ 100 text messages / month a reasonable use.
+{% endblocktrans %}
+</p>
 {% endblock %}
