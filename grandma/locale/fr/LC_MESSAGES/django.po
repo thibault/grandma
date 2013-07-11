@@ -348,8 +348,8 @@ msgstr ""
 "(pour le moment)."
 
 #: grandma/fields.py:17
-msgid "Please be nice, don't annoy people."
-msgstr "Soyez sympa, n'embêtez pas les gens."
+msgid "Use international format, e.g +336xxxxxxxx"
+msgstr "Utilisez le format international, e.g +336xxxxxx"
 
 #: pages/templates/pricing.html:4
 msgid "Pricing"
@@ -532,6 +532,3 @@ msgstr "ou"
 #: templates/home.html:29
 msgid "View our pricing"
 msgstr "Voir nos prix"
-
-#~ msgid "Use international format, e.g +336xxxxxxxx"
-#~ msgstr "Utilisez le format international, e.g +336xxxxxx"

@@ -14,7 +14,7 @@ class PhoneField(forms.CharField):
         'invalid': _('Use international format e.g +336xxxxxxxx. '
                      'Only french numbers are allowed (for now).'),
     }
-    help_text = _('Please be nice, don\'t annoy people.')
+    help_text = _('Use international format, e.g +336xxxxxxxx')
     placeholder = '+336'
 
     def __init__(self, max_length=20, *args, **kwargs):
