@@ -8,44 +8,7 @@
 <div class="row">
 <div class="span6 offset3 well">
 <form method="post" class="form" action="" id="payment-form">
-    <fieldset>
-        <legend>{{ _('Your account data') }}</legend>
-        {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
-    </fieldset>
-
-    <fieldset>
-        <legend>{{ _('Billing information') }}</legend>
-
-        <p class="help-block">
-            {{ _('Our pricing is 4,95€ / month. 30 days trial for free.') }}
-            {{ _('Your payment will be secured by Paymill, our payment partner.') }}
-            <a href="#help-modal" data-toggle="modal">{{ _('Do you want to know more?') }}</a>
-        </p>
-
-        <div id="payment-errors"></div>
-
-        <div class="controls">
-            <label>{{ _('Credit card number:') }}</label>
-            <input class="card-number input-block-level" type="text" />
-        </div>
-
-        <div class="controls">
-            <label>{{ _('Holder name:') }}</label>
-            <input class="card-holdername input-block-level" type="text"
-                    pattern="\w+ \w+.*" />
-        </div>
-
-        <div class="controls">
-            <label>{{ _('Validation code:') }}</label>
-            <input class="card-cvc input-block-level" type="text" size="4" />
-        </div>
-
-        <div class="controls">
-            <label>{{ _('Expiration date (MM/YYYY):') }}</label>
-            <input class="card-expiry-month span3" type="text" size="2" />
-            <input class="card-expiry-year span3" type="text" size="4" />
-        </div>
-    </fieldset>
+    {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
 
     <div class="form-actions">
         <p>{% blocktrans %}
@@ -53,90 +16,11 @@
         agreed to the <a target="_blank" href="/pages/cgv/">Service Agreement</a>
         (It will open in a new window).
         {% endblocktrans %}</p>
-        <input id="submit-btn" type="submit" value="{{ _('Register') }}" class="btn btn-primary btn-large btn-block" />
+        <input id="submit-btn" type="submit" value="{{ _('Register for free') }}" class="btn btn-primary btn-large btn-block" />
     </div>
 
 </form>
 
 </div>
 </div>
-
-<div id="help-modal" class="modal hide fade">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>{{ _('Secured payment') }}</h3>
-    </div>
-    <div class="modal-body">
-        <p>{{ _('Your payment data is secured by our partner, Paymill.') }}
-        {{ _('It will never be sent to our own server.') }}</p>
-    </div>
-</div>
-{% endblock %}
-
-{% block extra-js %}
-<script type="text/javascript">
-    var PAYMILL_PUBLIC_KEY = '{{ PAYMILL_PUBLIC_KEY }}';
-</script>
-<script type="text/javascript" src="https://bridge.paymill.com/"></script>
-<script type="text/javascript">
-
-$(document).ready(function() {
-    var payment_form = $('#payment-form');
-    var submit_button = $('#submit-btn');
-    var payment_errors = $('#payment-errors');
-
-    payment_form.submit(function(e) {
-        e.preventDefault();
-        hideError();
-
-        if (false == paymill.validateCardNumber($('.card-number').val())) {
-            showError("{{ _('Invalid card number') }}");
-            return false;
-        }
-
-        if (false == paymill.validateCvc($('.card-cvc').val())) {
-            showError("{{ _('Invalid validation code') }}");
-            return false;
-        }
-
-        if (false == paymill.validateExpiry($('.card-expiry-month').val(), $('.card-expiry-year').val())) {
-            showError("{{ _('Invalid expiration date') }}");
-            return false;
-        }
-
-        paymill.createToken({
-            number: $('.card-number').val(),
-            exp_month: $('.card-expiry-month').val(),
-            exp_year: $('.card-expiry-year').val(),
-            cvc: $('.card-cvc').val(),
-            cardholder: $('.card-holdername').val(),
-            currency: 'EUR',
-            amount_int: '1',
-            }, PaymillResponseHandler);
-    });
-
-    function showError(error) {
-        payment_errors.text(error);
-        payment_errors.addClass('alert alert-error');
-        submit_button.removeAttr("disabled");
-    }
-
-    function hideError() {
-        payment_errors.text("");
-        payment_errors.removeClass('alert alert-error');
-        submit_button.attr('disabled', 'disabled');
-    }
-
-    function PaymillResponseHandler(error, result) {
-        if (error) {
-            showError('{{ _('Oops! An error occured.') }}');
-        } else {
-            hideError();
-            var token = result.token;
-            payment_form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
-            payment_form.get(0).submit();
-        }
-    }
-});
-</script>
 {% endblock %}

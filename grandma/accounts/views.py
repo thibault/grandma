@@ -24,36 +24,9 @@ def register(request):
     form = RegistrationForm(request.POST or None)
 
     if form.is_valid():
-        token = request.POST['paymillToken']
-
-        try:
-            # Let's request a payment with our provider
-            client = card = subscription = None
-            py = pymill.Pymill(settings.PAYMILL_PRIVATE_KEY)
-            client = py.new_client(form.cleaned_data['email'])
-            card = py.new_card(token, client.id)
-            offer_id = settings.PAYMILL_OFFER_ID
-            subscription = py.new_subscription(client.id, offer_id, card.id)
-        except Exception:
-            logger.error('Payment error token:%(token)s client:%(client)s '
-                         'card:%(card)s' % {
-                             'token': token,
-                             'client': client.id if client else 'NC',
-                             'card': card.id if card else 'NC'})
-            message = _('There was a problem processing your credit card. '
-                        'Your account was not created. Please, try again in '
-                        'a few minutes or with different payment informations.')
-            messages.error(request, message)
-            return {'form': form}
-
-        # So payment was created, and form data is valid
-        # Let's create this user account
         data = form.cleaned_data
         user = User.objects.create_user(data['email'], data['phone'],
-                                        is_active=False,
-                                        paymill_client_id=client.id,
-                                        paymill_card_id=card.id,
-                                        paymill_subscription_id=subscription.id)
+                                        is_active=False)
         user.reset_activation_key()
         user.send_activation_key()
         message = _('Congratulations! Your account was created. You will receive '
@@ -63,7 +36,6 @@ def register(request):
 
     return {
         'form': form,
-        'PAYMILL_PUBLIC_KEY': settings.PAYMILL_PUBLIC_KEY,
     }
 
 
