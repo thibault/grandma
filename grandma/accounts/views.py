@@ -1,12 +1,11 @@
 import logging
-import pymill
 
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import redirect, get_object_or_404
 from annoying.decorators import render_to
-from django.conf import settings
 
+from billing.models import Plan
 from accounts.forms import PasswordRequestForm, PasswordResetForm, RegistrationForm
 from accounts.models import User
 
@@ -16,7 +15,10 @@ logger = logging.getLogger(__name__)
 
 @render_to('my_account.html')
 def my_account(request):
-    return {}
+    plans = Plan.objects.order_by('-price').all()
+    return {
+        'plans': plans,
+    }
 
 
 @render_to('register.html')
