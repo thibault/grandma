@@ -7,7 +7,9 @@ from accounts.models import User
 
 
 class RegistrationForm(forms.Form):
-    email = forms.EmailField(label=_('Your email'), max_length=254)
+    email = forms.EmailField(label=_('Your email'), max_length=254,
+                             help_text=_('We will send your activation mail '
+                                         'at this address, so check it twice.'))
     phone = PhoneField(label=_('Your mobile phone'))
 
     def clean_email(self):
