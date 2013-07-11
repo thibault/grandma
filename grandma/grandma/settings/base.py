@@ -129,6 +129,7 @@ PROJECT_APPS = (
     'reminders',
     'accounts',
     'contacts',
+    'billing',
     'pages',
     'analytics',
 )

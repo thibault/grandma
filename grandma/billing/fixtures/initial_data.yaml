@@ -1,0 +1,13 @@
+- model: billing.plan
+  pk: 1
+  fields:
+    name: 'Free'
+    slug: 'free'
+    price: 0
+
+- model: billing.plan
+  pk: 2
+  fields:
+    name: 'Premium'
+    slug: 'premium'
+    price: '4.95'
