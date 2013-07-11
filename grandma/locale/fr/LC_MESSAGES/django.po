@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 15:28+0200\n"
+"POT-Creation-Date: 2013-07-09 16:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -320,7 +320,7 @@ msgstr "Il n'y a rien ici (pour le moment)."
 msgid "Your new contact was created"
 msgstr "Votre nouveau contact vient d'être créé. Poil au nez."
 
-#: contacts/views.py:36 reminders/views.py:65
+#: contacts/views.py:36 reminders/views.py:72
 msgid "Selected reminders were deleted"
 msgstr "Les sms sélectionnés ont été supprimés."
 
@@ -468,7 +468,7 @@ msgstr "quand"
 msgid "There are no reminders here (yet)."
 msgstr "Il n'y a rien ici (pour le moment)."
 
-#: reminders/views.py:29
+#: reminders/views.py:36
 msgid "Your reminder was saved successfully. Sleep tight."
 msgstr "Votre sms vient d'être programmé."
 
@@ -495,6 +495,10 @@ msgstr "N'oublie pas mamie !"
 #: templates/base.html:45
 msgid "Log in"
 msgstr "Se connecter"
+
+#: templates/base.html:75
+msgid "Source code"
+msgstr "Code source"
 
 #: templates/home.html:5
 msgid "Plan your text messages"
