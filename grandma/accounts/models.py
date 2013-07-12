@@ -43,6 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     activation_key = models.CharField(_('activation key'), max_length=40,
                                       null=True, blank=True)
+    is_paying = models.BooleanField(_('Paying customer?'), default=False)
     is_active = models.BooleanField(
         _('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
