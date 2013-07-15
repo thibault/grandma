@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <h1>{{ _('My account') }}</h1>
 
-<p>{{ _('Coming soon') }}</p>
-<p>{{ _('Any question or request? Mail me at thibault@miximum.fr') }}</p>
+{% blocktrans with formated_date=next_charge|date:"DATE_FORMAT" %}
+Next billing date: {{ formated_date }}
+{% endblocktrans %}
+
 {% endblock %}

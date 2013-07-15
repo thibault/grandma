@@ -1,5 +1,6 @@
 import logging
 import pymill
+from datetime import datetime
 
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
@@ -16,7 +17,14 @@ logger = logging.getLogger(__name__)
 
 @render_to('my_account.html')
 def my_account(request):
-    return {}
+    py = pymill.Pymill(settings.PAYMILL_PRIVATE_KEY)
+    py_client = py.get_client(request.user.paymill_client_id)
+    py_subscription = pymill.Subscription(**py_client.subscription[0])
+    next_charge = datetime.fromtimestamp(py_subscription.next_capture_at)
+
+    return {
+        'next_charge': next_charge,
+    }
 
 
 @render_to('register.html')
