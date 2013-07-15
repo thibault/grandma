@@ -22,6 +22,10 @@ def my_account(request):
 @render_to('register.html')
 def register(request):
     form = RegistrationForm(request.POST or None)
+    context = {
+        'form': form,
+        'PAYMILL_PUBLIC_KEY': settings.PAYMILL_PUBLIC_KEY,
+    }
 
     if form.is_valid():
         token = request.POST['paymillToken']
@@ -44,7 +48,7 @@ def register(request):
                         'Your account was not created. Please, try again in '
                         'a few minutes or with different payment informations.')
             messages.error(request, message)
-            return {'form': form}
+            return context
 
         # So payment was created, and form data is valid
         # Let's create this user account
@@ -61,10 +65,7 @@ def register(request):
         messages.success(request, message)
         return redirect('login')
 
-    return {
-        'form': form,
-        'PAYMILL_PUBLIC_KEY': settings.PAYMILL_PUBLIC_KEY,
-    }
+    return context
 
 
 @render_to('password_reset.html')
