@@ -100,6 +100,6 @@ class MyAccountTests(TestCase):
 
     @patch('pymill.Pymill', MagicMock())
     @patch('pymill.Subscription', subscription_mock)
-    def test_password_reset(self):
+    def test_next_billing_date_display(self):
         res = self.client.get(self.account_url)
         self.assertContains(res, 'Next billing date: Aug. 14, 2013')
