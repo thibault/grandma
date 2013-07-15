@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import activate
 from django.contrib.auth import authenticate
 
-from mock import patch, Mock
+from mock import patch, Mock, MagicMock
 
 from accounts.models import User
 from accounts.tests.factories import UserFactory
@@ -84,3 +84,45 @@ class PasswordsTests(TestCase):
         self.assertContains(res, 'Your new password was saved successfully')
         user = authenticate(username='toto@tata.com', password='toto')
         self.assertIsNotNone(user)
+
+
+# Fake data for the paymill api "get_client" method
+api_mock_value = {
+    'app_id': None,
+    'created_at': 1373879862,
+    'description': None,
+    'email': 'toto@tata.com',
+    'id': 'client_123456',
+    'subscription': [{
+        'offer': {},
+        'payment': {},
+        'trial_start': 1373879863,
+        'cancel_at_period_end': False,
+        'canceled_at': None,
+        'created_at': 1373879863,
+        'livemode': False,
+        'updated_at': 1373879863,
+        'app_id': None,
+        'trial_end': 1376471863,
+        'client': u'client_123456',
+        'next_capture_at': 1376471863,  # Aug 14 2013
+        'id': u'sub_d511623511fdb52f451a'
+    }],
+    'updated_at': 1373879862,
+}
+paymill_my_account_mock = MagicMock()  # MagicMock allows indexing
+paymill_my_account_mock.get_client.return_value = api_mock_value
+
+
+class MyAccountTests(TestCase):
+
+    def setUp(self):
+        self.user = UserFactory.create()
+        self.client.login(username='toto@tata.com', password='1234')
+        self.account_url = reverse('my_account')
+        activate('en')
+
+    @patch('pymill.Pymill', paymill_my_account_mock)
+    def test_password_reset(self):
+        res = self.client.get(self.account_url)
+        self.assertContains(res, 'Next billing date: Aug 14, 2013')
