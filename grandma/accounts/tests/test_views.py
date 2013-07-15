@@ -14,14 +14,15 @@ class Empty:
     id = 'value'
 mock_data = Empty()
 
-paymill_mock = Mock()
-instance = paymill_mock.return_value
+paymill_register_mock = Mock()
+instance = paymill_register_mock.return_value
 instance.new_client.return_value = mock_data
 instance.new_card.return_value = mock_data
 instance.new_subscription.return_value = mock_data
 
 
 class RegisterTests(TestCase):
+    """Test registering user, mocking the paymill lib."""
 
     def setUp(self):
         self.url = reverse('register')
@@ -31,7 +32,7 @@ class RegisterTests(TestCase):
             'paymillToken': 'random_token',
         }
 
-    @patch('pymill.Pymill', paymill_mock)
+    @patch('pymill.Pymill', paymill_register_mock)
     def test_signing_up_creates_new_account(self):
         self.assertEqual(User.objects.all().count(), 0)
         res = self.client.post(self.url, self.data)
@@ -41,6 +42,8 @@ class RegisterTests(TestCase):
 
 
 class PasswordsTests(TestCase):
+    """Testing the password reset feature."""
+
     def setUp(self):
         self.reset_url = reverse('password_reset')
         self.confirm_url = reverse('password_reset_confirm', args=['random_key'])
