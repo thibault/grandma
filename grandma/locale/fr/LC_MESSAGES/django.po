@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-15 17:05+0200\n"
+"POT-Creation-Date: 2013-07-15 17:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,34 +397,42 @@ msgid "Illimited"
 msgstr "Illimité"
 
 #: pages/templates/pricing.html:42
+msgid "International text messages"
+msgstr "Sms internationaux"
+
+#: pages/templates/pricing.html:43
+msgid "Send text messages to many countries"
+msgstr "Tout un tas de pays joignables"
+
+#: pages/templates/pricing.html:51
 msgid "Address book"
 msgstr "Carnet d'adresse"
 
-#: pages/templates/pricing.html:43
+#: pages/templates/pricing.html:52
 msgid "Store as many contacts as you like"
 msgstr "Stockez autant de contacts que vous voulez"
 
-#: pages/templates/pricing.html:51
+#: pages/templates/pricing.html:60
 msgid "Text messages archives"
 msgstr "Archivages des sms"
 
-#: pages/templates/pricing.html:52
+#: pages/templates/pricing.html:61
 msgid "Store and browse your past text messages"
 msgstr "Stockez et parcourez vos sms archivés"
 
-#: pages/templates/pricing.html:60
+#: pages/templates/pricing.html:69
 msgid "Sms length"
 msgstr "Taille des sms"
 
-#: pages/templates/pricing.html:61
+#: pages/templates/pricing.html:70
 msgid "How many characters can you use for each text message"
 msgstr "Nombre de caractères disponibles par sms."
 
-#: pages/templates/pricing.html:69
+#: pages/templates/pricing.html:78
 msgid "Ad free"
 msgstr "Sans pub"
 
-#: pages/templates/pricing.html:70
+#: pages/templates/pricing.html:79
 msgid "Use the site with no ads"
 msgstr "Utilisez le site sans aucune publicité"
 
