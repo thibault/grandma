@@ -42,4 +42,11 @@ NEXMO_FROM = 'Grandma'
 PAYMILL_PUBLIC_KEY = '17525186687258c77db2ac5ba2a940d6'
 PAYMILL_PRIVATE_KEY = 'cd3ddf7e028d1a8790b6605022153074'
 PAYMILL_URL = 'https://api.paymill.com/v2/'
+
+# Overwrite this in a local settings file
 PAYMILL_OFFER_ID = 'offer_7aafd70596c34e87335c'
+
+try:
+    from dev_local import *  # noqa
+except ImportError:
+    pass
