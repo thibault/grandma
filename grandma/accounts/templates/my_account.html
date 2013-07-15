@@ -4,8 +4,16 @@
 {% block content %}
 <h1>{{ _('My account') }}</h1>
 
+<p>
 {% blocktrans with formated_date=next_charge|date:"DATE_FORMAT" %}
-Next billing date: {{ formated_date }}
+Next billing date: {{ formated_date }}.
 {% endblocktrans %}
+</p>
+
+<p>
+{% blocktrans %}
+To ask for an invoice or closing your account, <a href="mailto:thibault@dontforgetgrandma.com">please contact me</a>.
+{% endblocktrans %}
+</p>
 
 {% endblock %}
