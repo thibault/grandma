@@ -1,49 +1,79 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <h1>{{ _('Pricing') }}</h1>
 
-<table class="table table-striped pricing">
+<table id="pricing" class="table table-bordered table-striped center">
     <thead>
         <tr>
             <th></th>
+            <th>{{ _('Premium') }}</th>
             <th>{{ _('Free') }}</th>
-            <th>{{ _('Paying') }}</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <th>{{ _('Reminders per day') }}</th>
-            <td>3</td>
-            <td>{{ _('Unlimited') }}</td>
-        </tr>
-        <tr>
-            <th>{{ _('Account management') }}</th>
-            <td>{{ _('No') }}</td>
-            <td>{{ _('Yes') }}</td>
-        </tr>
-        <tr>
-            <th>{{ _('Address book') }}</th>
-            <td>{{ _('No') }}</td>
-            <td>{{ _('Yes') }}</td>
-        </tr>
-        <tr>
-            <th>{{ _('Free trial') }}</th>
-            <td></td>
-            <td>{{ _('30 days') }}</td>
-        </tr>
-    </tbody>
+
     <tfoot>
         <tr>
-            <th>{{ _('Monthly subscription') }}</th>
-            <th>0€</th>
-            <th>4,95€</th>
-        </tr>
-        <tr>
             <th></th>
-            <th><a class="btn btn-large btn-success" href="{% url 'home' %}">{{ _('Use') }}</a></th>
-            <th><a class="btn btn-large btn-success" href="{% url 'register' %}">{{ _('Sign up') }}</a></th>
+            <th><a class="btn btn-large btn-warning" href="{% url 'register' %}">
+                {{ _('4,95€ / month') }}<br />
+                {{ _('Sign up') }}
+            </a></th>
+            <th><a class="btn btn-large btn-success" href="{% url 'home' %}">
+                {{ _('0€ / month') }}</br />
+                {{ _('Use') }}</a>
+            </th>
         </tr>
     </tfoot>
+
+    <tbody>
+        <tr>
+            <th>
+                {{ _('Text messages limit') }}<br />
+                <span class="help-inline">{{ _('How many text messages can you send a day') }}</span>
+            </th>
+            <td>{{ _('Illimited') }}</td>
+            <td>3</td>
+        </tr>
+
+        <tr>
+            <th>
+                {{ _('Address book') }}<br />
+                <span class="help-inline">{{ _('Store as many contacts as you like') }}</span>
+            </th>
+            <td><i class="icon-ok"></i></td>
+            <td><i class="icon-remove"></i></td>
+        </tr>
+
+        <tr>
+            <th>
+                {{ _('Text messages archives') }} <br />
+                <span class="help-inline"> {{ _('Store and browse your past text messages') }} </span>
+            </th>
+            <td><i class="icon-ok"></i></td>
+            <td><i class="icon-remove"></i></td>
+        </tr>
+
+        <tr>
+            <th>
+                {{ _('Sms length') }} <br />
+                <span class="help-inline">{{ _('How many characters can you use for each text message') }} </span>
+            </th>
+            <td>150</td>
+            <td>150</td>
+        </tr>
+
+        <tr>
+            <th>
+                {{ _('Ad free') }} <br />
+                <span class="help-inline">{{ _('Use the site with no ads') }} </span>
+            </th>
+            <td><i class="icon-ok"></i></td>
+            <td><i class="icon-ok"></i></td>
+        </tr>
+
+    </tbody>
+
 </table>
 {% endblock %}
