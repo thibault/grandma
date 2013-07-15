@@ -10,6 +10,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^reminders/', include('reminders.urls')),
     url(r'^account/', include('accounts.urls')),
+    url(r'^billing/', include('billing.urls')),
     url(r'^contacts/', include('contacts.urls')),
     url(r'^pages/', include('pages.urls')),
     url(r'^nexmo/', include('nexmo.urls')),

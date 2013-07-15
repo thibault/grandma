@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h1>{{ _('My account') }}</h1>
+
+<table id="pricing" class="table table-bordered table-striped center">
+    <thead>
+        <tr>
+            <th></th>
+            <th>{{ _('Premium') }}</th>
+            <th>{{ _('Free') }}</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th></th>
+            {% for plan in plans %}
+                <th>
+                {% if plan = current_plan %}
+                    <button class="{{ plan.slug }} current btn btn-success input-medium disabled">
+                        {{ plan.price }} <br />
+                        {{ _('Current plan') }}
+                    </button>
+                {% else %}
+                    <a href="#" class="btn btn-success input-medium">
+                        <strong>{{ plan.price }}</strong>
+                        {{ _('/ month') }} <br />
+                        {{ _('Subscribe now') }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    </tfoot>
+
+    <tbody>
+        <tr>
+            <th>
+                {{ _('Text messages limit') }}<br />
+                <small>{{ _('How many text messages can you send a month.') }}</small>
+            </th>
+            <td>{{ _('100*') }}</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <th>
+                {{ _('Address book limit') }} <br />
+                <small> {{ _('How many contacts can you store in your address book') }} </small>
+            </th>
+            <td>{{ _('Illimited') }}</td>
+            <td>{{ _('Illimited') }}</td>
+        </tr>
+        <tr>
+            <th>
+                {{ _('Sms length') }} <br />
+                <small>{{ _('How many characters can you use for each text message') }} </small>
+            </th>
+            <td>150</td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <th>
+                {{ _('Ad free') }} <br />
+                <small>{{ _('Use the site with no ads') }} </small>
+            </th>
+            <td><i class="icon-ok"></i></td>
+            <td><i class="icon-ok"></i></td>
+        </tr>
+    </tbody>
+
+</table>
+<p>
+{% blocktrans %}
+* Actually, there is no enforced limit, as long as our beloved users keep a
+reasonable use.
+{% endblocktrans %}
+</p>
+{% endblock %}
