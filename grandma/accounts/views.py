@@ -15,9 +15,8 @@ logger = logging.getLogger(__name__)
 
 @render_to('my_account.html')
 def my_account(request):
-    plans = Plan.objects.order_by('-price').all()
     return {
-        'plans': plans,
+        'is_paying': request.user.is_paying,
     }
 
 
