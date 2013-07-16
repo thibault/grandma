@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-16 10:19+0200\n"
+"POT-Creation-Date: 2013-07-16 15:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 msgid "Mobile"
 msgstr "Mobile"
 
-#: accounts/models.py:41 contacts/models.py:11 grandma/fields.py:48
+#: accounts/models.py:41 contacts/models.py:11 grandma/fields.py:49
 #: reminders/models.py:15
 msgid "Use international format, e.g +33612345678"
 msgstr "Utilisez le format international, e.g +33612345678"
@@ -97,14 +97,14 @@ msgstr "Utilisateur"
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: accounts/views.py:55
+#: accounts/views.py:68
 msgid ""
 "There was a problem processing your credit card. Your account was not "
 "created. Please, try again in a few minutes or with different payment "
 "informations."
 msgstr ""
 
-#: accounts/views.py:71
+#: accounts/views.py:84
 msgid ""
 "Congratulations! Your account was created. You will receive your activation "
 "email in  a few seconds."
@@ -112,7 +112,7 @@ msgstr ""
 "Bravo ! votre compte vient d'être créé. Vous allez recevoir votre clé "
 "d'activation dans quelques secondes."
 
-#: accounts/views.py:87
+#: accounts/views.py:100
 msgid ""
 "A new password was sent. It should be there in less than a minute. Enjoy "
 "those few seconds of calm and relaxation."
@@ -120,7 +120,7 @@ msgstr ""
 "Un nouveau mot de passe vient de vous être envoyé par mail. Il devrait être "
 "là sous peu. Profitez-en pour méditer quelques secondes."
 
-#: accounts/views.py:107
+#: accounts/views.py:120
 msgid ""
 "Your new password was saved successfully. You can now login on your account."
 msgstr ""
@@ -172,16 +172,23 @@ msgstr "Un p'tit trou de mémoire ?"
 msgid "Login"
 msgstr "Login"
 
-#: accounts/templates/my_account.html:8
-#, python-format
-msgid ""
-"\n"
-"Next billing date: %(formated_date)s.\n"
-msgstr ""
-"\n"
-"Prochaine facture : %(formated_date)s.\n"
+#: accounts/templates/my_account.html:11
+msgid "Sent text messages"
+msgstr "Sms envoyés"
 
-#: accounts/templates/my_account.html:14
+#: accounts/templates/my_account.html:17
+msgid "Upcoming text messages"
+msgstr "Sms en attente"
+
+#: accounts/templates/my_account.html:25
+msgid "Oops! reload the page"
+msgstr "Oups ! rechargez la page"
+
+#: accounts/templates/my_account.html:27
+msgid "Next billing date"
+msgstr "Prochaine facture"
+
+#: accounts/templates/my_account.html:33
 msgid ""
 "\n"
 "To ask for an invoice or closing your account, <a href=\"mailto:"
@@ -302,6 +309,28 @@ msgstr "Date d'expiration invalide"
 msgid "Oops! An error occured."
 msgstr "Oups ! Quelque chose cloche !"
 
+#: accounts/templates/registration/activation_email.txt:3
+#, python-format
+msgid ""
+"\n"
+"Hi,\n"
+"\n"
+"You just created your account on %(name)s.\n"
+"\n"
+"Before you can use it, you must confirm that this address is valid.\n"
+"\n"
+"Just click on the following link, and you will be all set.\n"
+"\n"
+"http://%(domain)s%(the_url)s\n"
+"\n"
+"See you.\n"
+"%(name)s's team.\n"
+msgstr ""
+
+#: accounts/templates/registration/activation_email_subject.txt:1
+msgid "Your activation key"
+msgstr "Votre clé d'activation"
+
 #: contacts/forms.py:9 contacts/tables.py:8
 msgid "Phone"
 msgstr "Téléphone"
@@ -349,9 +378,13 @@ msgstr "Supprimer"
 msgid "Create"
 msgstr "Créer"
 
-#: grandma/fields.py:46
+#: grandma/fields.py:47
 msgid "Use international format e.g +33612345678."
 msgstr "Utilisez le format international, e.g +33612345678"
+
+#: grandma/fields.py:75
+msgid "Leave empty to send now"
+msgstr ""
 
 #: pages/templates/pricing.html:5
 msgid "Pricing"
@@ -370,7 +403,7 @@ msgid "4,95€ / month"
 msgstr "4,95€ / mois"
 
 #: pages/templates/pricing.html:21 templates/base.html:44
-#: templates/home.html:27
+#: templates/home.html:26
 msgid "Sign up"
 msgstr "Créer un compte"
 
@@ -435,18 +468,18 @@ msgid "Store and browse your past text messages"
 msgstr "Stockez et parcourez vos sms archivés"
 
 #: reminders/forms.py:12
-msgid "Recipient mobile:"
+msgid "Recipient cell:"
 msgstr "Téléphone :"
 
-#: reminders/forms.py:15
+#: reminders/forms.py:14
 msgid "Date and time:"
 msgstr "Date et heure :"
 
-#: reminders/forms.py:16
+#: reminders/forms.py:15
 msgid "Your message:"
 msgstr "Votre message :"
 
-#: reminders/forms.py:43
+#: reminders/forms.py:42
 msgid ""
 "You have exceded the numbers of free reminders a day. Subscribe to an "
 "account to create more."
@@ -499,12 +532,12 @@ msgid "Your reminder was saved successfully. Sleep tight."
 msgstr "Votre sms vient d'être programmé."
 
 #: reminders/templates/create_reminder.html:4
-msgid "Plan a new text message"
-msgstr "Nouveau sms"
+msgid "Schedule a new text message"
+msgstr "Programmez un sms"
 
-#: reminders/templates/create_reminder.html:11 templates/home.html:38
-msgid "Plan a text message"
-msgstr "Planifiez un sms"
+#: reminders/templates/create_reminder.html:11
+msgid "Schedule a text message"
+msgstr "Programmez un sms"
 
 #: reminders/templates/reminder_list.html:5
 msgid "Your reminders"
@@ -522,49 +555,58 @@ msgstr "N'oublie pas mamie !"
 msgid "Log in"
 msgstr "Se connecter"
 
+#: templates/base.html:73
+msgid "Legal information"
+msgstr "Mentions légales"
+
+#: templates/base.html:74
+msgid "Terms and conditions"
+msgstr "Conditions d'utilisation"
+
 #: templates/base.html:75
-msgid "Source code"
+msgid "Get the source"
 msgstr "Code source"
 
+#: templates/base.html:78
+msgid "This is a beta service. Use with care."
+msgstr "Service en bêta. Utilisez avec précautions bla bla bla…"
+
 #: templates/home.html:5
-msgid "Plan your text messages"
-msgstr "Planifiez vos sms"
+msgid "Schedule text messages"
+msgstr "Programmez des sms"
 
-#: templates/home.html:9
+#: templates/home.html:10
 msgid ""
-"\n"
-"<p class=\"lead\">\n"
-"Ce site vous vous permet de planifier des sms pour les envoyer à vous-même "
-"ou vos amis\n"
-"à la date et l'heure souhaitée.\n"
-"</p>\n"
-"\n"
-"<p class=\"lead\">\n"
-"Faites-vous penser à acheter le pain en rentrant du boulot ; rappelez un "
-"événement\n"
-"à vos amis au moment voulu ; programmez vos vœux pour l'anniversaire de\n"
-"votre grand-mère ; et bien d'autres possibilités.\n"
-"</p>\n"
-"\n"
-"<p class=\"lead\">\n"
-"Programmez, oubliez. On s'occupe du reste.\n"
-"</p>\n"
+"Schedule text messages for yourself, your friends or your grandma.\n"
+"They will be delivered at the specified date and time (your messages, not\n"
+"your grandma)."
 msgstr ""
+"Programmez des sms pour vous, vos amis ou votre grand-mère.\n"
+"Ils seront envoyés au moment voulu (vos sms, pas votre grand-mère)."
 
-#: templates/home.html:28
+#: templates/home.html:16
+msgid ""
+"Remind yourself about your grandma's party ; Send sexy messages\n"
+"to your loved-one throughout the day ; Schedule birthday reminders for your "
+"friends.\n"
+msgstr ""
+"Faites-vous penser à acheter le pain en rentrant du boulot ; \n"
+"rappelez un événement à vos amis au moment voulu ; \n"
+"programmez vos vœux pour l'anniversaire de votre grand-mère ; \n"
+"et bien d'autres possibilités.\n"
+
+#: templates/home.html:22
+msgid "Schedule and forget, we will do the rest."
+msgstr "Programmez et oubliez, on s'occupe de tout."
+
+#: templates/home.html:27
 msgid "or"
 msgstr "ou"
 
-#: templates/home.html:29
+#: templates/home.html:28
 msgid "View our pricing"
 msgstr "Voir nos prix"
 
-#~ msgid ""
-#~ "Use international format e.g +336xxxxxxxx. Only french numbers are "
-#~ "allowed (for now)."
-#~ msgstr ""
-#~ "Utilisez le format international (+336xxxxxxxx). Numéros français "
-#~ "seulement (pour le moment)."
-
-#~ msgid "Use international format, e.g +336xxxxxxxx"
-#~ msgstr "Utilisez le format international, e.g +336xxxxxx"
+#: templates/home.html:37
+msgid "Try it for free"
+msgstr "Essayer gratuitement"
