@@ -9,7 +9,7 @@ from reminders.models import Reminder
 
 class ReminderForm(forms.ModelForm):
     phone = PhoneField(required=True,
-                       label=_('Recipient mobile:'),
+                       label=_('Recipient cell:'),
                        widget=forms.TextInput(attrs={'autocomplete': 'off'}))
     when = forms.DateTimeField(required=True,
                                label=_('Date and time:'))
