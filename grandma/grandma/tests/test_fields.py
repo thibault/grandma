@@ -10,7 +10,6 @@ class PhoneFieldTests(TestCase):
         field = PhoneField()
         self.assertEqual(field.clean('+33 6 12 34 56 78'), '+33612345678')
         self.assertEqual(field.clean('+1-234-567-8901'), '+12345678901')
-        self.assertEqual(field.clean('+1-234-567-8901'), '+12345678901')
         self.assertEqual(field.clean('+1 (234) 567-8901'), '+12345678901')
         self.assertEqual(field.clean('+1.234.567.8901'), '+12345678901')
         self.assertEqual(field.clean('+1/234/567/8901'), '+12345678901')
