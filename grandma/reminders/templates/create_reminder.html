@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ _('Plan a new text message') }}</h1>
+<h1>{{ _('Schedule a new text message') }}</h1>
 <div class="row">
 <div class="span6 offset3">
     <form class="well" method="post" action="">
     {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
     <hr />
     <input type="submit" class="btn btn-primary btn-large btn-block"
-           value="{{ _('Plan a text message') }}" />
+           value="{{ _('Schedule a text message') }}" />
 
     </form>
 </div>
