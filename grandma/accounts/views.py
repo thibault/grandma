@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import redirect, get_object_or_404
 from annoying.decorators import render_to
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 from reminders.models import Reminder
 from accounts.forms import PasswordRequestForm, PasswordResetForm, RegistrationForm
@@ -17,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 @render_to('my_account.html')
+@login_required
 def my_account(request):
     next_charge = ''
     try:
