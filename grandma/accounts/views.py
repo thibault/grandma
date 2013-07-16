@@ -32,7 +32,7 @@ def my_account(request):
         pass
 
     qs = Reminder.objects.filter(user=request.user)
-    total_count = qs.count()
+    total_count = qs.filter(sent=True).count()
     upcoming_count = qs.filter(sent=False).count()
 
     return {
