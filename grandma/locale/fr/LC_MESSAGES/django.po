@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-16 15:32+0200\n"
+"POT-Creation-Date: 2013-07-16 17:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,14 +97,14 @@ msgstr "Utilisateur"
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: accounts/views.py:68
+#: accounts/views.py:70
 msgid ""
 "There was a problem processing your credit card. Your account was not "
 "created. Please, try again in a few minutes or with different payment "
 "informations."
 msgstr ""
 
-#: accounts/views.py:84
+#: accounts/views.py:87
 msgid ""
 "Congratulations! Your account was created. You will receive your activation "
 "email in  a few seconds."
@@ -112,7 +112,7 @@ msgstr ""
 "Bravo ! votre compte vient d'être créé. Vous allez recevoir votre clé "
 "d'activation dans quelques secondes."
 
-#: accounts/views.py:100
+#: accounts/views.py:103
 msgid ""
 "A new password was sent. It should be there in less than a minute. Enjoy "
 "those few seconds of calm and relaxation."
@@ -120,7 +120,7 @@ msgstr ""
 "Un nouveau mot de passe vient de vous être envoyé par mail. Il devrait être "
 "là sous peu. Profitez-en pour méditer quelques secondes."
 
-#: accounts/views.py:120
+#: accounts/views.py:123
 msgid ""
 "Your new password was saved successfully. You can now login on your account."
 msgstr ""
@@ -129,8 +129,8 @@ msgstr ""
 
 #: accounts/templates/account_navbar.html:8
 #: accounts/templates/my_account.html:5
-msgid "My account"
-msgstr "Mon compte"
+msgid "My dashboard"
+msgstr "Mon panneau de contrôle"
 
 #: accounts/templates/account_navbar.html:9
 msgid "Log out"
@@ -610,3 +610,6 @@ msgstr "Voir nos prix"
 #: templates/home.html:37
 msgid "Try it for free"
 msgstr "Essayer gratuitement"
+
+#~ msgid "My account"
+#~ msgstr "Mon compte"
