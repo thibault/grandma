@@ -81,6 +81,7 @@ def register(request):
                                         paymill_client_id=client.id,
                                         paymill_card_id=card.id,
                                         paymill_subscription_id=subscription.id)
+        logger.warning('New user created: %s' % user.email)
         user.reset_activation_key()
         user.send_activation_key()
         message = _('Congratulations! Your account was created. You will receive '
