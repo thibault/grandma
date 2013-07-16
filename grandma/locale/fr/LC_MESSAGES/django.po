@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-15 17:24+0200\n"
+"POT-Creation-Date: 2013-07-16 10:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 msgid "Mobile"
 msgstr "Mobile"
 
-#: accounts/models.py:41 contacts/models.py:11 reminders/models.py:15
+#: accounts/models.py:41 contacts/models.py:11 grandma/fields.py:48
+#: reminders/models.py:15
 msgid "Use international format, e.g +33612345678"
 msgstr "Utilisez le format international, e.g +33612345678"
 
@@ -177,6 +178,8 @@ msgid ""
 "\n"
 "Next billing date: %(formated_date)s.\n"
 msgstr ""
+"\n"
+"Prochaine facture : %(formated_date)s.\n"
 
 #: accounts/templates/my_account.html:14
 msgid ""
@@ -184,6 +187,9 @@ msgid ""
 "To ask for an invoice or closing your account, <a href=\"mailto:"
 "thibault@dontforgetgrandma.com\">please contact me</a>.\n"
 msgstr ""
+"\n"
+"Pour demander une facture ou cloturer votre compte, <a href=\"mailto:"
+"thibault@dontforgetgrandma.com\">contactez moi</a>.\n"
 
 #: accounts/templates/password_reset.html:4
 msgid "So, you lost your password?"
@@ -343,17 +349,9 @@ msgstr "Supprimer"
 msgid "Create"
 msgstr "Créer"
 
-#: grandma/fields.py:14
-msgid ""
-"Use international format e.g +336xxxxxxxx. Only french numbers are allowed "
-"(for now)."
-msgstr ""
-"Utilisez le format international (+336xxxxxxxx). Numéros français seulement "
-"(pour le moment)."
-
-#: grandma/fields.py:17
-msgid "Use international format, e.g +336xxxxxxxx"
-msgstr "Utilisez le format international, e.g +336xxxxxx"
+#: grandma/fields.py:46
+msgid "Use international format e.g +33612345678."
+msgstr "Utilisez le format international, e.g +33612345678"
 
 #: pages/templates/pricing.html:5
 msgid "Pricing"
@@ -405,36 +403,36 @@ msgid "Send text messages to many countries"
 msgstr "Tout un tas de pays joignables"
 
 #: pages/templates/pricing.html:51
-msgid "Address book"
-msgstr "Carnet d'adresse"
-
-#: pages/templates/pricing.html:52
-msgid "Store as many contacts as you like"
-msgstr "Stockez autant de contacts que vous voulez"
-
-#: pages/templates/pricing.html:60
-msgid "Text messages archives"
-msgstr "Archivages des sms"
-
-#: pages/templates/pricing.html:61
-msgid "Store and browse your past text messages"
-msgstr "Stockez et parcourez vos sms archivés"
-
-#: pages/templates/pricing.html:69
-msgid "Sms length"
-msgstr "Taille des sms"
-
-#: pages/templates/pricing.html:70
-msgid "How many characters can you use for each text message"
-msgstr "Nombre de caractères disponibles par sms."
-
-#: pages/templates/pricing.html:78
 msgid "Ad free"
 msgstr "Sans pub"
 
-#: pages/templates/pricing.html:79
+#: pages/templates/pricing.html:52
 msgid "Use the site with no ads"
 msgstr "Utilisez le site sans aucune publicité"
+
+#: pages/templates/pricing.html:60
+msgid "Sms length"
+msgstr "Taille des sms"
+
+#: pages/templates/pricing.html:61
+msgid "How many characters can you use for each text message"
+msgstr "Nombre de caractères disponibles par sms."
+
+#: pages/templates/pricing.html:69
+msgid "Address book"
+msgstr "Carnet d'adresse"
+
+#: pages/templates/pricing.html:70
+msgid "Store as many contacts as you like"
+msgstr "Stockez autant de contacts que vous voulez"
+
+#: pages/templates/pricing.html:78
+msgid "Text messages archives"
+msgstr "Archivages des sms"
+
+#: pages/templates/pricing.html:79
+msgid "Store and browse your past text messages"
+msgstr "Stockez et parcourez vos sms archivés"
 
 #: reminders/forms.py:12
 msgid "Recipient mobile:"
@@ -560,3 +558,13 @@ msgstr "ou"
 #: templates/home.html:29
 msgid "View our pricing"
 msgstr "Voir nos prix"
+
+#~ msgid ""
+#~ "Use international format e.g +336xxxxxxxx. Only french numbers are "
+#~ "allowed (for now)."
+#~ msgstr ""
+#~ "Utilisez le format international (+336xxxxxxxx). Numéros français "
+#~ "seulement (pour le moment)."
+
+#~ msgid "Use international format, e.g +336xxxxxxxx"
+#~ msgstr "Utilisez le format international, e.g +336xxxxxx"
