@@ -3,7 +3,7 @@ import datetime
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from grandma.fields import PhoneField
+from grandma.fields import PhoneField, DateTimeOrNowField
 from reminders.models import Reminder
 
 
@@ -11,8 +11,7 @@ class ReminderForm(forms.ModelForm):
     phone = PhoneField(required=True,
                        label=_('Recipient cell:'),
                        widget=forms.TextInput(attrs={'autocomplete': 'off'}))
-    when = forms.DateTimeField(required=True,
-                               label=_('Date and time:'))
+    when = DateTimeOrNowField(label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
                               widget=forms.Textarea(attrs={'rows': 2}))
 
