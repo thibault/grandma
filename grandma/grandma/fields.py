@@ -55,7 +55,7 @@ class PhoneField(forms.CharField):
     def clean(self, value):
         super(PhoneField, self).clean(value)
 
-        value = value.translate(None, '[ \.-_()/]')
+        value = re.sub('[^+\d]', '', value)
 
         if not mobile_re.match(value):
             raise forms.ValidationError(self.error_messages['invalid'])

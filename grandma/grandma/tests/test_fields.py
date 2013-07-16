@@ -24,3 +24,7 @@ class PhoneFieldTests(TestCase):
 
         with self.assertRaises(ValidationError):
             field.clean('04 12 34 56 78')
+
+    def test_unicode_values(self):
+        field = PhoneField()
+        self.assertEqual(field.clean(u'+33 6 12 34 56 78'), '+33612345678')
