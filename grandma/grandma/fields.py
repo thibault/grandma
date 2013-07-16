@@ -2,6 +2,7 @@ import re
 
 from django import forms
 from django.utils.translation import ugettext as _
+from django.utils import timezone
 
 
 # Isn't it an interesting regex?
@@ -53,7 +54,7 @@ class PhoneField(forms.CharField):
             max_length, help_text=self.help_text, *args, **kwargs)
 
     def clean(self, value):
-        super(PhoneField, self).clean(value)
+        value = super(PhoneField, self).clean(value)
 
         value = re.sub('[^+\d]', '', value)
 
@@ -66,3 +67,20 @@ class PhoneField(forms.CharField):
         attrs = super(PhoneField, self).widget_attrs(widget)
         attrs.update({'placeholder': self.placeholder})
         return attrs
+
+
+class DateTimeOrNowField(forms.DateTimeField):
+    """Custom DateTimeField to handle multiple date formats."""
+
+    help_text = _('Leave empty to send now')
+
+    def __init__(self, *args, **kwargs):
+        super(DateTimeOrNowField, self).__init__(
+            help_text=self.help_text,
+            *args, **kwargs)
+
+    def clean(self, value):
+        if value == '':
+            value = timezone.now()
+
+        return super(DateTimeOrNowField, self).clean(value)

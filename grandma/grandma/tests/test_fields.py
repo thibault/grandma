@@ -1,7 +1,10 @@
+import datetime
+
 from django.test import TestCase
 from django.forms import ValidationError
+from django.utils import timezone
 
-from grandma.fields import PhoneField
+from grandma.fields import PhoneField, DateTimeOrNowField
 
 
 class PhoneFieldTests(TestCase):
@@ -27,3 +30,13 @@ class PhoneFieldTests(TestCase):
     def test_unicode_values(self):
         field = PhoneField()
         self.assertEqual(field.clean(u'+33 6 12 34 56 78'), '+33612345678')
+
+
+class DateTimeOrNowFieldTests(TestCase):
+
+    def test_empty_field(self):
+        """Test if empty field is now."""
+        field = DateTimeOrNowField()
+        value = field.clean('')
+        now = timezone.now()
+        self.assertTrue(value - now < datetime.timedelta(seconds=1))
