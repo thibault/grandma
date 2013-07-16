@@ -1,1 +1,1 @@
-Votre clé d'activation
+{{ _('Your activation key') }}

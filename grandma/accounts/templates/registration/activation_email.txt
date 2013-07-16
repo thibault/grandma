@@ -1,14 +1,16 @@
-Bonjour,
+{% load i18n %}
+{% url 'password_reset_confirm' activation_key as the_url %}
+{% blocktrans with name=site.name domain=site.domain %}
+Hi,
 
-Vous venez de créer votre compte sur {{ site.name }}.
+You just created your account on {{ name }}.
 
-Avant de pouvoir l'utiliser, il faut simplement nous confirmer que cette
-adresse email est valide.
+Before you can use it, you must confirm that this address is valid.
 
-Pour ce faire, il vous suffit de cliquer sur le lien suivant, et de choisir
-votre mot de passe.
+Just click on the following link, and you will be all set.
 
-http://{{ site.domain }}{% url 'password_reset_confirm' activation_key %}
+http://{{ domain}}{{ the_url }}
 
-À trés bientôt.
-L'équipe de {{ site.name }}.
+See you.
+{{ name }}'s team.
+{% endblocktrans %}
