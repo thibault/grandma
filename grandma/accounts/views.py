@@ -8,6 +8,7 @@ from django.shortcuts import redirect, get_object_or_404
 from annoying.decorators import render_to
 from django.conf import settings
 
+from reminders.models import Reminder
 from accounts.forms import PasswordRequestForm, PasswordResetForm, RegistrationForm
 from accounts.models import User
 
@@ -17,13 +18,25 @@ logger = logging.getLogger(__name__)
 
 @render_to('my_account.html')
 def my_account(request):
-    py = pymill.Pymill(settings.PAYMILL_PRIVATE_KEY)
-    py_client = py.get_client(request.user.paymill_client_id)
-    py_subscription = pymill.Subscription(**py_client.subscription[0])
-    next_charge = datetime.fromtimestamp(py_subscription.next_capture_at)
+    next_charge = ''
+    try:
+        py = pymill.Pymill(settings.PAYMILL_PRIVATE_KEY)
+        py_client = py.get_client(request.user.paymill_client_id)
+        py_subscription = pymill.Subscription(**py_client.subscription[0])
+        next_charge = datetime.fromtimestamp(py_subscription.next_capture_at)
+    except:
+        # In case of error, we'll just display an error message
+        # So do nothing here
+        pass
+
+    qs = Reminder.objects.filter(user=request.user)
+    total_count = qs.count()
+    upcoming_count = qs.filter(sent=False).count()
 
     return {
         'next_charge': next_charge,
+        'total_count': total_count,
+        'upcoming_count': upcoming_count,
     }
 
 

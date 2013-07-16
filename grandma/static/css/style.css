@@ -53,6 +53,14 @@ table#pricing span.help-inline {
     font-style: italic;
     color: #999;
 }
+#dashboard .well {
+    text-align: center;
+}
+#dashboard .well span {
+    font-size: 150%;
+    font-weight: bold;
+    display: block;
+}
 /*!
  * Datetimepicker for Bootstrap
  *

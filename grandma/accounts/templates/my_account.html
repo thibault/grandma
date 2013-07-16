@@ -4,11 +4,30 @@
 {% block content %}
 <h1>{{ _('My account') }}</h1>
 
-<p>
-{% blocktrans with formated_date=next_charge|date:"DATE_FORMAT" %}
-Next billing date: {{ formated_date }}.
-{% endblocktrans %}
-</p>
+<div id="dashboard" class="row">
+<div class="span4">
+    <div class="well">
+        <span>{{ total_count }}</span>
+        <a href="{% url 'sent_reminders' %}">{{ _('Sent text messages') }}</a>
+    </div>
+</div>
+<div class="span4">
+    <div class="well">
+        <span>{{ upcoming_count }}</span>
+        <a href="{% url 'pending_reminders' %}">{{ _('Upcoming text messages') }}</a>
+    </div>
+</div>
+<div class="span4">
+    <div class="well">
+        {% if next_charge %}
+            <span>{{ next_charge|date:"DATE_FORMAT" }}</span>
+        {% else %}
+            <span>{{ _('Oops! reload the page') }}</span>
+        {% endif %}
+        {% trans 'Next billing date' %}
+    </div>
+</div>
+</div>
 
 <p>
 {% blocktrans %}
