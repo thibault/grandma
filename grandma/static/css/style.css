@@ -61,6 +61,12 @@ table#pricing span.help-inline {
     font-weight: bold;
     display: block;
 }
+.thumbnails img {
+    border-bottom: 1px solid #ccc;
+}
+#features .span4 {
+    text-align: center;
+}
 /*!
  * Datetimepicker for Bootstrap
  *
