@@ -13,7 +13,8 @@ class ReminderForm(forms.ModelForm):
                        widget=forms.TextInput(attrs={'autocomplete': 'off'}))
     when = DateTimeOrNowField(label=_('Date and time:'))
     message = forms.CharField(label=_('Your message:'),
-                              widget=forms.Textarea(attrs={'rows': 2}))
+                              widget=forms.Textarea(attrs={'rows': 2}),
+                              help_text=_('Don\'t forget to sign your message'))
 
     class Meta:
         model = Reminder

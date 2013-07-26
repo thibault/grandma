@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-26 16:47+0200\n"
+"POT-Creation-Date: 2013-07-26 16:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,7 +479,11 @@ msgstr "Date et heure :"
 msgid "Your message:"
 msgstr "Votre message :"
 
-#: reminders/forms.py:42
+#: reminders/forms.py:17
+msgid "Don't forget to sign your message"
+msgstr "N'oubliez pas de signer !"
+
+#: reminders/forms.py:43
 msgid ""
 "You have exceded the numbers of free reminders a day. Subscribe to an "
 "account to create more."
