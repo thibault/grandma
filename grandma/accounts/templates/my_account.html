@@ -20,7 +20,7 @@
 <div class="span4">
     <div class="well">
         {% if next_charge %}
-            <span>{{ next_charge|date:"DATE_FORMAT" }}</span>
+            <span id="next-billing">{{ next_charge|date:"DATE_FORMAT" }}</span>
         {% else %}
             <span>{{ _('Oops! reload the page') }}</span>
         {% endif %}
