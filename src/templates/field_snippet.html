@@ -1,19 +1,21 @@
 {% load widget_tweaks %}
 
-<div class="control-group
-    {% if field.field.required %}required{% endif %}
-    {% if field.errors %}error{% endif %}">
+<div class="form-group">
 
-    <label for="id_{{ field.name }}" class="control-label">{{ field.label }}</label>
-    <div class="controls">
-        {% if field.errors %}
-            {{ field.errors }}
-        {% endif %}
+    <label for="{{ field.id }}" class="control-label">
+        {{ field.label }}
+    </label>
+    {{ field|add_class:"form-control" }}
 
-        {% render_field field class+=inputclass%}
+    {% if field.help_text %}
+        <span class="help-block">({{ field.help_text }})</span>
+    {% endif %}
 
-        {% if field.help_text %}
-            <p class="help-block">{{ field.help_text }}</p>
-        {% endif %}
-    </div>
+    {% if field.errors %}
+    <p class="alert alert-danger">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+        {{ field.errors.0 }}
+    </p>
+    {% endif %}
+
 </div>
