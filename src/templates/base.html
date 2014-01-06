@@ -31,21 +31,18 @@
 
             {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
+                <div {% if message.tags %} class="alert alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %}>
                     {{ message|safe }}
                 </div>
             {% endfor %}
             {% endif %}
 
-            <div class="row"> <div class="span12">
             {% block content %} {% endblock %}
-            </div> </div>
 
         </div>
 
         <footer>
             <div class="container">
-            <div class="row"> <div class="span12">
                 <p>
                     &copy; 2013 Thibault Jouannic – <a href="http://www.miximum.fr">Miximum.fr</a>
                     — <a href="{% url 'mentions_legales' %}">{{ _('Legal information') }}</a>
@@ -55,7 +52,6 @@
                 <p>
                     {{ _('This is a beta service. Use with care.') }}
                 </p>
-            </div> </div>
             </div>
         </footer>
 
