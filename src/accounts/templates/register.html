@@ -6,11 +6,11 @@
 <h1 class="center">{{ _('Create your account') }}</h1>
 
 <div class="row">
-<div class="span6 offset3 well">
+<div class="col-md-6 col-md-offset-3 well">
 <form method="post" class="form" action="" id="payment-form">
     <fieldset>
         <legend>{{ _('Your account data') }}</legend>
-        {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
+        {% include 'form_snippet.html' with form=form %}
     </fieldset>
 
     <fieldset>
@@ -24,26 +24,32 @@
 
         <div id="payment-errors"></div>
 
-        <div class="controls">
+        <div class="form-group">
             <label>{{ _('Credit card number:') }}</label>
-            <input class="card-number input-block-level" type="text" />
+            <input class="card-number form-control" type="text" />
         </div>
 
-        <div class="controls">
+        <div class="form-group">
             <label>{{ _('Holder name:') }}</label>
-            <input class="card-holdername input-block-level" type="text"
+            <input class="card-holdername form-control" type="text"
                     pattern="\w+ \w+.*" />
         </div>
 
-        <div class="controls">
+        <div class="form-group">
             <label>{{ _('Validation code:') }}</label>
-            <input class="card-cvc input-block-level" type="text" size="4" />
+            <input class="card-cvc form-control" type="text" size="4" />
         </div>
 
-        <div class="controls">
+        <div class="form-group">
             <label>{{ _('Expiration date (MM/YYYY):') }}</label>
-            <input class="card-expiry-month span3" type="text" size="2" />
-            <input class="card-expiry-year span3" type="text" size="4" />
+            <div class="row">
+                <div class="col-md-6">
+                    <input class="card-expiry-month form-control" type="text" size="2" />
+                </div>
+                <div class="col-md-6">
+                    <input class="card-expiry-year form-control" type="text" size="4" />
+                </div>
+            </div>
         </div>
     </fieldset>
 

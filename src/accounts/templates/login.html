@@ -4,19 +4,19 @@
 <h1 class="center">{{ _('Sign in') }}</h1>
 
 <div class="row">
-<div class="span4 offset4 well">
+<div class="col-md-6 col-md-offset-3 well">
 <form method="post" class="form" action="">
     {% include 'form_snippet.html' with form=form inputclass="span4" %}
-
-    <p class="center">
-        <a href="{% url 'register' %}">{{ _('Create an account') }}</a> —
-        <a href="{% url 'password_reset' %}">{{ _('Forgot your password?') }}</a>
-    </p>
 
     <div class="form-actions">
         <input type="submit" value="{{ _('Login') }}" class="btn btn-primary btn-large btn-block" />
         <input type="hidden" name="next" value="{% url 'create_reminder' %}" />
     </div>
+
+    <p class="center">
+        <a href="{% url 'register' %}">{{ _('Create an account') }}</a> —
+        <a href="{% url 'password_reset' %}">{{ _('Forgot your password?') }}</a>
+    </p>
 
 </form>
 
