@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+<div class="container">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="hidden-phone navbar-brand" href="{% url 'home' %}">
+            {{ _('Don\'t forget grandma!') }}
+        </a>
+    </div>
+
+
+    {% if user.is_authenticated %}
+        {% include 'account_navbar.html' %}
+    {% else %}
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'register' %}">{{ _('Sign up') }}</a></li>
+            <li><a href="{% url 'login' %}">{{ _('Log in') }}</a></li>
+        </ul>
+    {% endif %}
+
+    </div>
+</nav>
