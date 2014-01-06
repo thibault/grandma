@@ -1,7 +1,7 @@
 *.pyc
 venv
-grandma/grandma/settings/prod_private.py
-grandma/grandma/settings/dev_local.py
+prod_private.py
+dev_local.py
 public/media
 public/static
 ghostdriver.log
