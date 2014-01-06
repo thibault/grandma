@@ -5,7 +5,7 @@
 <h1 class="home">{{ _('Schedule text messages') }}</h1>
 
 <div class="row">
-<div class="span6">
+<div class="col-md-6">
 <p class="lead">
 {% blocktrans %}Schedule text messages for yourself, your friends or your grandma.
 They will be delivered at the specified date and time (your messages, not
@@ -29,7 +29,7 @@ to your loved-one throughout the day ; Schedule birthday reminders for your fr
 </p>
 
 </div>
-<div class="span6">
+<div class="col-md-6">
     <form class="well" method="post" action="">
     {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
     <hr />
@@ -43,16 +43,7 @@ to your loved-one throughout the day ; Schedule birthday reminders for your fr
 <hr />
 
 <div id="features" class="row">
-    <div class="span4">
-        <img src="{{ STATIC_URL }}/img/glyphicons_088_adress_book.png" />
-        <h3>{{ _('Address book') }}</h3>
-        <p>
-            {% blocktrans %}Save your favorites numbers in your address book,
-            so you don't have to remember them every time.
-            {% endblocktrans %}
-        </p>
-    </div>
-    <div class="span4">
+    <div class="col-md-4">
         <img src="{{ STATIC_URL }}/img/glyphicons_266_flag.png" />
         <h3>{{ _('International') }}</h3>
         <p>
@@ -61,13 +52,22 @@ to your loved-one throughout the day ; Schedule birthday reminders for your fr
             {% endblocktrans %}
         </p>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
         <img src="{{ STATIC_URL }}/img/glyphicons_401_github.png" />
         <h3>{{ _('Open-source') }}</h3>
         <p>
             {% blocktrans %}That's right, the <a href="https://github.com/thibault/grandma/">
             code source is fully available on Github</a>. You want to help us
             building a better service? You can.
+            {% endblocktrans %}
+        </p>
+    </div>
+    <div class="col-md-4">
+        <img src="{{ STATIC_URL }}/img/glyphicons_088_adress_book.png" />
+        <h3>{{ _('Address book') }}</h3>
+        <p>
+            {% blocktrans %}Save your favorites numbers in your address book,
+            so you don't have to remember them every time.
             {% endblocktrans %}
         </p>
     </div>

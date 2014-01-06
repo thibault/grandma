@@ -11,6 +11,7 @@ body > footer {
     padding-top: 1em;
     background-color: #333;
     border-top: 1px solid #ccc;
+    text-align: center;
 }
 body > footer a {
     color: white;
@@ -64,7 +65,7 @@ table#pricing span.help-inline {
 .thumbnails img {
     border-bottom: 1px solid #ccc;
 }
-#features .span4 {
+#features .col-md-4 {
     text-align: center;
 }
 /*!
