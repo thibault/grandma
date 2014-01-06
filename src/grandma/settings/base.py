@@ -266,6 +266,7 @@ PIPELINE_CSS = {
     'base': {
         'source_filenames': (
             'css/bootstrap.css',
+            'css/datepicker.css',
             'css/project.css',
         ),
         'output_filename': 'css/base.css',

@@ -5,7 +5,7 @@
 <h1>{{ _('Your address book') }}</h1>
 
 <div class="row">
-<div class="span9">
+<div class="col-md-9">
 <form method="post" action="" id="delete-form">
     {% csrf_token %}
     {% render_table table %}
@@ -16,7 +16,7 @@
 </form>
 </div>
 
-<div class="span3">
+<div class="col-md-3">
 <form method="post" action="" id="delete-form">
     {% include 'form_snippet.html' with form=form %}
     <input type="submit" name="_create" value="{{ _('Create') }}" class="btn btn-block btn-primary" />

@@ -3,9 +3,9 @@
 {% block content %}
 <h1>{{ _('Schedule a new text message') }}</h1>
 <div class="row">
-<div class="span6 offset3">
+<div class="col-md-6 col-md-offset-3">
     <form class="well" method="post" action="">
-    {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
+    {% include 'form_snippet.html' with form=form %}
     <hr />
     <input type="submit" class="btn btn-primary btn-large btn-block"
            value="{{ _('Schedule a text message') }}" />
