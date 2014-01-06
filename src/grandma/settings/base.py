@@ -182,13 +182,14 @@ LOCAL_APPS = (
     'contacts',
     'pages',
     'analytics',
+    'nexmo',
 )
 
 THIRD_PARTY_APPS = (
     'annoying',
     'django_tables2',
     'widget_tweaks',
-    'nexmo',
+    'pipeline',
 )
 
 DJANGO_APPS = (
