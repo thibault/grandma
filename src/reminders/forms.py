@@ -2,6 +2,7 @@ import datetime
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from grandma.fields import PhoneField, DateTimeOrNowField
 from reminders.models import Reminder
@@ -31,17 +32,19 @@ class ReminderForm(forms.ModelForm):
         if self.errors:
             return data
 
-        # Only anonymous users have a rate limit
+        # Anonymous users are no longer allowed
         if not self.user.is_authenticated():
-            today = datetime.date.today()
-            reminders = Reminder.objects.filter(created_by_ip=self.ip_address) \
-                .filter(created_at__year=today.year) \
-                .filter(created_at__month=today.month) \
-                .filter(created_at__day=today.day)
+            raise forms.ValidationError(_('Oops, only authenticated users can'
+                                          ' send reminders.'))
 
-            if reminders.count() >= Reminder.ANONYMOUS_DAILY_LIMIT:
-                raise forms.ValidationError(_('You have exceded the numbers of free '
-                                              'reminders a day. Subscribe to an '
-                                              'account to create more.'))
+        # Check rate limit
+        today = datetime.date.today()
+        reminders = Reminder.objects.filter(user=self.user) \
+            .filter(created_at__year=today.year) \
+            .filter(created_at__month=today.month) \
+
+        if reminders.count() >= settings.MONTHY_REMINDER_LIMIT:
+            raise forms.ValidationError(_('You have exceeded the monthly limit '
+                                          'of reminders for your account'))
 
         return data

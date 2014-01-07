@@ -8,7 +8,9 @@ from reminders.tests.factories import ReminderFactory
 
 class CreateReminderTests(TestCase):
     def test_create_reminder(self):
-        url = reverse('home')
+        self.user = UserFactory(email='toto@tata.com', password='1234')
+        self.client.login(username='toto@tata.com', password='1234')
+        url = reverse('create_reminder')
         data = {
             'message': 'test',
             'phone': '+33612345678',
@@ -17,34 +19,6 @@ class CreateReminderTests(TestCase):
         self.client.post(url, data, follow=True)
         self.assertEqual(Reminder.objects.all().count(), 1)
         self.assertEqual(Reminder.objects.all()[0].message, 'test')
-
-    def test_rate_limit(self):
-        """Anonymous user cannot create more than 3 reminders at once."""
-        url = reverse('home')
-        data = {
-            'message': 'test',
-            'phone': '+33612345678',
-            'when': '2020-10-10 10:45',
-        }
-
-        # First reminder, everything's ok
-        res = self.client.post(url, data, follow=True)
-        self.assertContains(res, 'Sleep tight')
-
-        # Second reminder, ok
-        data.update({'message': 'test2'})
-        res = self.client.post(url, data, follow=True)
-        self.assertContains(res, 'Sleep tight')
-
-        # Third, still ok
-        data.update({'message': 'test3'})
-        res = self.client.post(url, data, follow=True)
-        self.assertContains(res, 'Sleep tight')
-
-        # Fourth, forbidden
-        data.update({'message': 'test4'})
-        res = self.client.post(url, data, follow=True)
-        self.assertNotContains(res, 'Sleep tight')
 
 
 class ReminderListTests(TestCase):
