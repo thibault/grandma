@@ -2,45 +2,20 @@
 {% load i18n %}
 
 {% block content %}
-<h1 class="home">{{ _('Schedule text messages') }}</h1>
 
-<div class="row">
-<div class="col-md-6">
+<div class="jumbotron">
+<h1 class="home">{{ _('Schedule text messages') }}</h1>
 <p class="lead">
 {% blocktrans %}Schedule text messages for yourself, your friends or your grandma.
 They will be delivered at the specified date and time (your messages, not
 your grandma).{% endblocktrans %}
 </p>
 
-<p class="lead">
-{% blocktrans %}Remind yourself about your grandma's party ; Send sexy messages
-to your loved-one throughout the day ; Schedule birthday reminders for your friends.
-{% endblocktrans %}
-</p>
-
-<p class="lead">
-{{ _('Schedule and forget, we will do the rest.') }}
-</p>
-
 <p class="lead center">
-    <a href="{% url 'register' %}" class="btn btn-large btn-warning">{{ _('Sign up') }}</a>
-    {{ _('or') }}
-    <a href="{% url 'pricing' %}" class="btn btn-large btn-success">{{ _('View our pricing') }}</a>
+    <a href="{% url 'pricing' %}" class="btn btn-lg btn-primary">{{ _('View our pricing') }}</a>
 </p>
 
 </div>
-<div class="col-md-6">
-    <form class="well" method="post" action="">
-    {% include 'form_snippet.html' with form=form inputclass="input-block-level" %}
-    <hr />
-    <input type="submit" class="btn btn-primary btn-large btn-block"
-           value="{{ _('Try it for free') }}" />
-
-    </form>
-</div>
-</div>
-
-<hr />
 
 <div id="features" class="row">
     <div class="col-md-4">
@@ -73,8 +48,4 @@ to your loved-one throughout the day ; Schedule birthday reminders for your fr
     </div>
 </div>
 
-{% endblock %}
-
-{% block extra-js %} {{ block.super }}
-{% include 'reminder_form_js.html' %}
 {% endblock %}
