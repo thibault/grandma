@@ -45,6 +45,66 @@ def my_account(request):
 @render_to('register.html')
 def register(request):
     form = RegistrationForm(request.POST or None)
+
+    if form.is_valid():
+
+        data = form.cleaned_data
+        user = User.objects.create_user(data['email'], data['phone'],
+                                        is_active=False)
+        logger.warning('New user created: %s' % user.email)
+        user.reset_activation_key()
+        user.send_activation_key()
+        message = _('Congratulations! Your account was created. You will receive '
+                    'your activation email in  a few seconds.')
+        messages.success(request, message)
+        return redirect('login')
+
+    return {
+        'form': form,
+    }
+
+
+@render_to('password_reset.html')
+def password_reset(request):
+    """Login view using sms code."""
+    form = PasswordRequestForm(request.POST or None)
+    if form.is_valid():
+        user = form.get_user()
+        user.reset_activation_key()
+        user.send_activation_key()
+        messages.success(request, _('A new password was sent. It should be there'
+                                    ' in less than a minute. Enjoy those few '
+                                    'seconds of calm and relaxation.'))
+        return redirect('login')
+
+    return {
+        'form': form,
+    }
+
+
+@render_to('password_reset_confirm.html')
+def password_reset_confirm(request, activation_key):
+    user = get_object_or_404(User, activation_key=activation_key)
+    form = PasswordResetForm(request.POST or None)
+    if form.is_valid():
+        password = form.cleaned_data['password1']
+        user.set_password(password)
+        user.activation_key = None
+        user.is_active = True
+        user.save()
+        msg = _('Your new password was saved successfully. You can now login '
+                'on your account.')
+        messages.success(request, msg)
+        return redirect('login')
+
+    return {
+        'form': form,
+    }
+
+
+@render_to('payment.html')
+def payment(request):
+    form = RegistrationForm(request.POST or None)
     context = {
         'form': form,
         'PAYMILL_PUBLIC_KEY': settings.PAYMILL_PUBLIC_KEY,
@@ -90,41 +150,3 @@ def register(request):
         return redirect('login')
 
     return context
-
-
-@render_to('password_reset.html')
-def password_reset(request):
-    """Login view using sms code."""
-    form = PasswordRequestForm(request.POST or None)
-    if form.is_valid():
-        user = form.get_user()
-        user.reset_activation_key()
-        user.send_activation_key()
-        messages.success(request, _('A new password was sent. It should be there'
-                                    ' in less than a minute. Enjoy those few '
-                                    'seconds of calm and relaxation.'))
-        return redirect('login')
-
-    return {
-        'form': form,
-    }
-
-
-@render_to('password_reset_confirm.html')
-def password_reset_confirm(request, activation_key):
-    user = get_object_or_404(User, activation_key=activation_key)
-    form = PasswordResetForm(request.POST or None)
-    if form.is_valid():
-        password = form.cleaned_data['password1']
-        user.set_password(password)
-        user.activation_key = None
-        user.is_active = True
-        user.save()
-        msg = _('Your new password was saved successfully. You can now login '
-                'on your account.')
-        messages.success(request, msg)
-        return redirect('login')
-
-    return {
-        'form': form,
-    }
