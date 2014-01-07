@@ -14,14 +14,16 @@
     </div>
 
 
-    {% if user.is_authenticated %}
-        {% include 'account_navbar.html' %}
-    {% else %}
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'register' %}">{{ _('Sign up') }}</a></li>
-            <li><a href="{% url 'login' %}">{{ _('Log in') }}</a></li>
-        </ul>
-    {% endif %}
-
+    <div class="navbar-collapse collapse">
+        {% if user.is_authenticated %}
+            {% include 'account_navbar.html' %}
+        {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'register' %}">{{ _('Sign up') }}</a></li>
+                <li><a href="{% url 'login' %}">{{ _('Log in') }}</a></li>
+            </ul>
+        {% endif %}
     </div>
+
+</div>
 </nav>
