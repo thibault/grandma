@@ -37,25 +37,44 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """Actual class for user accounts."""
     objects = UserManager()
-    phone = models.CharField(_('Mobile'), max_length=20,
-                             help_text=_('Use international format, e.g +33612345678'))
-    email = models.EmailField(_('email address'), unique=True)
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-    activation_key = models.CharField(_('activation key'), max_length=40,
-                                      null=True, blank=True)
+    phone = models.CharField(
+        _('Mobile'),
+        max_length=20,
+        help_text=_('Use international format, e.g +33612345678'))
+    email = models.EmailField(
+        _('email address'),
+        unique=True)
+    date_joined = models.DateTimeField(
+        _('date joined'),
+        default=timezone.now)
+    activation_key = models.CharField(
+        _('activation key'),
+        max_length=40,
+        null=True, blank=True)
     is_active = models.BooleanField(
-        _('active'), default=True,
+        _('active'),
+        default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
     is_valid = models.BooleanField(
-        _('valid'), default=False,
+        _('valid'),
+        default=False,
         help_text=_('Designates whether this user has confirmed his '
                     'phone number.'))
 
     # Paymill subscription data
-    paymill_client_id = models.CharField(max_length=100, null=True, blank=True)
-    paymill_card_id = models.CharField(max_length=100, null=True, blank=True)
-    paymill_subscription_id = models.CharField(max_length=100, null=True, blank=True)
+    paymill_client_id = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True)
+    paymill_card_id = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True)
+    paymill_subscription_id = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['phone']
