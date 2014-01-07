@@ -271,6 +271,12 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/base.css',
     },
+    'create_reminder': {
+        'source_filenames': (
+            'css/typeahead-bs.css',
+        ),
+        'output_filename': 'css/create_reminder.css',
+    }
 }
 
 PIPELINE_JS = {
@@ -281,6 +287,15 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/base.js',
     },
+    'create_reminder': {
+        'source_filenames': (
+            'js/bootstrap-datetimepicker.js',
+            'js/locales/bootstrap-datetimepicker.fr.js',
+            'js/typeahead.js',
+            'js/create_reminder.js'
+        ),
+        'output_filename': 'js/reminder.js',
+    }
 }
 ########## END PIPELINE CONFIGURATION
 
