@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.hashers import UNUSABLE_PASSWORD
+from django.contrib.auth.hashers import UNUSABLE_PASSWORD_PREFIX
 
 from grandma.fields import PhoneField
 from accounts.models import User
@@ -39,7 +39,7 @@ class PasswordRequestForm(forms.Form):
         if not any(user.is_active for user in self.users_cache):
             raise forms.ValidationError(self.error_messages['unknown'])
 
-        if any((user.password == UNUSABLE_PASSWORD)
+        if any((user.password.startswith(UNUSABLE_PASSWORD_PREFIX))
                 for user in self.users_cache):
             raise forms.ValidationError(self.error_messages['unusable'])
 
