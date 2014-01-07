@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-26 16:53+0200\n"
+"POT-Creation-Date: 2014-01-07 16:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,61 +50,54 @@ msgstr "Mot de passe (one more time)"
 msgid "The two password fields didn't match."
 msgstr "Les deux mots de passe ne correspondent pas. C'est ballot !"
 
-#: accounts/models.py:40 contacts/models.py:10 reminders/models.py:13
+#: accounts/models.py:41 contacts/models.py:10 reminders/models.py:13
 msgid "Mobile"
 msgstr "Mobile"
 
-#: accounts/models.py:41 contacts/models.py:11 grandma/fields.py:49
+#: accounts/models.py:43 contacts/models.py:11 grandma/fields.py:49
 #: reminders/models.py:15
 msgid "Use international format, e.g +33612345678"
 msgstr "Utilisez le format international, e.g +33612345678"
 
-#: accounts/models.py:42
+#: accounts/models.py:45
 msgid "email address"
 msgstr "adresse email"
 
-#: accounts/models.py:43
+#: accounts/models.py:48
 msgid "date joined"
 msgstr "inscrit le"
 
-#: accounts/models.py:44
+#: accounts/models.py:51
 msgid "activation key"
 msgstr "clé d'activation"
 
-#: accounts/models.py:47
+#: accounts/models.py:55
 msgid "active"
 msgstr "actif"
 
-#: accounts/models.py:48
+#: accounts/models.py:57
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
 
-#: accounts/models.py:51
+#: accounts/models.py:60
 msgid "valid"
 msgstr "valid"
 
-#: accounts/models.py:52
+#: accounts/models.py:62
 msgid "Designates whether this user has confirmed his phone number."
 msgstr ""
 
-#: accounts/models.py:64
+#: accounts/models.py:83
 msgid "User"
 msgstr "Utilisateur"
 
-#: accounts/models.py:65
+#: accounts/models.py:84
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: accounts/views.py:70
-msgid ""
-"There was a problem processing your credit card. Your account was not "
-"created. Please, try again in a few minutes or with different payment "
-"informations."
-msgstr ""
-
-#: accounts/views.py:87
+#: accounts/views.py:57 accounts/views.py:147
 msgid ""
 "Congratulations! Your account was created. You will receive your activation "
 "email in  a few seconds."
@@ -112,7 +105,7 @@ msgstr ""
 "Bravo ! votre compte vient d'être créé. Vous allez recevoir votre clé "
 "d'activation dans quelques secondes."
 
-#: accounts/views.py:103
+#: accounts/views.py:75
 msgid ""
 "A new password was sent. It should be there in less than a minute. Enjoy "
 "those few seconds of calm and relaxation."
@@ -120,12 +113,19 @@ msgstr ""
 "Un nouveau mot de passe vient de vous être envoyé par mail. Il devrait être "
 "là sous peu. Profitez-en pour méditer quelques secondes."
 
-#: accounts/views.py:123
+#: accounts/views.py:95
 msgid ""
 "Your new password was saved successfully. You can now login on your account."
 msgstr ""
 "Votre nouveau mot de passe a bien été enregistré. Vous pouvez vous connecter "
 "de la façon habituelle."
+
+#: accounts/views.py:130
+msgid ""
+"There was a problem processing your credit card. Your account was not "
+"created. Please, try again in a few minutes or with different payment "
+"informations."
+msgstr ""
 
 #: accounts/templates/account_navbar.html:8
 #: accounts/templates/my_account.html:5
@@ -136,23 +136,23 @@ msgstr "Mon panneau de contrôle"
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: accounts/templates/account_navbar.html:18
+#: accounts/templates/account_navbar.html:17
 msgid "Sms"
 msgstr ""
 
-#: accounts/templates/account_navbar.html:22
+#: accounts/templates/account_navbar.html:21
 msgid "Archives"
 msgstr ""
 
-#: accounts/templates/account_navbar.html:26
+#: accounts/templates/account_navbar.html:25
 msgid "Pending reminders"
 msgstr "Sms en attentes"
 
-#: accounts/templates/account_navbar.html:27
+#: accounts/templates/account_navbar.html:26
 msgid "Sent reminders"
 msgstr "Sms envoyés"
 
-#: accounts/templates/account_navbar.html:31 contacts/models.py:15
+#: accounts/templates/account_navbar.html:30 contacts/models.py:15
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -161,16 +161,16 @@ msgid "Sign in"
 msgstr "Connexion"
 
 #: accounts/templates/login.html:12
+msgid "Login"
+msgstr "Login"
+
+#: accounts/templates/login.html:17
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: accounts/templates/login.html:13
+#: accounts/templates/login.html:18
 msgid "Forgot your password?"
 msgstr "Un p'tit trou de mémoire ?"
-
-#: accounts/templates/login.html:17
-msgid "Login"
-msgstr "Login"
 
 #: accounts/templates/my_account.html:11
 msgid "Sent text messages"
@@ -222,47 +222,47 @@ msgstr "Mise à jour du mot de passe"
 msgid "Save new password"
 msgstr "Enregistrer"
 
-#: accounts/templates/register.html:6
+#: accounts/templates/payment.html:6 accounts/templates/register.html:6
 msgid "Create your account"
 msgstr "Créer un compte"
 
-#: accounts/templates/register.html:12
+#: accounts/templates/payment.html:12
 msgid "Your account data"
 msgstr "Votre compte"
 
-#: accounts/templates/register.html:17
+#: accounts/templates/payment.html:17
 msgid "Billing information"
 msgstr "Informations de facturation"
 
-#: accounts/templates/register.html:20
+#: accounts/templates/payment.html:20
 msgid "Our pricing is 4,95€ / month. 30 days trial for free."
 msgstr "4,95€ par mois. Période d'essai gratuite de 30 jours."
 
-#: accounts/templates/register.html:21
+#: accounts/templates/payment.html:21
 msgid "Your payment will be secured by Paymill, our payment partner."
 msgstr "Votre paiement est sécurisé par Paymill&trade;."
 
-#: accounts/templates/register.html:22
+#: accounts/templates/payment.html:22
 msgid "Do you want to know more?"
 msgstr "Voulez-vous en savoir plus ?"
 
-#: accounts/templates/register.html:28
+#: accounts/templates/payment.html:28
 msgid "Credit card number:"
 msgstr "Numéro de carte bleue :"
 
-#: accounts/templates/register.html:33
+#: accounts/templates/payment.html:33
 msgid "Holder name:"
 msgstr "Nom du porteur :"
 
-#: accounts/templates/register.html:39
+#: accounts/templates/payment.html:39
 msgid "Validation code:"
 msgstr "Code de validation :"
 
-#: accounts/templates/register.html:44
+#: accounts/templates/payment.html:44
 msgid "Expiration date (MM/YYYY):"
 msgstr "Date d'expiration (MM / AAAA) :"
 
-#: accounts/templates/register.html:51
+#: accounts/templates/payment.html:57
 msgid ""
 "\n"
 "        By clicking the button below, you state that you have read and\n"
@@ -277,37 +277,55 @@ msgstr ""
 "<a target=\"_blank\" href=\"/pages/cgv/\">conditions d'utilisation</a>\n"
 " (ouvrira dans une nouvelle fenêtre)."
 
-#: accounts/templates/register.html:56
+#: accounts/templates/payment.html:62 accounts/templates/register.html:24
 msgid "Register"
 msgstr "Créer un compte"
 
-#: accounts/templates/register.html:67
+#: accounts/templates/payment.html:73
 msgid "Secured payment"
 msgstr "Paiement sécurisé"
 
-#: accounts/templates/register.html:70
+#: accounts/templates/payment.html:76
 msgid "Your payment data is secured by our partner, Paymill."
 msgstr "Votre paiement est sécurisé par notre partenaire Paymill"
 
-#: accounts/templates/register.html:71
+#: accounts/templates/payment.html:77
 msgid "It will never be sent to our own server."
 msgstr "Vos données ne sont ni envoyées ni stockées sur notre propre serveur."
 
-#: accounts/templates/register.html:93
+#: accounts/templates/payment.html:99
 msgid "Invalid card number"
 msgstr "Numéro de carte invalide"
 
-#: accounts/templates/register.html:98
+#: accounts/templates/payment.html:104
 msgid "Invalid validation code"
 msgstr "Code de validation invalide"
 
-#: accounts/templates/register.html:103
+#: accounts/templates/payment.html:109
 msgid "Invalid expiration date"
 msgstr "Date d'expiration invalide"
 
-#: accounts/templates/register.html:132
+#: accounts/templates/payment.html:138
 msgid "Oops! An error occured."
 msgstr "Oups ! Quelque chose cloche !"
+
+#: accounts/templates/register.html:13
+msgid "We will never spam you nor sell your data."
+msgstr ""
+
+#: accounts/templates/register.html:20
+msgid ""
+"\n"
+"        By clicking the button below, you state that you have read and\n"
+"        agreed to the <a target=\"_blank\" href=\"/pages/cgv/\">Service "
+"Agreement (new window)</a>.\n"
+"        "
+msgstr ""
+"\n"
+"En cliquant sur le bouton suivant, vous reconnaissez avoir lu et accepté "
+"nos \n"
+"<a target=\"_blank\" href=\"/pages/cgv/\">conditions d'utilisation (nouvelle fenêtre)</a>.\n"
+"        "
 
 #: accounts/templates/registration/activation_email.txt:3
 #, python-format
@@ -399,11 +417,11 @@ msgid "Free"
 msgstr "Gratos"
 
 #: pages/templates/pricing.html:20
-msgid "4,95€ / month"
-msgstr "4,95€ / mois"
+msgid "XXX€ ? / month"
+msgstr "XXX€ ? / mois"
 
-#: pages/templates/pricing.html:21 templates/base.html:44
-#: templates/home.html:26
+#: pages/templates/pricing.html:21 pages/templates/pricing.html.py:25
+#: templates/navbar.html:22
 msgid "Sign up"
 msgstr "Créer un compte"
 
@@ -411,17 +429,13 @@ msgstr "Créer un compte"
 msgid "0€ / month"
 msgstr "0€ / mois"
 
-#: pages/templates/pricing.html:25
-msgid "Use"
-msgstr "Utiliser"
-
 #: pages/templates/pricing.html:33
 msgid "Text messages limit"
 msgstr "Nombre de sms"
 
 #: pages/templates/pricing.html:34
-msgid "How many text messages can you send a day"
-msgstr "Le nombre de sms disponibles par jour"
+msgid "How many text messages can you send a month"
+msgstr "Le nombre de sms disponibles par mois"
 
 #: pages/templates/pricing.html:36
 msgid "Illimited"
@@ -451,7 +465,7 @@ msgstr "Taille des sms"
 msgid "How many characters can you use for each text message"
 msgstr "Nombre de caractères disponibles par sms."
 
-#: pages/templates/pricing.html:69 templates/home.html:48
+#: pages/templates/pricing.html:69 templates/home.html:42
 msgid "Address book"
 msgstr "Carnet d'adresse"
 
@@ -467,29 +481,30 @@ msgstr "Archivages des sms"
 msgid "Store and browse your past text messages"
 msgstr "Stockez et parcourez vos sms archivés"
 
-#: reminders/forms.py:12
+#: reminders/forms.py:13
 msgid "Recipient cell:"
 msgstr "Téléphone :"
 
-#: reminders/forms.py:14
+#: reminders/forms.py:15
 msgid "Date and time:"
 msgstr "Date et heure :"
 
-#: reminders/forms.py:15
+#: reminders/forms.py:16
 msgid "Your message:"
 msgstr "Votre message :"
 
-#: reminders/forms.py:17
+#: reminders/forms.py:18
 msgid "Don't forget to sign your message"
 msgstr "N'oubliez pas de signer !"
 
-#: reminders/forms.py:43
-msgid ""
-"You have exceded the numbers of free reminders a day. Subscribe to an "
-"account to create more."
+#: reminders/forms.py:37
+msgid "Oops, only authenticated users can send reminders."
 msgstr ""
-"Vous avez dépassé le nombre de sms gratuits pour aujourd'hui. Vous pouvez "
-"créer un compte pour en créer plus."
+
+#: reminders/forms.py:47
+msgid "You have exceeded the monthly limit of reminders for your account"
+msgstr ""
+"Vous avez dépassé le nombre de sms autorisés pour ce mois-ci."
 
 #: reminders/models.py:16
 msgid "Message"
@@ -535,11 +550,11 @@ msgstr "Il n'y a rien ici (pour le moment)."
 msgid "Your reminder was saved successfully. Sleep tight."
 msgstr "Votre sms vient d'être programmé."
 
-#: reminders/templates/create_reminder.html:4
+#: reminders/templates/create_reminder.html:5
 msgid "Schedule a new text message"
 msgstr "Programmez un sms"
 
-#: reminders/templates/create_reminder.html:11
+#: reminders/templates/create_reminder.html:12
 msgid "Schedule a text message"
 msgstr "Programmez un sms"
 
@@ -551,35 +566,31 @@ msgstr "Vos sms"
 msgid "Create a new reminder"
 msgstr "Créez un nouveau sms"
 
-#: templates/base.html:6 templates/base.html.py:37
+#: templates/base.html:6 templates/navbar.html:12
 msgid "Don't forget grandma!"
 msgstr "N'oublie pas mamie !"
 
-#: templates/base.html:45
-msgid "Log in"
-msgstr "Se connecter"
-
-#: templates/base.html:73
+#: templates/base.html:49
 msgid "Legal information"
 msgstr "Mentions légales"
 
-#: templates/base.html:74
+#: templates/base.html:50
 msgid "Terms and conditions"
 msgstr "Conditions d'utilisation"
 
-#: templates/base.html:75
+#: templates/base.html:51
 msgid "Get the source"
 msgstr "Code source"
 
-#: templates/base.html:78
+#: templates/base.html:54
 msgid "This is a beta service. Use with care."
 msgstr "Service en bêta. Utilisez avec précautions bla bla bla…"
 
-#: templates/home.html:5
+#: templates/home.html:7
 msgid "Schedule text messages"
 msgstr "Programmez des sms"
 
-#: templates/home.html:10
+#: templates/home.html:9
 msgid ""
 "Schedule text messages for yourself, your friends or your grandma.\n"
 "They will be delivered at the specified date and time (your messages, not\n"
@@ -588,48 +599,15 @@ msgstr ""
 "Programmez des sms pour vous, vos amis ou votre grand-mère.\n"
 "Ils seront envoyés au moment voulu (vos sms, pas votre grand-mère)."
 
-#: templates/home.html:16
-msgid ""
-"Remind yourself about your grandma's party ; Send sexy messages\n"
-"to your loved-one throughout the day ; Schedule birthday reminders for your "
-"friends.\n"
-msgstr ""
-"Faites-vous penser à acheter le pain en rentrant du boulot ; \n"
-"rappelez un événement à vos amis au moment voulu ; \n"
-"programmez vos vœux pour l'anniversaire de votre grand-mère ; \n"
-"et bien d'autres possibilités.\n"
-
-#: templates/home.html:22
-msgid "Schedule and forget, we will do the rest."
-msgstr "Programmez et oubliez, on s'occupe de tout."
-
-#: templates/home.html:27
-msgid "or"
-msgstr "ou"
-
-#: templates/home.html:28
+#: templates/home.html:15
 msgid "View our pricing"
 msgstr "Voir nos prix"
 
-#: templates/home.html:37
-msgid "Try it for free"
-msgstr "Essayer gratuitement"
-
-#: templates/home.html:50
-msgid ""
-"Save your favorites numbers in your address book,\n"
-"            so you don't have to remember them every time.\n"
-"            "
-msgstr ""
-"Conservez vos numéros préférés dans votre carnet d'adresse,\n"
-"pour éviter d'avoir à vous en souvenir.\n"
-"            "
-
-#: templates/home.html:57
+#: templates/home.html:23
 msgid "International"
 msgstr "International"
 
-#: templates/home.html:59
+#: templates/home.html:25
 msgid ""
 "You can send text messages in a lot of countries.\n"
 "            Now you can have friends outside the United States.\n"
@@ -639,11 +617,11 @@ msgstr ""
 "raisons que ce soient toujours les mêmes qui profitent.\n"
 "            "
 
-#: templates/home.html:66
+#: templates/home.html:32
 msgid "Open-source"
 msgstr "Open-source"
 
-#: templates/home.html:68
+#: templates/home.html:34
 msgid ""
 "That's right, the <a href=\"https://github.com/thibault/grandma/\">\n"
 "            code source is fully available on Github</a>. You want to help "
@@ -654,3 +632,42 @@ msgstr ""
 "Le code est <a href=\"https://github.com/thibault/grandma/\">\n"
 "complètement disponible sur Github</a>. Vous voulez nous aider à améliorer "
 "notre service ? Vous pouvez !"
+
+#: templates/home.html:44
+msgid ""
+"Save your favorites numbers in your address book,\n"
+"            so you don't have to remember them every time.\n"
+"            "
+msgstr ""
+"Conservez vos numéros préférés dans votre carnet d'adresse,\n"
+"pour éviter d'avoir à vous en souvenir.\n"
+"            "
+
+#: templates/navbar.html:23
+msgid "Log in"
+msgstr "Se connecter"
+
+#~ msgid "4,95€ / month"
+#~ msgstr "4,95€ / mois"
+
+#~ msgid "Use"
+#~ msgstr "Utiliser"
+
+#~ msgid ""
+#~ "Remind yourself about your grandma's party ; Send sexy messages\n"
+#~ "to your loved-one throughout the day ; Schedule birthday reminders for "
+#~ "your friends.\n"
+#~ msgstr ""
+#~ "Faites-vous penser à acheter le pain en rentrant du boulot ; \n"
+#~ "rappelez un événement à vos amis au moment voulu ; \n"
+#~ "programmez vos vœux pour l'anniversaire de votre grand-mère ; \n"
+#~ "et bien d'autres possibilités.\n"
+
+#~ msgid "Schedule and forget, we will do the rest."
+#~ msgstr "Programmez et oubliez, on s'occupe de tout."
+
+#~ msgid "or"
+#~ msgstr "ou"
+
+#~ msgid "Try it for free"
+#~ msgstr "Essayer gratuitement"
