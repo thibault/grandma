@@ -297,6 +297,7 @@ PIPELINE_JS = {
         'output_filename': 'js/reminder.js',
     }
 }
+PIPELINE_JS_COMPRESSOR = None
 ########## END PIPELINE CONFIGURATION
 
 
