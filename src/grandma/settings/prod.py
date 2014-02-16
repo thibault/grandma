@@ -5,7 +5,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "grandma",
         "USER": "grandma",
         "PASSWORD": "grandma",
@@ -17,6 +17,7 @@ DATABASES = {
 INSTALLED_APPS += (
     'south',
     'raven.contrib.django.raven_compat',
+    'gunicorn',
 )
 
 ALLOWED_HOSTS = ['.dontforgetgrandma.com']

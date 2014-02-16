@@ -2,3 +2,5 @@
 
 flup==1.0.3.dev-20110405
 raven==3.3.12
+gunicorn==18.0
+psycopg2==2.5.2
